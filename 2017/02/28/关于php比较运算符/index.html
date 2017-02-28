@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-tagsmetasploit">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: metasploit | sun1024</title>
+  <title>关于php比较运算符 | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,CTF,SRC" />
+    <meta name="keywords" content="php," />
   
 
-  <meta name="description" content="这是我的家哦~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sun1024">
-<meta property="og:url" content="http://yoursite.com/tags/metasploit/index.html">
+  <meta name="description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于php比较运算符">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/关于php比较运算符/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="这是我的家哦~">
+<meta property="og:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta property="og:updated_time" content="2017-02-28T10:37:54.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sun1024">
-<meta name="twitter:description" content="这是我的家哦~">
+<meta name="twitter:title" content="关于php比较运算符">
+<meta name="twitter:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
 
   
 
@@ -69,17 +70,8 @@
     <span id="toolbox-mobile" class="toolbox-mobile">点我</span>
   
 
-  <div class="content content-tag">
-  <div class="page-header">
-
-  
-    <div class="breadcrumb">
-      <div class="location">标签</div>
-      <i class="icon-location"></i>
-    </div>
-  
-
-  
+  <div class="post-header CENTER">
+   
   <div class="toolbox">
     <a class="toolbox-entry" href="/">
       <span class="toolbox-entry-text">点我</span>
@@ -169,85 +161,110 @@
   </div>
 
 
+</div>
 
-  <div class="box-blog-info">
-    <a class="avatar" href="/">
-      <img src="https://avatars0.githubusercontent.com/u/18361006?v=3&amp;u=36007d3bb848c6d543dc5eadebc62fd1e14ce28b&amp;s=400" alt="" />
-    </a>
-    <div class="info">
-      <h3 class="name" style="font-family: calligraffittiregular">
-        sun1024
-      </h3>
-      <div class="slogan">
-        We are all in the gutter, but some of us are looking at the stars. 
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#比较运算符”-”与”-”的学习："><span class="toc-text">比较运算符”==”与”===”的学习：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于”-”的绕过："><span class="toc-text">关于”==”的绕过：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于“-”的绕过："><span class="toc-text">关于“===”的绕过：</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-关于php比较运算符" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于php比较运算符</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>sun1024</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="比较运算符”-”与”-”的学习："><a href="#比较运算符”-”与”-”的学习：" class="headerlink" title="比较运算符”==”与”===”的学习："></a>比较运算符”==”与”===”的学习：</h1><h2 id="关于”-”的绕过："><a href="#关于”-”的绕过：" class="headerlink" title="关于”==”的绕过："></a>关于”==”的绕过：</h2><p>0e开头的全部相等<br>eg:<br><code>md5(&#39;240610708&#39;) == md5(&#39;QNKCDZO&#39;)</code><br><code>md5(&#39;aabg7XSs&#39;) == md5(&#39;aabC9RqS&#39;)</code><br><code>sha1(&#39;aaroZmOk&#39;) == sha1(&#39;aaK1STfY&#39;)</code><br><code>sha1(&#39;aaO8zKZF&#39;) == sha1(&#39;aa3OFF9m&#39;)</code><br><code>&#39;0010e2&#39; == &#39;1e3&#39;</code><br><code>&#39;0x1234Ab&#39; == &#39;1193131&#39;</code><br><code>&#39;0xABCdef&#39; == &#39;     0xABCdef&#39;</code></p>
+<h2 id="关于“-”的绕过："><a href="#关于“-”的绕过：" class="headerlink" title="关于“===”的绕过："></a>关于“===”的绕过：</h2><p>利用数组绕过</p>
+<p>eg:一道简单的CTF题目：</p>
+<pre><code>if (isset($_GET[&apos;name&apos;]) and isset($_GET[&apos;password&apos;])) {
+    if ($_GET[&apos;name&apos;] == $_GET[&apos;password&apos;])
+        print &apos;Your password can not be your name.&apos;;
+    else if (sha1($_GET[&apos;name&apos;]) === sha1($_GET[&apos;password&apos;]))
+        die(&apos;Flag: &apos;.$flag);
+</code></pre><p>payload:<br><code>?name[]=1&amp;password[]=2</code></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持sun1024</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
       </div>
     </div>
   </div>
 
-</div>
 
-  <section class="tag-box">
-  <div class="tag-title">标签</div>
-  <div class="tag-list">
-    
-      <a class="tag-item" href="#metasploit">
-        <span class="tag-name">metasploit</span>
-        <span class="tag-size">( 1 )</span>
-      </a>
-    
-      <a class="tag-item" href="#php">
-        <span class="tag-name">php</span>
-        <span class="tag-size">( 1 )</span>
-      </a>
-    
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/02/06/msf初体验/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
   </div>
-</section>
-
-  <ul class="list-post"><li id="metasploit" class="item-category-name item-title item-title-0">
-  <!--
-    <a href="" class="text-year">
-   -->
-    metasploit
-    <span class="category-count">( 1 )</span>
-  <!--
-  </a>
-   -->
-</li>
-<li class="item-post item">
-  <span class="post-date">02-06</span>
-
-  
-  <a class="post-title" href="/2017/02/06/msf初体验/">msf 初体验</a>
 
 
-</li>
-<li id="php" class="item-category-name item-title item-title-1">
-  <!--
-    <a href="" class="text-year">
-   -->
-    php
-    <span class="category-count">( 1 )</span>
-  <!--
-  </a>
-   -->
-</li>
-<li class="item-post item">
-  <span class="post-date">02-28</span>
-
-  
-  <a class="post-title" href="/2017/02/28/关于php比较运算符/">关于php比较运算符</a>
 
 
-</li>
-</ul>
 </div>
 
 
   <a id="backTop" class="back-top">
     <i class="icon-angle-up"></i>
   </a>
-
-
 
 
 
@@ -346,6 +363,17 @@
 </div>
 
 
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+  </div>
 
   
 
