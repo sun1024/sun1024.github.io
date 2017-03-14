@@ -15,16 +15,16 @@
     <meta name="keywords" content="php," />
   
 
-  <meta name="description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+  <meta name="description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于php比较运算符">
 <meta property="og:url" content="http://yoursite.com/2017/02/28/关于php比较运算符/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
-<meta property="og:updated_time" content="2017-02-28T10:37:54.083Z">
+<meta property="og:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta property="og:updated_time" content="2017-03-14T11:47:46.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于php比较运算符">
-<meta name="twitter:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等eg:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta name="twitter:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
 
   
 
@@ -165,7 +165,7 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
+    <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#比较运算符”-”与”-”的学习："><span class="toc-text">比较运算符”==”与”===”的学习：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于”-”的绕过："><span class="toc-text">关于”==”的绕过：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于“-”的绕过："><span class="toc-text">关于“===”的绕过：</span></a></li></ol></li></ol>
   </div>
 
@@ -209,15 +209,10 @@
 
   <div class="article-content">
     
-      <h1 id="比较运算符”-”与”-”的学习："><a href="#比较运算符”-”与”-”的学习：" class="headerlink" title="比较运算符”==”与”===”的学习："></a>比较运算符”==”与”===”的学习：</h1><h2 id="关于”-”的绕过："><a href="#关于”-”的绕过：" class="headerlink" title="关于”==”的绕过："></a>关于”==”的绕过：</h2><p>0e开头的全部相等<br>eg:<br><code>md5(&#39;240610708&#39;) == md5(&#39;QNKCDZO&#39;)</code><br><code>md5(&#39;aabg7XSs&#39;) == md5(&#39;aabC9RqS&#39;)</code><br><code>sha1(&#39;aaroZmOk&#39;) == sha1(&#39;aaK1STfY&#39;)</code><br><code>sha1(&#39;aaO8zKZF&#39;) == sha1(&#39;aa3OFF9m&#39;)</code><br><code>&#39;0010e2&#39; == &#39;1e3&#39;</code><br><code>&#39;0x1234Ab&#39; == &#39;1193131&#39;</code><br><code>&#39;0xABCdef&#39; == &#39;     0xABCdef&#39;</code></p>
+      <h1 id="比较运算符”-”与”-”的学习："><a href="#比较运算符”-”与”-”的学习：" class="headerlink" title="比较运算符”==”与”===”的学习："></a>比较运算符”==”与”===”的学习：</h1><h2 id="关于”-”的绕过："><a href="#关于”-”的绕过：" class="headerlink" title="关于”==”的绕过："></a>关于”==”的绕过：</h2><p>0e开头的全部相等<br>栗子:<br><code>md5(&#39;240610708&#39;) == md5(&#39;QNKCDZO&#39;)</code><br><code>md5(&#39;aabg7XSs&#39;) == md5(&#39;aabC9RqS&#39;)</code><br><code>sha1(&#39;aaroZmOk&#39;) == sha1(&#39;aaK1STfY&#39;)</code><br><code>sha1(&#39;aaO8zKZF&#39;) == sha1(&#39;aa3OFF9m&#39;)</code><br><code>&#39;0010e2&#39; == &#39;1e3&#39;</code><br><code>&#39;0x1234Ab&#39; == &#39;1193131&#39;</code><br><code>&#39;0xABCdef&#39; == &#39;     0xABCdef&#39;</code></p>
 <h2 id="关于“-”的绕过："><a href="#关于“-”的绕过：" class="headerlink" title="关于“===”的绕过："></a>关于“===”的绕过：</h2><p>利用数组绕过</p>
-<p>eg:一道简单的CTF题目：</p>
-<pre><code>if (isset($_GET[&apos;name&apos;]) and isset($_GET[&apos;password&apos;])) {
-    if ($_GET[&apos;name&apos;] == $_GET[&apos;password&apos;])
-        print &apos;Your password can not be your name.&apos;;
-    else if (sha1($_GET[&apos;name&apos;]) === sha1($_GET[&apos;password&apos;]))
-        die(&apos;Flag: &apos;.$flag);
-</code></pre><p>payload:<br><code>?name[]=1&amp;password[]=2</code></p>
+<p>eg:一道简单的CTF题目：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (isset($_GET[&apos;name&apos;]) and isset($_GET[&apos;password&apos;])) &#123;</div><div class="line">	if ($_GET[&apos;name&apos;] == $_GET[&apos;password&apos;])</div><div class="line">		print &apos;Your password can not be your name.&apos;;</div><div class="line">	else if (sha1($_GET[&apos;name&apos;]) === sha1($_GET[&apos;password&apos;]))</div><div class="line">		die(&apos;Flag: &apos;.$flag);</div></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?name[]=1&amp;password[]=2</code></p>
 
     
   </div>
@@ -273,7 +268,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
+      <span id="close" class="btn-close">关闭</span>
     </div>
     <hr>
     <div class="modal-body">
