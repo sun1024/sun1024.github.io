@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>php��������˫���� | sun1024</title>
+  <title>php单引号与双引号 | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,37 +15,46 @@
     <meta name="keywords" content="php," />
   
 
-  <meta name="description" content="������һ���ܼ򵥵ĵ㣬�������ڲ�֪��������
+  <meta name="description" content="区别：一个很简单的点，结果现在才知道。。。
 
-�����ţ����ܴ���������ת���ַ�(����\��\’�����������ӣ�123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
+单引号：不能处理变量和转义字符(除了\和\’这两个）栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
 
 
-������this is $var.
+输出：this is $var.
 
-˫���ţ�һЩ�������ַ��ͱ��������������ӣ�123&amp;lt;?php">
+双引号：一些特殊的字符和变量将被解析栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &quot;this is $var.&quot;;
+
+
+输出：this is">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php��������˫����">
+<meta property="og:title" content="php单引号与双引号">
 <meta property="og:url" content="http://yoursite.com/2017/04/02/php单引号与双引号/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="������һ���ܼ򵥵ĵ㣬�������ڲ�֪��������
+<meta property="og:description" content="区别：一个很简单的点，结果现在才知道。。。
 
-�����ţ����ܴ���������ת���ַ�(����\��\’�����������ӣ�123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
+单引号：不能处理变量和转义字符(除了\和\’这两个）栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
 
 
-������this is $var.
+输出：this is $var.
 
-˫���ţ�һЩ�������ַ��ͱ��������������ӣ�123&amp;lt;?php">
-<meta property="og:updated_time" content="2017-04-02T04:11:33.110Z">
+双引号：一些特殊的字符和变量将被解析栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &quot;this is $var.&quot;;
+
+
+输出：this is">
+<meta property="og:updated_time" content="2017-04-02T04:13:44.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php��������˫����">
-<meta name="twitter:description" content="������һ���ܼ򵥵ĵ㣬�������ڲ�֪��������
+<meta name="twitter:title" content="php单引号与双引号">
+<meta name="twitter:description" content="区别：一个很简单的点，结果现在才知道。。。
 
-�����ţ����ܴ���������ת���ַ�(����\��\’�����������ӣ�123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
+单引号：不能处理变量和转义字符(除了\和\’这两个）栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &apos;this is $var.&apos;;
 
 
-������this is $var.
+输出：this is $var.
 
-˫���ţ�һЩ�������ַ��ͱ��������������ӣ�123&amp;lt;?php">
+双引号：一些特殊的字符和变量将被解析栗子：123&amp;lt;?php$var = &apos;test&apos;;echo &quot;this is $var.&quot;;
+
+
+输出：this is">
 
   
 
@@ -187,7 +196,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#������"><span class="toc-text">������</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#区别："><span class="toc-text">区别：</span></a></li></ol>
   </div>
 
 
@@ -195,7 +204,7 @@
 <div class="content content-post CENTER">
    <article id="post-php单引号与双引号" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">php��������˫����</h1>
+    <h1 class="post-title">php单引号与双引号</h1>
 
     <div class="article-meta">
       <span>
@@ -230,17 +239,17 @@
 
   <div class="article-content">
     
-      <h2 id="������"><a href="#������" class="headerlink" title="������"></a>������</h2><p>һ���ܼ򵥵ĵ㣬�������ڲ�֪��������</p>
+      <h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h2><p>一个很简单的点，结果现在才知道。。。</p>
 <ul>
-<li>�����ţ����ܴ���������ת���ַ�(����\��\’��������<br>���ӣ�<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$var = <span class="string">'test'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'this is $var.'</span>;</div></pre></td></tr></table></figure>
+<li>单引号：不能处理变量和转义字符(除了\和\’这两个）<br>栗子：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$var = <span class="string">'test'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'this is $var.'</span>;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>������<br><code>this is $var.</code></p>
+<p>输出：<br><code>this is $var.</code></p>
 <ul>
-<li>˫���ţ�һЩ�������ַ��ͱ�����������<br>���ӣ�<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$var = <span class="string">'test'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">"this is $var."</span>;</div></pre></td></tr></table></figure>
+<li>双引号：一些特殊的字符和变量将被解析<br>栗子：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$var = <span class="string">'test'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">"this is $var."</span>;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>������<br><code>this is test.</code><br>�ο���<br><a href="http://php.net/manual/zh/language.types.string.php" target="_blank" rel="external">http://php.net/manual/zh/language.types.string.php</a></p>
+<p>输出：<br><code>this is test.</code><br>参考：<br><a href="http://php.net/manual/zh/language.types.string.php" target="_blank" rel="external">http://php.net/manual/zh/language.types.string.php</a></p>
 
     
   </div>
