@@ -16,21 +16,27 @@
   
 
   <meta name="description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
-&quot;xxx&quot; --suffix &quot;xxx&quot;```12345## 02 --start --stop表中的数据量过多, 或者盲注太费时间, 使用--start,--stop指定几行数据:```--start num1 --stop num2
-03 –search寻找特定的数据库名，所有数据库">
+--prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
+02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+--start num1 --stop num2
+03 –search寻找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Some Sqlmap Tricks">
 <meta property="og:url" content="http://yoursite.com/2017/08/19/Some Sqlmap Tricks/index.html">
 <meta property="og:site_name" content="sun1024">
 <meta property="og:description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
-&quot;xxx&quot; --suffix &quot;xxx&quot;```12345## 02 --start --stop表中的数据量过多, 或者盲注太费时间, 使用--start,--stop指定几行数据:```--start num1 --stop num2
-03 –search寻找特定的数据库名，所有数据库">
-<meta property="og:updated_time" content="2017-08-19T08:14:20.261Z">
+--prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
+02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+--start num1 --stop num2
+03 –search寻找">
+<meta property="og:updated_time" content="2017-08-19T08:19:31.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Some Sqlmap Tricks">
 <meta name="twitter:description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
-&quot;xxx&quot; --suffix &quot;xxx&quot;```12345## 02 --start --stop表中的数据量过多, 或者盲注太费时间, 使用--start,--stop指定几行数据:```--start num1 --stop num2
-03 –search寻找特定的数据库名，所有数据库">
+--prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
+02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+--start num1 --stop num2
+03 –search寻找">
 
   
 
@@ -172,7 +178,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-–prefix-–suffix"><span class="toc-text">01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-–search"><span class="toc-text">03 –search</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-–prefix-–suffix"><span class="toc-text">01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-–start-–stop"><span class="toc-text">02 –start –stop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-–search"><span class="toc-text">03 –search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-–count"><span class="toc-text">04 –count</span></a></li></ol>
   </div>
 
 
@@ -216,9 +222,13 @@
   <div class="article-content">
     
       <h2 id="01-–prefix-–suffix"><a href="#01-–prefix-–suffix" class="headerlink" title="01 –prefix,–suffix"></a>01 –prefix,–suffix</h2><p>在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:</p>
-<figure class="highlight plain"><figcaption><span>"xxx" --suffix "xxx"```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 02 --start --stop</div><div class="line">表中的数据量过多, 或者盲注太费时间, 使用--start,--stop指定几行数据:</div><div class="line"></div><div class="line">```--start num1 --stop num2</div></pre></td></tr></table></figure>
+<p><code>--prefix &quot;xxx&quot; --suffix &quot;xxx&quot;</code></p>
+<h2 id="02-–start-–stop"><a href="#02-–start-–stop" class="headerlink" title="02 –start –stop"></a>02 –start –stop</h2><p>表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:</p>
+<p><code>--start num1 --stop num2</code></p>
 <h2 id="03-–search"><a href="#03-–search" class="headerlink" title="03 –search"></a>03 –search</h2><p>寻找特定的数据库名，所有数据库中的特定表名，所有数据库表中的特定字段:</p>
-<figure class="highlight plain"><figcaption><span>-C sfzh```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 04 --count</div><div class="line">只获取表中的数据个数:</div><div class="line"></div><div class="line">```--count -D testDB</div></pre></td></tr></table></figure>
+<p><code>--search -C sfzh</code></p>
+<h2 id="04-–count"><a href="#04-–count" class="headerlink" title="04 –count"></a>04 –count</h2><p>只获取表中的数据个数:</p>
+<p><code>--count -D testDB</code></p>
 
     
   </div>
