@@ -29,7 +29,7 @@
 02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
 --start num1 --stop num2
 03 –search寻找">
-<meta property="og:updated_time" content="2017-08-19T13:14:04.550Z">
+<meta property="og:updated_time" content="2017-09-15T06:41:45.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Some Sqlmap Tricks">
 <meta name="twitter:description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
@@ -178,7 +178,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-–prefix-–suffix"><span class="toc-text">01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-–start-–stop"><span class="toc-text">02 –start –stop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-–search"><span class="toc-text">03 –search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-–count"><span class="toc-text">04 –count</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-–prefix-–suffix"><span class="toc-text">01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-–start-–stop"><span class="toc-text">02 –start –stop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-–search"><span class="toc-text">03 –search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-–count"><span class="toc-text">04 –count</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-一些tamper"><span class="toc-text">04 一些tamper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
@@ -229,7 +229,9 @@
 <p><code>--search -C sfzh</code></p>
 <h2 id="04-–count"><a href="#04-–count" class="headerlink" title="04 –count"></a>04 –count</h2><p>只获取表中的数据个数:</p>
 <p><code>--count -D testDB</code></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://119.29.64.123:8080/WooyunDrops/#!/drops/25.sqlmap%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C" target="_blank" rel="external">sqlmap用户手册</a></p>
+<h2 id="04-一些tamper"><a href="#04-一些tamper" class="headerlink" title="04 一些tamper"></a>04 一些tamper</h2><p>如果web应用使用asp/asp.net开发，charunicodeencode.py和percentage.py可以绕过Waf。</p>
+<p><code>--tamepr=charunicodeencode</code><br><code>--tamepr=percentage</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://119.29.64.123:8080/WooyunDrops/#!/drops/25.sqlmap%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C" target="_blank" rel="external">sqlmap用户手册</a><br><a href="http://www.freebuf.com/articles/1000.html" target="_blank" rel="external">如何使用SQLMap绕过WAF</a></p>
 
     
   </div>
