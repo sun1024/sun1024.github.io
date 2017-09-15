@@ -15,28 +15,28 @@
     <meta name="keywords" content="Sqlmap," />
   
 
-  <meta name="description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
+  <meta name="description" content="0x01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
 --prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
-02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+0x02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
 --start num1 --stop num2
-03 –search寻找">
+0x03 –se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Some Sqlmap Tricks">
 <meta property="og:url" content="http://yoursite.com/2017/08/19/Some Sqlmap Tricks/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
+<meta property="og:description" content="0x01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
 --prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
-02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+0x02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
 --start num1 --stop num2
-03 –search寻找">
-<meta property="og:updated_time" content="2017-09-15T06:41:45.808Z">
+0x03 –se">
+<meta property="og:updated_time" content="2017-09-15T06:44:20.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Some Sqlmap Tricks">
-<meta name="twitter:description" content="01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
+<meta name="twitter:description" content="0x01 –prefix,–suffix在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:
 --prefix &amp;quot;xxx&amp;quot; --suffix &amp;quot;xxx&amp;quot;
-02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
+0x02 –start –stop表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:
 --start num1 --stop num2
-03 –search寻找">
+0x03 –se">
 
   
 
@@ -178,7 +178,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-–prefix-–suffix"><span class="toc-text">01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-–start-–stop"><span class="toc-text">02 –start –stop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-–search"><span class="toc-text">03 –search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-–count"><span class="toc-text">04 –count</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-一些tamper"><span class="toc-text">04 一些tamper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-–prefix-–suffix"><span class="toc-text">0x01 –prefix,–suffix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-–start-–stop"><span class="toc-text">0x02 –start –stop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-–search"><span class="toc-text">0x03 –search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-–count"><span class="toc-text">0x04 –count</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-一些tamper"><span class="toc-text">0x05 一些tamper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
@@ -221,15 +221,15 @@
 
   <div class="article-content">
     
-      <h2 id="01-–prefix-–suffix"><a href="#01-–prefix-–suffix" class="headerlink" title="01 –prefix,–suffix"></a>01 –prefix,–suffix</h2><p>在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:</p>
+      <h2 id="0x01-–prefix-–suffix"><a href="#0x01-–prefix-–suffix" class="headerlink" title="0x01 –prefix,–suffix"></a>0x01 –prefix,–suffix</h2><p>在注入的payload的前面或者后面加一些字符, 使sql语句能正常拼接:</p>
 <p><code>--prefix &quot;xxx&quot; --suffix &quot;xxx&quot;</code></p>
-<h2 id="02-–start-–stop"><a href="#02-–start-–stop" class="headerlink" title="02 –start –stop"></a>02 –start –stop</h2><p>表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:</p>
+<h2 id="0x02-–start-–stop"><a href="#0x02-–start-–stop" class="headerlink" title="0x02 –start –stop"></a>0x02 –start –stop</h2><p>表中的数据量过多, 或者盲注太费时间, 使用–start,–stop指定几行数据:</p>
 <p><code>--start num1 --stop num2</code></p>
-<h2 id="03-–search"><a href="#03-–search" class="headerlink" title="03 –search"></a>03 –search</h2><p>寻找特定的数据库名，所有数据库中的特定表名，所有数据库表中的特定字段:</p>
+<h2 id="0x03-–search"><a href="#0x03-–search" class="headerlink" title="0x03 –search"></a>0x03 –search</h2><p>寻找特定的数据库名，所有数据库中的特定表名，所有数据库表中的特定字段:</p>
 <p><code>--search -C sfzh</code></p>
-<h2 id="04-–count"><a href="#04-–count" class="headerlink" title="04 –count"></a>04 –count</h2><p>只获取表中的数据个数:</p>
+<h2 id="0x04-–count"><a href="#0x04-–count" class="headerlink" title="0x04 –count"></a>0x04 –count</h2><p>只获取表中的数据个数:</p>
 <p><code>--count -D testDB</code></p>
-<h2 id="04-一些tamper"><a href="#04-一些tamper" class="headerlink" title="04 一些tamper"></a>04 一些tamper</h2><p>如果web应用使用asp/asp.net开发，charunicodeencode.py和percentage.py可以绕过Waf。</p>
+<h2 id="0x05-一些tamper"><a href="#0x05-一些tamper" class="headerlink" title="0x05 一些tamper"></a>0x05 一些tamper</h2><p>如果web应用使用asp/asp.net开发，charunicodeencode.py和percentage.py可以绕过Waf。</p>
 <p><code>--tamepr=charunicodeencode</code><br><code>--tamepr=percentage</code></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://119.29.64.123:8080/WooyunDrops/#!/drops/25.sqlmap%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C" target="_blank" rel="external">sqlmap用户手册</a><br><a href="http://www.freebuf.com/articles/1000.html" target="_blank" rel="external">如何使用SQLMap绕过WAF</a></p>
 
