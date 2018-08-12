@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>EML企业通讯录管理系统两处sql注入漏洞分析 | sun1024</title>
+  <title>EML企业通讯录管理系统两处注入分析 | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -23,7 +23,7 @@
 测试环境：windows10+phpstudy+php5.5
 0x02 漏洞分析过滤函数：对于小">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EML企业通讯录管理系统两处sql注入漏洞分析">
+<meta property="og:title" content="EML企业通讯录管理系统两处注入分析">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/EML企业通讯录管理系统两处注入分析/index.html">
 <meta property="og:site_name" content="sun1024">
 <meta property="og:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
@@ -35,9 +35,9 @@
 0x02 漏洞分析过滤函数：对于小">
 <meta property="og:image" content="http://yoursite.com/images/sqli1.PNG">
 <meta property="og:image" content="http://yoursite.com/images/sqli2.PNG">
-<meta property="og:updated_time" content="2018-08-12T13:59:14.183Z">
+<meta property="og:updated_time" content="2018-08-12T14:10:14.889Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EML企业通讯录管理系统两处sql注入漏洞分析">
+<meta name="twitter:title" content="EML企业通讯录管理系统两处注入分析">
 <meta name="twitter:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
 0x01 漏洞环境CMS：EML企业通讯录管理系统
 版本：5.4.5
@@ -96,7 +96,7 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
+    <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-漏洞环境"><span class="toc-text">0x01 漏洞环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-漏洞分析"><span class="toc-text">0x02 漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤函数："><span class="toc-text">过滤函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一处注入："><span class="toc-text">第一处注入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二处注入："><span class="toc-text">第二处注入：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-后记"><span class="toc-text">0x03 后记</span></a></li></ol>
   </div>
 
@@ -105,7 +105,7 @@
 <div class="content content-post CENTER">
    <article id="post-EML企业通讯录管理系统两处注入分析" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">EML企业通讯录管理系统两处sql注入漏洞分析</h1>
+    <h1 class="post-title">EML企业通讯录管理系统两处注入分析</h1>
 
     <div class="article-meta">
       <span>
@@ -224,7 +224,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
+      <span id="close" class="btn-close">关闭</span>
     </div>
     <hr>
     <div class="modal-body">
