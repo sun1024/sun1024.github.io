@@ -35,7 +35,7 @@
 0x02 漏洞分析过滤函数：对于小">
 <meta property="og:image" content="http://yoursite.com/images/sqli1.PNG">
 <meta property="og:image" content="http://yoursite.com/images/sqli2.PNG">
-<meta property="og:updated_time" content="2018-08-12T14:10:14.889Z">
+<meta property="og:updated_time" content="2018-08-13T01:01:15.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EML企业通讯录管理系统两处注入分析">
 <meta name="twitter:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。
@@ -96,8 +96,8 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-漏洞环境"><span class="toc-text">0x01 漏洞环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-漏洞分析"><span class="toc-text">0x02 漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤函数："><span class="toc-text">过滤函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一处注入："><span class="toc-text">第一处注入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二处注入："><span class="toc-text">第二处注入：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-后记"><span class="toc-text">0x03 后记</span></a></li></ol>
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-漏洞环境"><span class="toc-text">0x01 漏洞环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-漏洞分析"><span class="toc-text">0x02 漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤函数："><span class="toc-text">过滤函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一处注入："><span class="toc-text">第一处注入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二处注入："><span class="toc-text">第二处注入：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-总结"><span class="toc-text">0x03 总结</span></a></li></ol>
   </div>
 
 
@@ -168,7 +168,7 @@
 <p>POC:</p>
 <p><code>item[]=2&#39;) or updatexml(1,concat(0x7e,(version())),0) -- dd</code></p>
 <p><img src="/images/sqli2.PNG" alt=""></p>
-<h1 id="0x03-后记"><a href="#0x03-后记" class="headerlink" title="0x03 后记"></a>0x03 后记</h1><p>感觉简单的太简单，难的又审不动，要走的路还很长呢。。。 </p>
+<h1 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h1><p>感觉简单的太简单，难的又审不动，要走的路还很长呢。。。 </p>
 
     
   </div>
@@ -224,7 +224,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
