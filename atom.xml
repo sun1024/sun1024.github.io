@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-15T07:28:38.215Z</updated>
+  <updated>2018-11-15T10:02:13.099Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Black Bypass</title>
-    <link href="http://yoursite.com/2018/11/15/Black%20Bypass/"/>
-    <id>http://yoursite.com/2018/11/15/Black Bypass/</id>
+    <title>Blank Bypass</title>
+    <link href="http://yoursite.com/2018/11/15/Blank%20Bypass/"/>
+    <id>http://yoursite.com/2018/11/15/Blank Bypass/</id>
     <published>2018-11-15T06:51:41.045Z</published>
-    <updated>2018-11-15T07:28:38.215Z</updated>
+    <updated>2018-11-15T10:02:13.099Z</updated>
     
     <content type="html"><![CDATA[<ol><li><p>cat&lt;1.txt</p><p><img src="/images/black1.PNG" alt=""></p></li><li><p>cat$IFS$91.txt</p><p><img src="/images/black2.PNG" alt=""></p></li><li><p>cat${IFS}1.txt</p><p><img src="/images/black3.PNG" alt=""></p></li><li><p>cat&lt;&gt;1.txt</p><p><img src="/images/black4.PNG" alt=""></p></li><li><p>{cat,1.txt}</p><p><img src="/images/black5.PNG" alt=""></p></li><li><p>CMD=$’\x201.txt’&amp;&amp;cat$CMD</p><p><img src="/images/black6.PNG" alt=""></p></li><li><p>CMD=$’\x0a1.txt’&amp;&amp;cat$CMD</p><p><img src="/images/black7.PNG" alt=""></p></li><li><p>CMD=$’\x091.txt’&amp;&amp;cat$CMD</p><p><img src="/images/black8.PNG" alt=""></p></li></ol>]]></content>
     
