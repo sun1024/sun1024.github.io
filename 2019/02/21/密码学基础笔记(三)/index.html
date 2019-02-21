@@ -7,12 +7,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>sun1024</title>
+  <title>密码学基础笔记(三) | sun1024</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,渗透测试,代码审计,web安全,CTF,SRC" />
+    <meta name="keywords" content="密码学," />
   
 
   <meta name="description" content="第9章  公钥密码学与RSA
@@ -28,7 +28,7 @@
 不需要安全信道传递密钥，大大简化了密钥管理。
 实现了分组密码体制中无法实现的数字签名。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sun1024">
+<meta property="og:title" content="密码学基础笔记(三)">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/密码学基础笔记(三)/index.html">
 <meta property="og:site_name" content="sun1024">
 <meta property="og:description" content="第9章  公钥密码学与RSA
@@ -61,9 +61,9 @@
 <meta property="og:image" content="http://yoursite.com/images/mima3/1550733803578.png">
 <meta property="og:image" content="http://yoursite.com/images/mima3/1550733997671.png">
 <meta property="og:image" content="http://yoursite.com/images/mima3/1550734346217.png">
-<meta property="og:updated_time" content="2019-02-21T10:09:39.414Z">
+<meta property="og:updated_time" content="2019-02-21T10:14:07.869Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sun1024">
+<meta name="twitter:title" content="密码学基础笔记(三)">
 <meta name="twitter:description" content="第9章  公钥密码学与RSA
 保密性：信息不被泄露给未经授权者的特性。
 
@@ -127,7 +127,7 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
+    <strong class="toc-title">Posts List</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第9章-公钥密码学与RSA"><span class="toc-text">第9章  公钥密码学与RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公钥密码体制的基本原理"><span class="toc-text">公钥密码体制的基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公钥密码体制"><span class="toc-text">公钥密码体制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对公钥密码的要求"><span class="toc-text">对公钥密码的要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA算法"><span class="toc-text">RSA算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第10章-密钥管理和其他公钥密码体制"><span class="toc-text">第10章  密钥管理和其他公钥密码体制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Diffie-Hellman密钥交换"><span class="toc-text">Diffie-Hellman密钥交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中间人攻击"><span class="toc-text">中间人攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElGamal密码体制"><span class="toc-text">ElGamal密码体制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#椭圆曲线密码学"><span class="toc-text">椭圆曲线密码学</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#椭圆曲线密码的安全性"><span class="toc-text">椭圆曲线密码的安全性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第11章-Hash函数"><span class="toc-text">第11章  Hash函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash函数"><span class="toc-text">Hash函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash函数的构造方法"><span class="toc-text">Hash函数的构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5算法"><span class="toc-text">MD5算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩函数的处理过程"><span class="toc-text">压缩函数的处理过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5算法的安全性"><span class="toc-text">MD5算法的安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA-1算法"><span class="toc-text">SHA-1算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA-1算法描述"><span class="toc-text">SHA-1算法描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5与SHA-1的比较"><span class="toc-text">MD5与SHA-1的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash函数的攻击"><span class="toc-text">Hash函数的攻击</span></a></li></ol></li></ol>
   </div>
 
@@ -136,7 +136,7 @@
 <div class="content content-post CENTER">
    <article id="post-密码学基础笔记(三)" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">(no title)</h1>
+    <h1 class="post-title">密码学基础笔记(三)</h1>
 
     <div class="article-meta">
       <span>
@@ -491,7 +491,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
