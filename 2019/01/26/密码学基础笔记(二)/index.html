@@ -31,16 +31,16 @@
 所谓分组密码是将明文分成一组一组，在密钥的控制下，经过加密变换生成一组一组的密文。
 ​       Step 1：将明文消息序列m1, m2, …, mi, …划分成等长的消息组（m1, …, mn），（mn+1, …, m2n），…
 ​       Step 2：在密钥k=k1, k2, …, kn的控制下按固定的加密算法一">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-2.jpg">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-3.jpg">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-4.png">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-5.png">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-6.png">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-7.png">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-8.jpg">
-<meta property="og:image" content="http://yoursite.com/images/mima/2-9.png">
-<meta property="og:updated_time" content="2019-01-26T08:35:45.541Z">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-4.png">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-5.png">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-6.png">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-7.png">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-8.jpg">
+<meta property="og:image" content="http://yoursite.com/images/mima2/2-9.png">
+<meta property="og:updated_time" content="2019-02-21T10:09:02.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学基础笔记(二)">
 <meta name="twitter:description" content="第三章 分组密码和数据加密标准（DES）流密码与分组密码
@@ -49,7 +49,7 @@
 所谓分组密码是将明文分成一组一组，在密钥的控制下，经过加密变换生成一组一组的密文。
 ​       Step 1：将明文消息序列m1, m2, …, mi, …划分成等长的消息组（m1, …, mn），（mn+1, …, m2n），…
 ​       Step 2：在密钥k=k1, k2, …, kn的控制下按固定的加密算法一">
-<meta name="twitter:image" content="http://yoursite.com/images/mima/2-1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/mima2/2-1.jpg">
 
   
 
@@ -100,7 +100,7 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
+    <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章-分组密码和数据加密标准（DES）"><span class="toc-text">第三章 分组密码和数据加密标准（DES）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流密码与分组密码"><span class="toc-text">流密码与分组密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Feistel密码"><span class="toc-text">Feistel密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据加密标准（DES）"><span class="toc-text">数据加密标准（DES）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四章-数学基础（略）"><span class="toc-text">第四章 数学基础（略）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五章-AES"><span class="toc-text">第五章 AES</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#总体结构："><span class="toc-text">总体结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#详细结构"><span class="toc-text">详细结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字节代替变换（ByteSub）"><span class="toc-text">字节代替变换（ByteSub）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行移位变换（ShiftRow）"><span class="toc-text">行移位变换（ShiftRow）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列混合变换（MixColumn）"><span class="toc-text">列混合变换（MixColumn）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮密钥加变换（AddRoundKey）"><span class="toc-text">轮密钥加变换（AddRoundKey）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AES的密钥扩展"><span class="toc-text">AES的密钥扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密钥扩展算法"><span class="toc-text">密钥扩展算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AES的解密过程"><span class="toc-text">AES的解密过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第6章-分组密码的工作模式"><span class="toc-text">第6章  分组密码的工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#电码本模式"><span class="toc-text">电码本模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密文分组链接模式"><span class="toc-text">密文分组链接模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密文反馈模式"><span class="toc-text">密文反馈模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出反馈模式"><span class="toc-text">输出反馈模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计数器模式"><span class="toc-text">计数器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章-伪随机数的产生和流密码"><span class="toc-text">第七章 伪随机数的产生和流密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随机数的使用"><span class="toc-text">随机数的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机数的使用-1"><span class="toc-text">随机数的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪随机数发生器"><span class="toc-text">伪随机数发生器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BBS发生器"><span class="toc-text">BBS发生器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流密码"><span class="toc-text">流密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RC4算法"><span class="toc-text">RC4算法</span></a></li></ol></li></ol>
   </div>
 
@@ -144,7 +144,7 @@
 
   <div class="article-content">
     
-      <h2 id="第三章-分组密码和数据加密标准（DES）"><a href="#第三章-分组密码和数据加密标准（DES）" class="headerlink" title="第三章 分组密码和数据加密标准（DES）"></a>第三章 分组密码和数据加密标准（DES）</h2><h3 id="流密码与分组密码"><a href="#流密码与分组密码" class="headerlink" title="流密码与分组密码"></a>流密码与分组密码</h3><p><img src="/images/mima/2-1.jpg" alt=""></p>
+      <h2 id="第三章-分组密码和数据加密标准（DES）"><a href="#第三章-分组密码和数据加密标准（DES）" class="headerlink" title="第三章 分组密码和数据加密标准（DES）"></a>第三章 分组密码和数据加密标准（DES）</h2><h3 id="流密码与分组密码"><a href="#流密码与分组密码" class="headerlink" title="流密码与分组密码"></a>流密码与分组密码</h3><p><img src="/images/mima2/2-1.jpg" alt=""></p>
 <p>分组密码：</p>
 <blockquote>
 <p>所谓分组密码是将明文分成一组一组，在密钥的控制下，经过加密变换生成一组一组的密文。</p>
@@ -190,7 +190,7 @@
 <li>密文分组长度为64bit。</li>
 <li>初始密钥长度为64bit。（其中，第8、16、24、32、40、48、56、64为奇偶校验位，因此，实际的密钥长为56bit。）</li>
 </ul>
-<p><img src="/images/mima/2-2.jpg" alt=""></p>
+<p><img src="/images/mima2/2-2.jpg" alt=""></p>
 <p>DES加密过程：</p>
 <ol>
 <li>初始置换IP：重排明文分组的64 bit数据。</li>
@@ -234,7 +234,7 @@
 <li>种子密钥也用一个以字节为元素的矩阵表示，该矩阵有4行，列数记为Nk，Nk等于分组长度除以32。</li>
 </ul>
 <p>迭代的轮数记为Nr，Nr与Nb和Nk有关，Nr与Nb和Nk的关系如下表：</p>
-<p><img src="/images/mima/2-3.jpg" alt=""></p>
+<p><img src="/images/mima2/2-3.jpg" alt=""></p>
 <h3 id="详细结构"><a href="#详细结构" class="headerlink" title="详细结构"></a>详细结构</h3><p>当Nk等于4时，整个算法由10轮组成。每轮由4个变换模块组成，分别是：</p>
 <ol>
 <li>字节代换（ByteSub）</li>
@@ -243,7 +243,7 @@
 <li>轮密钥加（AddRoundKey）</li>
 </ol>
 <p>最后一轮略有不同，没有列混合。</p>
-<p><img src="/images/mima/2-4.png" alt=""></p>
+<p><img src="/images/mima2/2-4.png" alt=""></p>
 <p>加密过程：</p>
 <ol>
 <li>初始轮密钥加</li>
@@ -255,7 +255,7 @@
 <li>首先，将字节看作GF(28)上的元素，映射到自己的乘法逆元，00映射到自己。</li>
 <li>其次，对字节做如下的（GF(2)上的，可逆的）仿射变换：</li>
 </ol>
-<p><img src="/images/mima/2-5.png" alt=""></p>
+<p><img src="/images/mima2/2-5.png" alt=""></p>
 <h3 id="行移位变换（ShiftRow）"><a href="#行移位变换（ShiftRow）" class="headerlink" title="行移位变换（ShiftRow）"></a>行移位变换（ShiftRow）</h3><p>状态矩阵State中的每一行将以字节为单位，循环左移不同的位移量。</p>
 <ul>
 <li>第一行：保持不变</li>
@@ -272,7 +272,7 @@
 <li>轮密钥从扩展密钥中取，其中第1轮轮密钥取扩展密钥的前Nb个字，第2轮轮密钥取接下来的Nb个字，如此下去（<strong>轮密钥选取</strong>）。</li>
 </ul>
 <h3 id="密钥扩展算法"><a href="#密钥扩展算法" class="headerlink" title="密钥扩展算法"></a>密钥扩展算法</h3><p>将种子密钥扩展为扩展密钥的计算过程如下：</p>
-<p><img src="/images/mima/2-6.png" alt=""></p>
+<p><img src="/images/mima2/2-6.png" alt=""></p>
 <p>当种子密钥长度为128bit时，Nk＝4：</p>
 <p><code>temp = SubByte(RotByte(W[i-1])) Å Rcon[i/Nk]</code> </p>
 <ul>
@@ -280,7 +280,7 @@
 <li>SubByte( )：S盒的字节代换。</li>
 <li>Rcon[i]：轮常数</li>
 </ul>
-<p><img src="/images/mima/2-7.png" alt=""></p>
+<p><img src="/images/mima2/2-7.png" alt=""></p>
 <h3 id="AES的解密过程"><a href="#AES的解密过程" class="headerlink" title="AES的解密过程"></a>AES的解密过程</h3><p><strong>AES加密算法的每一步都可逆！</strong></p>
 <h2 id="第6章-分组密码的工作模式"><a href="#第6章-分组密码的工作模式" class="headerlink" title="第6章  分组密码的工作模式"></a>第6章  分组密码的工作模式</h2><p>分组密码的工作模式：</p>
 <blockquote>
@@ -347,7 +347,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/mima/2-8.jpg" alt=""></p>
+<p><img src="/images/mima2/2-8.jpg" alt=""></p>
 <h2 id="第七章-伪随机数的产生和流密码"><a href="#第七章-伪随机数的产生和流密码" class="headerlink" title="第七章 伪随机数的产生和流密码"></a>第七章 伪随机数的产生和流密码</h2><h3 id="随机数的使用"><a href="#随机数的使用" class="headerlink" title="随机数的使用"></a>随机数的使用</h3><p>大量密码算法或网络安全协议都需要随机数，如：</p>
 <ul>
 <li>密钥分发和认证</li>
@@ -391,7 +391,7 @@
 <p><code>i</code></p>
 <p> <code>mod 2 }</code></p>
 <h3 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h3><p>流密码结构图：</p>
-<p><img src="/images/mima/2-9.png" alt=""></p>
+<p><img src="/images/mima2/2-9.png" alt=""></p>
 <h3 id="RC4算法"><a href="#RC4算法" class="headerlink" title="RC4算法"></a>RC4算法</h3><p>RC4是MIT的Rivest开发的，是使用最为广泛的流密码算法之一。</p>
 <ul>
 <li>RC4的大小由参数n确定。对于一个n位长的字（或0, 1 序列），有2n种不同的排列方式，对应2n个不同的元素（或状态），这些元素组成一个长为2n的数组S。</li>
@@ -484,7 +484,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
+      <span id="close" class="btn-close">关闭</span>
     </div>
     <hr>
     <div class="modal-body">
