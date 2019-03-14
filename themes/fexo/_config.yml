@@ -4,7 +4,7 @@ slogan: We are all in the gutter, but some of us are looking at the stars. 
 url: 
 
 # Set avatar (Absolute url and relative url)
-avatar: https://avatars0.githubusercontent.com/u/18361006?v=3&u=36007d3bb848c6d543dc5eadebc62fd1e14ce28b&s=400
+avatar: /images/head.jpg
 
 # Set favicon
 favicon: /images/favicon.ico
@@ -178,11 +178,11 @@ link:
   - name: Drops
     info: 好好学习,天天向上
     url: http://119.29.64.123/WooyunDrops
-    avatar: https://avatars0.githubusercontent.com/u/18361006?v=3&s=460
+    avatar: /images/head.jpg
   - name: 1000个PHP代码审计案例
     info: 什么都不会的时候，模仿是最快的学习方式
     url: http://119.29.64.123/1000php
-    avatar: https://avatars0.githubusercontent.com/u/18361006?v=3&s=460
+    avatar: /images/head.jpg
   - name: Sue
     info: 一个小菜鸡。。。
     url: https://suwenbo.me/
