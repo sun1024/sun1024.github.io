@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: sun1024
+title: b1ng0
 subtitle: 
 description: 
-author: sun1024
+author: b1ng0
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://b1ng0.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
