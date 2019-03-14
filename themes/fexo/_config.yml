@@ -1,5 +1,5 @@
 # Blog info
-blog_name: sun1024
+blog_name: b1ng0
 slogan: We are all in the gutter, but some of us are looking at the stars. 
 url: 
 
@@ -10,7 +10,7 @@ avatar: https://avatars0.githubusercontent.com/u/18361006?v=3&u=36007d3bb848c6d5
 favicon: /images/favicon.ico
 
 # For seo
-keywords: sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,渗透测试,代码审计,web安全,CTF,SRC
+keywords: b1ng0,sun1024,adminsun,python,php,Hexo主题,前端开发,nodejs,JavaScript,渗透测试,代码审计,web安全,CTF,SRC
 
 home_nav:
   - name: Blog
