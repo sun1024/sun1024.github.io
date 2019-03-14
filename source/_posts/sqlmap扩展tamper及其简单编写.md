@@ -1,5 +1,6 @@
 ---
 title: sqlmap扩展tamper及其简单编写
+date: 2017-3-22
 tags: web安全
 ---
 ## 常见tamper(搜集自网络)：

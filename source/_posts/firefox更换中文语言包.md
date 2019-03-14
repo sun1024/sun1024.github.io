@@ -1,5 +1,6 @@
 ---
 title: firefox更换中文语言包
+date: 2017-4-17
 tags: firefox
 ---
 记录一下，免得下次再去网上搜

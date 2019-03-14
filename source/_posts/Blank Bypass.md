@@ -1,5 +1,6 @@
 ---
 title: Blank Bypass
+date: 2018-11-15
 tags: linux
 ---
 1. cat<1.txt

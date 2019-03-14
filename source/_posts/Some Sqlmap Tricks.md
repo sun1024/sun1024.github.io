@@ -1,5 +1,6 @@
 ---
 title: Some Sqlmap Tricks
+date: 2017-9-15
 tags: Sqlmap
 ---
 ## 0x01 --prefix,--suffix

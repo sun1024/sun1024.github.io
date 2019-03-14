@@ -1,5 +1,6 @@
 ---
 title: openvpn实现用户名密码登陆
+date: 2019-2-24 22:10
 tags: linux
 ---
 ## openvpn实现用户名密码登陆

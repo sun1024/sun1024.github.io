@@ -1,5 +1,6 @@
 ---
 title: ubuntu16.04单网卡配置多ip
+date: 2019-2-24 22:09
 tags: linux
 ---
 ## ubuntu16.04单网卡配置多ip

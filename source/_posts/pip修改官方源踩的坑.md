@@ -1,5 +1,6 @@
 ---
 title: pip修改官方源踩的坑
+date: 2017-3-29
 tags: python
 ---
 ## linux篇：

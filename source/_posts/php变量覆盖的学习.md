@@ -1,5 +1,6 @@
 ---
 title: php变量覆盖的学习
+date: 2017-3-14
 tags: php
 ---
 # 关于php变量覆盖漏洞：
