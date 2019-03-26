@@ -74,9 +74,6 @@ theme: fexo
 #	  git: git@50.3.247.137:hexo.git,master
 #      coding: git@git.dev.tencent.com:b1ng0/b1ng0.git,master
 deploy: 
-- type: git 
-  repo: git@50.3.247.137:hexo.git  ## VPS部署的位置
-  branch: master
 - type: git
   repo: git@github.com:sun1024/sun1024.github.io.git
   branch: master
