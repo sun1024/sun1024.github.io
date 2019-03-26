@@ -77,5 +77,5 @@ deploy:
   repo: git@github.com:sun1024/sun1024.github.io.git
   branch: master
 - type: git
-  repo: git@50.3.247.137/hexo.git
+  repo: git@50.3.247.137:git/hexo.git
   branch: master
