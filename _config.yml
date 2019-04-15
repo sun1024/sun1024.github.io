@@ -67,12 +67,8 @@ theme: fexo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-#deploy:
-#  type: git
-#  repo:
-#      github: git@github.com:sun1024/sun1024.github.io.git,master
-#      coding: git@git.dev.tencent.com:b1ng0/b1ng0.git,master
-deploy: 
-- type: git
-  repo: git@github.com:sun1024/sun1024.github.io.git
-  branch: master
+deploy:
+  type: git
+  repo:
+      github: git@github.com:sun1024/sun1024.github.io.git,master
+      coding: git@git.dev.tencent.com:b1ng0/b1ng0.git,master
