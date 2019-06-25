@@ -14,7 +14,7 @@ tags: backend
 
 因为是使用SMTP服务发送电子邮件，所以首先要去qq邮箱设置页开启：
 
-![1561425672893](C:\Users\User\AppData\Roaming\Typora\typora-user-images\1561425672893.png)
+![1561425672893](/images/1561425672893.png)
 
 开启后会得到一个授权码作为邮箱密码使用
 
@@ -84,7 +84,7 @@ def send_email(to, subject, template, **kwargs):
 
 # 0x03 发送成功
 
-![1561426625808](C:\Users\User\AppData\Roaming\Typora\typora-user-images\1561426625808.png)
+![1561426625808](/images/1561426625808.png)
 
 
 
