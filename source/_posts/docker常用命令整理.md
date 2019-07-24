@@ -8,6 +8,32 @@ tags: docker
 
 
 
+## 安装
+
+```shell
+# 一键安装(linux)docker CE
+curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh --mirror Aliyun
+# 启动 Docker CE
+sudo systemctl enable docker
+sudo systemctl start docker
+# 建立 docker 用户组
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# 测试 Docker 是否安装正确
+docker run hello-world
+# 镜像加速 写入`/etc/docker/daemon.json`
+{
+	"registry-mirrors": 
+	[
+		"https://dockerhub.azk8s.cn",
+		"https://reg-mirror.qiniu.com"
+	]
+}
+```
+
+
+
 ## 镜像操作
 
 ```shell
@@ -30,6 +56,8 @@ docker image prune
 # 删除xxx镜像
 docker image rm ubuntu 			
 ```
+
+
 
 ## 容器操作
 
@@ -54,3 +82,6 @@ docker container prune
 
 
 
+## 参考
+
+[Docker — 从入门到实践]('https://github.com/yeasy/docker_practice')
