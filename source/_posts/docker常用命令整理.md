@@ -54,7 +54,25 @@ docker image ls -a
 # 删除虚悬镜像
 docker image prune
 # 删除xxx镜像
-docker image rm ubuntu 			
+docker image rm ubuntu 	
+
+# commit保存镜像
+# 运行nginx服务
+docker run --name webserver -d -p 80:80 nginx
+# 对nginx做出修改
+docker exec -it webserver bash
+root@3729b97e8226:/# echo '<h1>Hello, Docker!</h1>' > /usr/share
+/nginx/html/index.html
+root@3729b97e8226:/# exit
+docker diff webserver
+# 保存修改为新镜像
+docker commit \
+	--author "b1ng0" \
+	--message "修改了默认网页" \
+	webserver \
+	nginx:v2
+# 查看镜像历史
+docker history nginx:v2
 ```
 
 
