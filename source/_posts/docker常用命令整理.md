@@ -174,7 +174,7 @@ docker run -d -p 5000:5000 training/webapp python app.py
 docker port 433 5000 # 433 是container_id/container_name
 
 # 容器互联
-# 新建网络 (-d 指定网络类型 bridge/overlay)
+# 新建网络 (-d 指定网络类型 bridge/host/overlay/macvlan/none)
 docker network create -d bridge my-net
 # 连接容器
 docker run -it --rm --name busybox1 --network my-net busybox sh
@@ -182,7 +182,10 @@ docker run -it --rm --name busybox1 --network my-net busybox sh
 docker run -it --rm --name busybox2 --network my-net busybox sh
 # 在busybox2 容器中ping busybox1, 测试连通性
 ping busybox1
-
+# 将正在运行的容器连接到现有网桥
+docker network connect my-net my-nginx
+# 断开容器与网络的连接
+docker network disconnect my-net my-nginx
 # 配置DNS
 
 # 在容器中使用 mount 命令可以看到挂载信息
@@ -204,7 +207,44 @@ docker run -it --rm --dns=114.114.114.114 ubuntu:18.04
 
 
 
+## Dockerfile例子
+
+```bash
+# 以构建flask为例
+#在/etc/docker/deamon.json中写入dns
+{"dns": ["119.29.29.29"]}
+sudo systemctl daemon-reload
+
+# app.py内容
+# -*- coding:utf-8 -*-
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return '<h1>test</h1>'
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
+    
+# Dockerfile内容
+FROM python:2.7-alpine
+ADD . /code
+WORKDIR /code
+RUN pip install flask
+CMD ["python", "app.py"]
+
+# 在Dockerfile所在目录下build
+docker build -t flask_test:v1 .
+
+```
+
+
+
 ## 参考
+
+[Docker Documentation](https://docs.docker.com/)
 
 [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)
 
