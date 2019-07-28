@@ -232,7 +232,9 @@ if __name__ == "__main__":
 FROM python:2.7-alpine
 ADD . /code
 WORKDIR /code
-RUN pip install flask
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN apk update
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir flask
 CMD ["python", "app.py"]
 
 # 在Dockerfile所在目录下build
