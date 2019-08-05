@@ -1,6 +1,6 @@
 ---
 title: docker常用命令整理
-date: 2019-7-23
+date: 2019-7-25
 tags: docker
 ---
 
@@ -55,6 +55,12 @@ docker image ls -a
 docker image prune
 # 删除xxx镜像
 docker image rm ubuntu 	
+# 导出镜像并压缩
+docker save ubuntu > myubuntu.tar
+tar -zcvf myubuntu.tar.gz myubuntu.tar
+# 解压导入镜像
+tar -xzvf myap.tar.gz
+docker load < myap.tar
 
 # commit保存镜像
 # 运行nginx服务
