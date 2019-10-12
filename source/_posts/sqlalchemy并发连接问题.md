@@ -7,7 +7,7 @@ tags: python
 
 最近在写一个批量扫描工具，使用多线程爬取目标然后将数据存入数据库中，但是在使用sqlalchemy 引擎时线程数过多就会出现错误：“Too many connections”
 
-![1570865257995](C:\Users\User\AppData\Roaming\Typora\typora-user-images\1570865257995.png)
+![1570865257995](/images/1570865257995.png)
 
 
 
@@ -17,7 +17,7 @@ tags: python
 
   查了一下数据库最大连接数，当超过最大连接数数据库就会报出去错误，所以适当改大可以勉强解决问题。
 
-  ![1570865477424](C:\Users\User\AppData\Roaming\Typora\typora-user-images\1570865477424.png)
+  ![1570865477424](/images/1570865477424.png)
 
   
 
