@@ -10,7 +10,14 @@ Cdut & Cqupt, 1996, Summer.
 
 
 
-
 Hacktivity:
-[CVE-2018-10073] XSS in joyplus CMS
-[CNVD-2018-17471] SQLi in emlsoft CMS
+
+[CNVD-2020-00202](https://www.cnvd.org.cn/flaw/show/1857497)
+
+[CNVD-2019-47188](https://www.cnvd.org.cn/flaw/show/1868587)
+
+[CNVD-2019-44154](https://www.cnvd.org.cn/flaw/show/1837475)
+
+[CNVD-2018-17471](https://www.cnvd.org.cn/flaw/show/1380685)
+
+[CVE-2018-10073](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10073)
