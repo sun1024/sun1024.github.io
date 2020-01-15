@@ -1,5 +1,5 @@
 ---
-title: msf 初体验
+title: metasploit 初体验
 date: 2017-2-6 18:09
 tags: metasploit
 ---
