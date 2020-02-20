@@ -83,3 +83,42 @@ StringBuilder deleteCharAt(int index)
 int length()
 ```
 
+## Strings
+
+```java
+char charAt(int index)
+int indexOf(char ch)
+String concat(String s)
+String substring(int beginIndex)
+String substring(int beginIndex, int endIndex)
+String toLowerCase()
+String toUpperCase()
+boolean contains(CharSequence s)
+static String copyValueOf(char[] data)
+char[] toCharArray()
+int length()
+boolean contenEquals(StringBuffer sb)
+boolean startsWith(String prefix)
+boolean endsWith(String suffix)
+boolean matches(String regex)
+String intern()
+String trim()
+```
+
+## Math
+
+```java
+xxx abs(xxx x)
+double ceil(double d) 
+double ceil(float f)
+double floor(double d)
+double floor(float f)
+double int(double d)
+long round(double d)
+int round(float f)
+double exp(double d)
+double log(double d)
+double pow(double base, double exponent)
+Double E, PI
+```
+
