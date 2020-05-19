@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>flask使用webSocket协议 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x01 前言最近项目上需要实现后端的实时推送，而http作为一个单向的通信协议，必须一个request，一个response的进行，于是想到了webSocket ，webSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议，可以很容易的实现Web的实时通信. 在这里谈一下自己在flask框架下使用webSocket的粗略实践. 0x02 flask-socket">
+<meta name="keywords" content="backend">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask使用webSocket协议">
+<meta property="og:url" content="http://b1ng0.top/2019/07/12/flask使用websocket协议/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="0x01 前言最近项目上需要实现后端的实时推送，而http作为一个单向的通信协议，必须一个request，一个response的进行，于是想到了webSocket ，webSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议，可以很容易的实现Web的实时通信. 在这里谈一下自己在flask框架下使用webSocket的粗略实践. 0x02 flask-socket">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/1562856278162.png">
+<meta property="og:image" content="http://b1ng0.top/images/1562856476624.png">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask使用webSocket协议">
+<meta name="twitter:description" content="0x01 前言最近项目上需要实现后端的实时推送，而http作为一个单向的通信协议，必须一个request，一个response的进行，于是想到了webSocket ，webSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议，可以很容易的实现Web的实时通信. 在这里谈一下自己在flask框架下使用webSocket的粗略实践. 0x02 flask-socket">
+<meta name="twitter:image" content="http://b1ng0.top/images/1562856278162.png">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-flask使用websocket协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      flask使用webSocket协议
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>最近项目上需要实现后端的实时推送，而http作为一个单向的通信协议，必须一个request，一个response的进行，于是想到了webSocket ，webSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议，可以很容易的实现Web的实时通信. 在这里谈一下自己在flask框架下使用webSocket的粗略实践.</p>
+<h1 id="0x02-flask-socketio简单使用"><a href="#0x02-flask-socketio简单使用" class="headerlink" title="0x02 flask-socketio简单使用"></a>0x02 flask-socketio简单使用</h1><p>flask使用flask-socketio的扩展来实现webSocket.</p>
+<p>安装方法:</p>
+<blockquote>
+<p>pip install flask-socketio</p>
+</blockquote>
+<p>参考<a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="noopener">官网</a>写了一个后端推送的简单栗子：</p>
+<p>服务器(app.py)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding : utf-8 -*-</span></span><br><span class="line"><span class="comment"># author : b1ng0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, session, request</span><br><span class="line"><span class="keyword">from</span> flask_socketio <span class="keyword">import</span> SocketIO, emit</span><br><span class="line"><span class="keyword">import</span> time, json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = <span class="string">'secret!'</span></span><br><span class="line"></span><br><span class="line">socketio = SocketIO(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@socketio.on('client_event')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_msg</span><span class="params">(msg)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        emit(<span class="string">'server_response'</span>, &#123;<span class="string">'data'</span>: msg[<span class="string">'data'</span>]&#125;)</span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="meta">@socketio.on('connect_event')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connected_msg</span><span class="params">(msg)</span>:</span></span><br><span class="line">    emit(<span class="string">'server_response'</span>, &#123;<span class="string">'data'</span>: msg[<span class="string">'data'</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    socketio.run(</span><br><span class="line">        app,</span><br><span class="line">        debug=<span class="literal">True</span>,</span><br><span class="line">        host=<span class="string">'0.0.0.0'</span>,</span><br><span class="line">        port=<span class="number">5000</span></span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+<p>客户端(templates/index.html)：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Flask-SocketIO Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    $(document).ready(function() &#123;</span><br><span class="line">        var socket = io.connect();</span><br><span class="line"></span><br><span class="line">        socket.on('connect', function() &#123;</span><br><span class="line">            socket.emit('connect_event', &#123;data: 'connected!'&#125;);</span><br><span class="line">            socket.emit('client_event', &#123;data: 'test'&#125;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        socket.on('server_response', function(msg) &#123;</span><br><span class="line"><span class="xml">            $('#log').append('<span class="tag">&lt;<span class="name">br</span>&gt;</span>' + $('<span class="tag">&lt;<span class="name">div</span>/&gt;</span>').text('Received #' + ': ' + msg.data).html());</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        $('form#emit').submit(function(event) &#123;</span><br><span class="line">                socket.emit('client_event', &#123;data: $('#emit_data').val()&#125;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>WebSokect<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'log'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行效果：(每隔2秒推送一次)</p>
+<p><img src="/images/1562856278162.png" alt></p>
+<h1 id="0x03-一些坑点"><a href="#0x03-一些坑点" class="headerlink" title="0x03 一些坑点"></a>0x03 一些坑点</h1><p>貌似实现了效果，但是在运行的时候，才发现原来使用的是”假的”webSocket:</p>
+<p><img src="/images/1562856476624.png" alt></p>
+<p>提示信息如下：</p>
+<blockquote>
+<p>WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.</p>
+</blockquote>
+<p>查阅了一些资料，发现其实使用的是长轮询（polling) 的方式在运行，要使用真正的“ws://”还得安装一些异步服务，比如：eventlet/gevent/gevent-websocket，这里安装了eventlet：</p>
+<blockquote>
+<p>pip install eventlet</p>
+</blockquote>
+<p>然而安装之后，客户端根本接收不到，连socketio.on函数都没有触发运行。再次一顿乱搜，发现都是前人踩过的坑了，原来是服务端陷入死循环，会影响与客户端之间的websocket连接。参考flask_socketio的示例程序，使用后台线程进行while循环解决了这个问题。</p>
+<p>改进后的服务端：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding : utf-8 -*-</span></span><br><span class="line"><span class="comment"># author : b1ng0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, session, request</span><br><span class="line"><span class="keyword">from</span> flask_socketio <span class="keyword">import</span> SocketIO, emit</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Lock</span><br><span class="line"><span class="keyword">import</span> time, json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = <span class="string">'secret!'</span></span><br><span class="line"></span><br><span class="line">socketio = SocketIO(app)</span><br><span class="line">thread = <span class="literal">None</span></span><br><span class="line">thread_lock = Lock()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@socketio.on('client_event', namespace='/test_conn')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_msg</span><span class="params">(msg)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> thread</span><br><span class="line">    <span class="keyword">with</span> thread_lock:</span><br><span class="line">        <span class="keyword">if</span> thread <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            thread = socketio.start_background_task(target=background_thread)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">background_thread</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        socketio.sleep(<span class="number">2</span>)</span><br><span class="line">        socketio.emit(<span class="string">'server_response'</span>, &#123;<span class="string">'data'</span>: <span class="string">'test'</span>&#125;, namespace=<span class="string">'/test_conn'</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="meta">@socketio.on('connect_event', namespace='/test_conn')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connected_msg</span><span class="params">(msg)</span>:</span></span><br><span class="line">    emit(<span class="string">'server_response'</span>, &#123;<span class="string">'data'</span>: msg[<span class="string">'data'</span>]&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    socketio.run(</span><br><span class="line">        app,</span><br><span class="line">        debug=<span class="literal">True</span>,</span><br><span class="line">        host=<span class="string">'0.0.0.0'</span>,</span><br><span class="line">        port=<span class="number">5000</span></span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+<p>改进后的客户端：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Flask-SocketIO Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    $(document).ready(function() &#123;</span><br><span class="line">        // var socket = io.connect();</span><br><span class="line">        namespace = '/test_conn';</span><br><span class="line">        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);</span><br><span class="line"></span><br><span class="line">        socket.on('connect', function() &#123;</span><br><span class="line">            socket.emit('connect_event', &#123;data: 'connected!'&#125;);</span><br><span class="line">            socket.emit('client_event', &#123;data: 'test'&#125;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        socket.on('server_response', function(msg) &#123;</span><br><span class="line"><span class="xml">            $('#log').append('<span class="tag">&lt;<span class="name">br</span>&gt;</span>' + $('<span class="tag">&lt;<span class="name">div</span>/&gt;</span>').text('Received #' + ': ' + msg.data).html());</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        $('form#emit').submit(function(event) &#123;</span><br><span class="line">                socket.emit('client_event', &#123;data: $('#emit_data').val()&#125;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>WebSokect<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'log'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="0x04-参考链接"><a href="#0x04-参考链接" class="headerlink" title="0x04 参考链接"></a>0x04 参考链接</h1><p><a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://flask-socketio.readthedocs.io/en/latest/</a></p>
+<p><a href="https://github.com/miguelgrinberg/Flask-SocketIO" target="_blank" rel="noopener">https://github.com/miguelgrinberg/Flask-SocketIO</a></p>
+<p><a href="https://www.cnblogs.com/luozx207/p/9714487.html" target="_blank" rel="noopener">https://www.cnblogs.com/luozx207/p/9714487.html</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/07/12/flask使用websocket协议/" class="article-date">
+  <time class="dt-published" datetime="2019-07-11T16:00:00.000Z" itemprop="datePublished">2019-07-12</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backend/">backend</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/07/25/docker常用命令整理/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          docker常用命令整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/25/flask-mail使用qq邮箱/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flask-mail使用qq邮箱</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

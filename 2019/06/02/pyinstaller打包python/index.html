@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>pyinstaller打包python | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 前言迫于某”科研项目”的奇葩要求，需要将python代码打包为exe，网上找了有不少解决方案（py2exe、PyInstaller、cx_Freeze，etc.），这里尝试了下pyinstaller，用着还算顺手。 0x01 安装：  pip install pyinstaller  0x02 打包命令： pyinstaller app.py -F -i app.ico -p C:/py">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyinstaller打包python">
+<meta property="og:url" content="http://b1ng0.top/2019/06/02/pyinstaller打包python/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="0x00 前言迫于某”科研项目”的奇葩要求，需要将python代码打包为exe，网上找了有不少解决方案（py2exe、PyInstaller、cx_Freeze，etc.），这里尝试了下pyinstaller，用着还算顺手。 0x01 安装：  pip install pyinstaller  0x02 打包命令： pyinstaller app.py -F -i app.ico -p C:/py">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pyinstaller打包python">
+<meta name="twitter:description" content="0x00 前言迫于某”科研项目”的奇葩要求，需要将python代码打包为exe，网上找了有不少解决方案（py2exe、PyInstaller、cx_Freeze，etc.），这里尝试了下pyinstaller，用着还算顺手。 0x01 安装：  pip install pyinstaller  0x02 打包命令： pyinstaller app.py -F -i app.ico -p C:/py">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-pyinstaller打包python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      pyinstaller打包python
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>迫于某”科研项目”的奇葩要求，需要将python代码打包为exe，网上找了有不少解决方案（py2exe、PyInstaller、cx_Freeze，etc.），这里尝试了下pyinstaller，用着还算顺手。</p>
+<h1 id="0x01-安装："><a href="#0x01-安装：" class="headerlink" title="0x01 安装："></a>0x01 安装：</h1><blockquote>
+<p> pip install pyinstaller</p>
+</blockquote>
+<h1 id="0x02-打包命令："><a href="#0x02-打包命令：" class="headerlink" title="0x02 打包命令："></a>0x02 打包命令：</h1><blockquote>
+<p>pyinstaller app.py -F -i app.ico -p C:/python/Lib/site-packages</p>
+</blockquote>
+<h1 id="0x03-常用参数："><a href="#0x03-常用参数：" class="headerlink" title="0x03 常用参数："></a>0x03 常用参数：</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-F, –onefile</td>
+<td>打包一个单个文件，如果你的代码都写在一个.py文件的话，可以用这个，如果是多个.py文件就别用</td>
+</tr>
+<tr>
+<td>-D, –onedir</td>
+<td>打包多个文件，在dist中生成很多依赖文件，适合以框架形式编写工具代码，我个人比较推荐这样，代码易于维护</td>
+</tr>
+<tr>
+<td>-K, –tk</td>
+<td>在部署时包含 TCL/TK</td>
+</tr>
+<tr>
+<td>-a, –ascii</td>
+<td>不包含编码.在支持Unicode的python版本上默认包含所有的编码.</td>
+</tr>
+<tr>
+<td>-d, –debug</td>
+<td>产生debug版本的可执行文件</td>
+</tr>
+<tr>
+<td>-w,–windowed,–noconsole</td>
+<td>使用Windows子系统执行.当程序启动的时候不会打开命令行(只对Windows有效)</td>
+</tr>
+<tr>
+<td>-c,–nowindowed,–console</td>
+<td>使用控制台子系统执行(默认)(只对Windows有效)</td>
+</tr>
+<tr>
+<td>-s,–strip</td>
+<td>可执行文件和共享库将run through strip.注意Cygwin的strip往往使普通的win32 Dll无法使用.</td>
+</tr>
+<tr>
+<td>-X, –upx</td>
+<td>如果有UPX安装(执行Configure.py时检测),会压缩执行文件(Windows系统中的DLL也会)</td>
+</tr>
+<tr>
+<td>-o DIR, –out=DIR</td>
+<td>指定spec文件的生成目录,如果没有指定,而且当前目录是PyInstaller的根目录,会自动创建一个用于输出(spec和生成的可执行文件)的目录.如果没有指定,而当前目录不是PyInstaller的根目录,则会输出到当前的目录下.</td>
+</tr>
+<tr>
+<td>-p DIR, –path=DIR</td>
+<td>设置导入路径(和使用PYTHONPATH效果相似).可以用路径分割符(Windows使用分号,Linux使用冒号)分割,指定多个目录.也可以使用多个-p参数来设置多个导入路径，让pyinstaller自己去找程序需要的资源.</td>
+</tr>
+<tr>
+<td>–icon=&lt;FILE.ICO&gt;</td>
+<td>将file.ico添加为可执行文件的资源(只对Windows系统有效)，改变程序的图标  pyinstaller -i  ico路径 xxxxx.py</td>
+</tr>
+<tr>
+<td>–icon=&lt;FILE.EXE,N&gt;</td>
+<td>将file.exe的第n个图标添加为可执行文件的资源(只对Windows系统有效)</td>
+</tr>
+<tr>
+<td>-v FILE, –version=FILE</td>
+<td>将verfile作为可执行文件的版本资源(只对Windows系统有效)</td>
+</tr>
+<tr>
+<td>-n NAME, –name=NAME</td>
+<td>可选的项目(产生的spec的)名字.如果省略,第一个脚本的主文件名将作为spec的名字</td>
+</tr>
+</tbody>
+</table>
+<h1 id="0x04-参考"><a href="#0x04-参考" class="headerlink" title="0x04 参考"></a>0x04 参考</h1><p><a href="https://pyinstaller.readthedocs.io/en/v3.3.1/usage.html" target="_blank" rel="noopener">https://pyinstaller.readthedocs.io/en/v3.3.1/usage.html</a></p>
+<p><a href="https://blog.csdn.net/BearStarX/article/details/81054134" target="_blank" rel="noopener">https://blog.csdn.net/BearStarX/article/details/81054134</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/06/02/pyinstaller打包python/" class="article-date">
+  <time class="dt-published" datetime="2019-06-01T16:00:00.000Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/06/25/flask-mail使用qq邮箱/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          flask-mail使用qq邮箱
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/19/RESTful API/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RESTful API</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

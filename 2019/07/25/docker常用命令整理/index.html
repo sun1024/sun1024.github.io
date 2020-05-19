@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>docker常用命令整理 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记录一下docker常用的命令，待续…  安装12345678910111213141516171819# 一键安装(linux)docker CEcurl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh --mirror Aliyun# 启动 Docker CEsudo systemctl enable dockersudo">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker常用命令整理">
+<meta property="og:url" content="http://b1ng0.top/2019/07/25/docker常用命令整理/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="记录一下docker常用的命令，待续…  安装12345678910111213141516171819# 一键安装(linux)docker CEcurl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh --mirror Aliyun# 启动 Docker CEsudo systemctl enable dockersudo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.543Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker常用命令整理">
+<meta name="twitter:description" content="记录一下docker常用的命令，待续…  安装12345678910111213141516171819# 一键安装(linux)docker CEcurl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh --mirror Aliyun# 启动 Docker CEsudo systemctl enable dockersudo">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-docker常用命令整理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      docker常用命令整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录一下docker常用的命令，待续…</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一键安装(linux)docker CE</span></span><br><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br><span class="line"><span class="comment"># 启动 Docker CE</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">sudo systemctl start docker</span><br><span class="line"><span class="comment"># 建立 docker 用户组</span></span><br><span class="line">sudo groupadd docker</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 测试 Docker 是否安装正确</span></span><br><span class="line">docker run hello-world</span><br><span class="line"><span class="comment"># 镜像加速 写入`/etc/docker/daemon.json`</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"registry-mirrors"</span>: </span><br><span class="line">	[</span><br><span class="line">		<span class="string">"https://dockerhub.azk8s.cn"</span>,</span><br><span class="line">		<span class="string">"https://reg-mirror.qiniu.com"</span></span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 版本等信息</span></span><br><span class="line">docker version</span><br><span class="line"><span class="comment"># 更多的信息</span></span><br><span class="line">docker info</span><br><span class="line"><span class="comment"># 查看后台运行的容器</span></span><br><span class="line">docker ps        </span><br><span class="line"><span class="comment"># 搜索镜像</span></span><br><span class="line">docker search ubuntu:18.04</span><br><span class="line"><span class="comment"># 下载xxx镜像</span></span><br><span class="line">docker pull ubuntu:18.04</span><br><span class="line"><span class="comment"># 列出镜像</span></span><br><span class="line">docker image ls</span><br><span class="line"><span class="comment"># 中间层镜像</span></span><br><span class="line">docker image ls -a</span><br><span class="line"><span class="comment"># 删除虚悬镜像</span></span><br><span class="line">docker image prune</span><br><span class="line"><span class="comment"># 删除xxx镜像</span></span><br><span class="line">docker image rm ubuntu 	</span><br><span class="line"><span class="comment"># 导出镜像并压缩</span></span><br><span class="line">docker save ubuntu &gt; myubuntu.tar</span><br><span class="line">tar -zcvf myubuntu.tar.gz myubuntu.tar</span><br><span class="line"><span class="comment"># 解压导入镜像</span></span><br><span class="line">tar -xzvf myap.tar.gz</span><br><span class="line">docker load &lt; myap.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit保存镜像</span></span><br><span class="line"><span class="comment"># 运行nginx服务</span></span><br><span class="line">docker run --name webserver -d -p 80:80 nginx</span><br><span class="line"><span class="comment"># 对nginx做出修改</span></span><br><span class="line">docker <span class="built_in">exec</span> -it webserver bash</span><br><span class="line">root@3729b97e8226:/<span class="comment"># echo '&lt;h1&gt;Hello, Docker!&lt;/h1&gt;' &gt; /usr/share</span></span><br><span class="line">/nginx/html/index.html</span><br><span class="line">root@3729b97e8226:/<span class="comment"># exit</span></span><br><span class="line">docker diff webserver</span><br><span class="line"><span class="comment"># 保存修改为新镜像</span></span><br><span class="line">docker commit \</span><br><span class="line">	--author <span class="string">"b1ng0"</span> \</span><br><span class="line">	--message <span class="string">"修改了默认网页"</span> \</span><br><span class="line">	webserver \</span><br><span class="line">	nginx:v2</span><br><span class="line"><span class="comment"># 查看镜像历史</span></span><br><span class="line">docker <span class="built_in">history</span> nginx:v2</span><br></pre></td></tr></table></figure>
+<h2 id="操作容器"><a href="#操作容器" class="headerlink" title="操作容器"></a>操作容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建并启动容器</span></span><br><span class="line">docker run -it ubuntu:18.04 /bin/bash</span><br><span class="line"><span class="comment"># 启动/重启/停止xxxx容器</span></span><br><span class="line">docker container start/restart/stop xxx</span><br><span class="line"><span class="comment"># 删除xxx容器</span></span><br><span class="line">docker container rm xxx</span><br><span class="line"><span class="comment"># 后台运行</span></span><br><span class="line">docker run -d ubuntu</span><br><span class="line"><span class="comment"># 进入后台运行的容器</span></span><br><span class="line">docker <span class="built_in">exec</span> xxx</span><br><span class="line"><span class="comment"># 导出容器</span></span><br><span class="line">docker <span class="built_in">export</span> xxx &gt; ubuntu.tar</span><br><span class="line"><span class="comment"># 导入容器</span></span><br><span class="line">docker import ubuntu.tar <span class="built_in">test</span>/ubuntu:v1.0</span><br><span class="line"><span class="comment"># 清理所有处于终止状态的容器</span></span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
+<h2 id="访问仓库"><a href="#访问仓库" class="headerlink" title="访问仓库"></a>访问仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注册 https://hub.docker.com</span></span><br><span class="line"><span class="comment"># 登录</span></span><br><span class="line">docker login <span class="comment"># 输入用户名密码</span></span><br><span class="line"><span class="comment"># 退出登录</span></span><br><span class="line">docker <span class="built_in">logout</span> </span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker search centos</span><br><span class="line">docker pull centos</span><br><span class="line"><span class="comment"># 推送镜像(登陆状态)</span></span><br><span class="line">docker tag ubuntu:18.04 b1ng0/ubuntu:18.04</span><br><span class="line">docker push b1ng0/ubuntu:18.04</span><br><span class="line">docker search b1ng0</span><br></pre></td></tr></table></figure>
+<h2 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create my-vol</span><br><span class="line"><span class="comment"># 查看所有数据卷</span></span><br><span class="line">docker volume ls</span><br><span class="line"><span class="comment"># 查看指定数据卷信息</span></span><br><span class="line">docker volume inspect my-vol</span><br><span class="line"><span class="comment"># 启动一个挂载数据卷的容器 (--mount参数后面不要有空格)</span></span><br><span class="line">docker run -d -P \</span><br><span class="line">	--name web \</span><br><span class="line">	<span class="comment"># -v my-vol:/webapp \ </span></span><br><span class="line">	--mount <span class="built_in">source</span>=my-vol,target=/webapp \</span><br><span class="line">	training/webapp \ </span><br><span class="line">	python app.py</span><br><span class="line"><span class="comment"># 查看数据卷(在容器中)的具体信息</span></span><br><span class="line">docker inspect web</span><br><span class="line"><span class="comment"># 删除数据卷</span></span><br><span class="line">docker volume rm my-vol</span><br><span class="line"><span class="comment"># 清理无主数据卷</span></span><br><span class="line">docker volume prune</span><br><span class="line"><span class="comment"># 挂载主机目录作为数据卷</span></span><br><span class="line">docker run -d -P \</span><br><span class="line">	--name web \</span><br><span class="line">	<span class="comment"># -v /src/webapp:/opt/webapp \</span></span><br><span class="line">	--mount <span class="built_in">type</span>=<span class="built_in">bind</span>,<span class="built_in">source</span>=/src/webapp,target=/opt/webapp \</span><br><span class="line">	training/webapp \</span><br><span class="line">	python app.py</span><br><span class="line"><span class="comment"># 挂载单个文件作为数据卷</span></span><br><span class="line">docker run --rm -it \</span><br><span class="line">	<span class="comment"># -v $HOME/.bash_history:/root/.bash_history \</span></span><br><span class="line">	--mount <span class="built_in">type</span>=<span class="built_in">bind</span>,<span class="built_in">source</span>=<span class="variable">$HOME</span>/.bash_history,target=/root/.ba</span><br><span class="line">	sh_history \</span><br><span class="line">	ubuntu:18.04 \</span><br><span class="line">	bash</span><br></pre></td></tr></table></figure>
+<h2 id="使用网络"><a href="#使用网络" class="headerlink" title="使用网络"></a>使用网络</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 外部访问容器</span></span><br><span class="line"><span class="comment"># -P 随机映射端口</span></span><br><span class="line">docker run -d -P training/webapp python app.py  </span><br><span class="line"><span class="comment"># 查看应用信息</span></span><br><span class="line">docker logs container_id</span><br><span class="line"><span class="comment"># -p 指定端口映射</span></span><br><span class="line"><span class="comment"># 格式：ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort</span></span><br><span class="line">docker run -d -p 5000:5000 training/webapp python app.py</span><br><span class="line"><span class="comment"># 查看映射端口配置</span></span><br><span class="line">docker port 433 5000 <span class="comment"># 433 是container_id/container_name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 容器互联</span></span><br><span class="line"><span class="comment"># 新建网络 (-d 指定网络类型 bridge/host/overlay/macvlan/none)</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"><span class="comment"># 连接容器</span></span><br><span class="line">docker run -it --rm --name busybox1 --network my-net busybox sh</span><br><span class="line"><span class="comment"># 新开终端，连接第二个容器</span></span><br><span class="line">docker run -it --rm --name busybox2 --network my-net busybox sh</span><br><span class="line"><span class="comment"># 在busybox2 容器中ping busybox1, 测试连通性</span></span><br><span class="line">ping busybox1</span><br><span class="line"><span class="comment"># 将正在运行的容器连接到现有网桥</span></span><br><span class="line">docker network connect my-net my-nginx</span><br><span class="line"><span class="comment"># 断开容器与网络的连接</span></span><br><span class="line">docker network disconnect my-net my-nginx</span><br><span class="line"><span class="comment"># 配置DNS</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器中使用 mount 命令可以看到挂载信息</span></span><br><span class="line">mount</span><br><span class="line"><span class="comment"># 配置全部容器的DNS 写入`/etc/docker/daemon.json`：</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"dns"</span> : </span><br><span class="line">	[</span><br><span class="line">		<span class="string">"114.114.114.114"</span>,</span><br><span class="line">		<span class="string">"8.8.8.8"</span></span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 检查配置</span></span><br><span class="line">docker run -it --rm ubuntu:18.04 cat etc/resolv.conf</span><br><span class="line"><span class="comment"># 指定容器的配置</span></span><br><span class="line">docker run -it --rm --dns=114.114.114.114 ubuntu:18.04</span><br></pre></td></tr></table></figure>
+<h2 id="Dockerfile例子"><a href="#Dockerfile例子" class="headerlink" title="Dockerfile例子"></a>Dockerfile例子</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以构建flask为例</span></span><br><span class="line"><span class="comment">#在/etc/docker/deamon.json中写入dns</span></span><br><span class="line">&#123;<span class="string">"dns"</span>: [<span class="string">"119.29.29.29"</span>]&#125;</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># app.py内容</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/'</span>)</span><br><span class="line">def hello():</span><br><span class="line">    <span class="built_in">return</span> <span class="string">'&lt;h1&gt;test&lt;/h1&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">"0.0.0.0"</span>, debug=True)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># Dockerfile内容</span></span><br><span class="line">FROM python:2.7-alpine</span><br><span class="line">ADD . /code</span><br><span class="line">WORKDIR /code</span><br><span class="line">RUN sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g'</span> /etc/apk/repositories</span><br><span class="line">RUN apk update</span><br><span class="line">RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir flask</span><br><span class="line">CMD [<span class="string">"python"</span>, <span class="string">"app.py"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在Dockerfile所在目录下build</span></span><br><span class="line">docker build -t flask_test:v1 .</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Documentation</a></p>
+<p><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">Docker — 从入门到实践</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/07/25/docker常用命令整理/" class="article-date">
+  <time class="dt-published" datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished">2019-07-25</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/08/05/scrapy的一些坑/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          scrapy的一些坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/12/flask使用websocket协议/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flask使用webSocket协议</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

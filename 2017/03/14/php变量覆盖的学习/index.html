@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>php变量覆盖的学习 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于php变量覆盖漏洞：关注函数：extract(),parse_str(),$$,import_request_varables(),etc. extract():栗子:12345&amp;lt;?php $a = 2333;@extract($_GET);print_r($a);?&amp;gt; payload:?a=1//即可覆盖$a parse_str():栗子:12345&amp;lt;?php$a=2333">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php变量覆盖的学习">
+<meta property="og:url" content="http://b1ng0.top/2017/03/14/php变量覆盖的学习/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="关于php变量覆盖漏洞：关注函数：extract(),parse_str(),$$,import_request_varables(),etc. extract():栗子:12345&amp;lt;?php $a = 2333;@extract($_GET);print_r($a);?&amp;gt; payload:?a=1//即可覆盖$a parse_str():栗子:12345&amp;lt;?php$a=2333">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php变量覆盖的学习">
+<meta name="twitter:description" content="关于php变量覆盖漏洞：关注函数：extract(),parse_str(),$$,import_request_varables(),etc. extract():栗子:12345&amp;lt;?php $a = 2333;@extract($_GET);print_r($a);?&amp;gt; payload:?a=1//即可覆盖$a parse_str():栗子:12345&amp;lt;?php$a=2333">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-php变量覆盖的学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      php变量覆盖的学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="关于php变量覆盖漏洞："><a href="#关于php变量覆盖漏洞：" class="headerlink" title="关于php变量覆盖漏洞："></a>关于php变量覆盖漏洞：</h1><p>关注函数：extract(),parse_str(),$$,import_request_varables(),etc.</p>
+<h2 id="extract"><a href="#extract" class="headerlink" title="extract():"></a>extract():</h2><p>栗子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$a = <span class="number">2333</span>;</span><br><span class="line">@extract($_GET);</span><br><span class="line">print_r($a);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?a=1//即可覆盖$a</code></p>
+<h2 id="parse-str"><a href="#parse-str" class="headerlink" title="parse_str():"></a>parse_str():</h2><p>栗子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a=<span class="number">2333</span>;</span><br><span class="line">parse_str($_SERVER[<span class="string">'QUERY_STRING'</span>]);</span><br><span class="line"><span class="keyword">print</span> $a;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?a=1//即可覆盖$a</code></p>
+<h2 id><a href="#" class="headerlink" title="$$:"></a>$$:</h2><p>栗子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$a = <span class="number">2333</span>;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">array</span>(<span class="string">'_COOKIE'</span>,<span class="string">'_POST'</span>,<span class="string">'_GET'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">	<span class="keyword">foreach</span>($$_request <span class="keyword">as</span> $_key=&gt;$_value)&#123;</span><br><span class="line">		$$_key = addslashes($_value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">print_r($a)</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?a=1//即可覆盖$a</code></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2017/03/14/php变量覆盖的学习/" class="article-date">
+  <time class="dt-published" datetime="2017-03-13T16:00:00.000Z" itemprop="datePublished">2017-03-14</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2017/03/22/sqlmap扩展tamper及其简单编写/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          sqlmap扩展tamper及其简单编写
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/28/关于php比较运算符/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于php比较运算符</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

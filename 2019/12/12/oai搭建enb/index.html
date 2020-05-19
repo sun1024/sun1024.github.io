@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>OAI搭建eNB | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 前言难以置信，又开始搞5g了。。。 0x01 准备参考链接： https://blog.csdn.net/qq_42030961/article/details/82740296  安装环境：  Ubuntu 14.04.3   USRP B210  0x02 安装步骤更换内核执行如下两条，更换3.19.0-61低延迟内核  sudo apt-get updatesudo apt-get">
+<meta name="keywords" content="5g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OAI搭建eNB">
+<meta property="og:url" content="http://b1ng0.top/2019/12/12/oai搭建enb/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="0x00 前言难以置信，又开始搞5g了。。。 0x01 准备参考链接： https://blog.csdn.net/qq_42030961/article/details/82740296  安装环境：  Ubuntu 14.04.3   USRP B210  0x02 安装步骤更换内核执行如下两条，更换3.19.0-61低延迟内核  sudo apt-get updatesudo apt-get">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OAI搭建eNB">
+<meta name="twitter:description" content="0x00 前言难以置信，又开始搞5g了。。。 0x01 准备参考链接： https://blog.csdn.net/qq_42030961/article/details/82740296  安装环境：  Ubuntu 14.04.3   USRP B210  0x02 安装步骤更换内核执行如下两条，更换3.19.0-61低延迟内核  sudo apt-get updatesudo apt-get">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-oai搭建enb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      OAI搭建eNB
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>难以置信，又开始搞5g了。。。</p>
+<h2 id="0x01-准备"><a href="#0x01-准备" class="headerlink" title="0x01 准备"></a>0x01 准备</h2><p>参考链接： <a href="https://blog.csdn.net/qq_42030961/article/details/82740296" target="_blank" rel="noopener">https://blog.csdn.net/qq_42030961/article/details/82740296</a> </p>
+<p>安装环境：</p>
+<p> Ubuntu 14.04.3 </p>
+<p> USRP B210 </p>
+<h2 id="0x02-安装步骤"><a href="#0x02-安装步骤" class="headerlink" title="0x02 安装步骤"></a>0x02 安装步骤</h2><h3 id="更换内核"><a href="#更换内核" class="headerlink" title="更换内核"></a>更换内核</h3><p>执行如下两条，更换3.19.0-61低延迟内核</p>
+<blockquote>
+<p>sudo apt-get update<br>sudo apt-get install linux-image-3.19.0-61-lowlatency linux-headers-3.19.0-61-lowlatency</p>
+</blockquote>
+<p>更换完成后输入</p>
+<blockquote>
+<p>sudo reboot</p>
+</blockquote>
+<p>电脑就会立刻重启了。重启后输入 uname -a可以查看内核信息。如下</p>
+<blockquote>
+<p>Linux hostname 3.19.0-61-lowlatency #69~14.04.1-Ubuntu SMP PREEMPT Thu Jun 9 10:15:00 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+</blockquote>
+<h3 id="电源管理"><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h3><blockquote>
+<p>sudo gedit /etc/default/grub</p>
+</blockquote>
+<p>在GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash”这行的下面添加两行：</p>
+<blockquote>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=”quiet intel_pstate=disable”<br>GRUB_CMDLINE_LINUX_DEFAULT=”processor.max_cstate=1 intel_idle.max_cstate=0 idle=poll”</p>
+</blockquote>
+<p>预告：如果没有关掉c-state，这两行会需要修改，先往下走。</p>
+<blockquote>
+<p>sudo gedit /etc/modprobe.d/blacklist.conf</p>
+</blockquote>
+<p>在文件最后添加</p>
+<blockquote>
+<p>blacklist intel_powerclam</p>
+</blockquote>
+<p>依次执行</p>
+<blockquote>
+<p>sudo apt-get install cpufrequtils<br>sudo gedit /etc/default/cpufrequtils</p>
+</blockquote>
+<p>这个cpufrequtils 大概率为空文件，在里面加上一句：</p>
+<blockquote>
+<p>GOVERNOR=“performance”</p>
+</blockquote>
+<blockquote>
+<p>sudo update-rc.d ondemand disable</p>
+</blockquote>
+<blockquote>
+<p>sudo apt-get install i7z</p>
+</blockquote>
+<p>安装i7z，后面可以查看CPU频率。</p>
+<p>重启，进入bios关闭与节能或者影响CPU次能性能的设置，一般在Advanced设置里面。关闭超线程（Hyper-threading），C-state（有的电脑在bios里面找不到c-state，比如我的就没有，没有需要强行在grub里关），方法见（8）：</p>
+<p>用i7z查看是否完成操作</p>
+<p>sudo i7z<br>看到所有频率都在C0就大工告成了，如果没有，请执行:</p>
+<blockquote>
+<p>sudo gedit /etc/default/grub</p>
+</blockquote>
+<p>注释掉原来的三行（有两行是在（1）中添加的）</p>
+<blockquote>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash”<br>GRUB_CMDLINE_LINUX_DEFAULT=”quiet intel_pstate=disable”<br>GRUB_CMDLINE_LINUX_DEFAULT=”processor.max_cstate=1 intel_idle.max_cstate=0 idle=poll”</p>
+</blockquote>
+<p>把它们都写到一行去，用空格隔开：</p>
+<blockquote>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash quiet intel_pstate=disable processor.max_cstate=1 intel_idle.max_cstate=0 idle=poll”</p>
+</blockquote>
+<p>然后更新并重启即可。</p>
+<blockquote>
+<p>sudo update-grub<br>sudo reboot</p>
+</blockquote>
+<h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><p>克隆源码</p>
+<blockquote>
+<p>sudo apt-get install git<br>git clone <a href="https://gitlab.eurecom.fr/oai/openairinterface5g.git" target="_blank" rel="noopener">https://gitlab.eurecom.fr/oai/openairinterface5g.git</a></p>
+</blockquote>
+<p>如果外网访问速度太差，见0x03.</p>
+<p>配置eNB</p>
+<blockquote>
+<p>sudo gedit ~/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf</p>
+</blockquote>
+<p>需要更改和确认的部分如下：前三行在MME中可以查到，之后就是把IP对应换成自己的EPC和eNB所在IP。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tracking_area_code  =  "1";</span><br><span class="line">mobile_country_code =  "208";</span><br><span class="line">mobile_network_code =  "92";</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">////////// MME parameters:</span><br><span class="line">    mme_ip_address      = ( &#123; ipv4       = "192.168.12.62";</span><br><span class="line">                              ipv6       = "192:168:30::17";</span><br><span class="line">                              active     = "yes";</span><br><span class="line">                              preference = "ipv4";</span><br><span class="line">                            &#125;</span><br><span class="line">                          );</span><br><span class="line">    NETWORK_INTERFACES :</span><br><span class="line">    &#123;</span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1_MME         = "eth0";</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1_MME           = "192.168.12.82/24";</span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1U            = "eth0";</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1U              = "192.168.12.82/24";</span><br><span class="line">        ENB_PORT_FOR_S1U                      = 2152; # Spec 2152</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>编译eNB</p>
+<blockquote>
+<p>cd openairinterface5g<br>source oaienv<br>cd cmake_targets<br>sudo ./build_oai -I -w USRP</p>
+</blockquote>
+<p>编译后无红色报错即可</p>
+<p>运行eNB</p>
+<blockquote>
+<p>cd ~/openairinterface5g<br>source oaienv<br>cd cmake_targets<br>./build_oai –eNB -c -w USRP (这条运行一次就行了 确认安装)<br>cd lte_build_oai/build<br>sudo -E ./lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf -d</p>
+</blockquote>
+<h2 id="0x03-网络优化"><a href="#0x03-网络优化" class="headerlink" title="0x03 网络优化"></a>0x03 网络优化</h2><p>建议安装上ubuntu之后就不要进行更换镜像源操作，然后全局走能连上外网的代理，并且在network处设置proxy，这样就能一劳永逸的解决后续下载速度问题:</p>
+<blockquote>
+<p> http_proxy=’<a href="http://ip:port’" target="_blank" rel="noopener">http://ip:port’</a> </p>
+<p> https_proxy=’<a href="http://ip:port’" target="_blank" rel="noopener">http://ip:port’</a></p>
+<p> socks_proxy=’socks://ip:port’  </p>
+</blockquote>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/12/12/oai搭建enb/" class="article-date">
+  <time class="dt-published" datetime="2019-12-11T16:00:00.000Z" itemprop="datePublished">2019-12-12</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/5g/">5g</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2020/02/19/Java code snippet/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java code snippet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/19/go get速度优化/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">go get速度优化</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

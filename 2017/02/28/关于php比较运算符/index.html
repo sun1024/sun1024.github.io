@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>关于php比较运算符 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于php比较运算符">
+<meta property="og:url" content="http://b1ng0.top/2017/02/28/关于php比较运算符/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于php比较运算符">
+<meta name="twitter:description" content="比较运算符”==”与”===”的学习：关于”==”的绕过：0e开头的全部相等栗子:md5(&amp;#39;240610708&amp;#39;) == md5(&amp;#39;QNKCDZO&amp;#39;)md5(&amp;#39;aabg7XSs&amp;#39;) == md5(&amp;#39;aabC9RqS&amp;#39;)sha1(&amp;#39;aaroZmOk&amp;#39;) == sha1(&amp;#39;aaK1STfY&amp;#39;)sha1(&amp;#">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-关于php比较运算符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      关于php比较运算符
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="比较运算符”-”与”-”的学习："><a href="#比较运算符”-”与”-”的学习：" class="headerlink" title="比较运算符”==”与”===”的学习："></a>比较运算符”==”与”===”的学习：</h1><h2 id="关于”-”的绕过："><a href="#关于”-”的绕过：" class="headerlink" title="关于”==”的绕过："></a>关于”==”的绕过：</h2><p>0e开头的全部相等<br>栗子:<br><code>md5(&#39;240610708&#39;) == md5(&#39;QNKCDZO&#39;)</code><br><code>md5(&#39;aabg7XSs&#39;) == md5(&#39;aabC9RqS&#39;)</code><br><code>sha1(&#39;aaroZmOk&#39;) == sha1(&#39;aaK1STfY&#39;)</code><br><code>sha1(&#39;aaO8zKZF&#39;) == sha1(&#39;aa3OFF9m&#39;)</code><br><code>&#39;0010e2&#39; == &#39;1e3&#39;</code><br><code>&#39;0x1234Ab&#39; == &#39;1193131&#39;</code><br><code>&#39;0xABCdef&#39; == &#39;     0xABCdef&#39;</code><br>一道简单的CTF题目：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$key = <span class="string">"llocdpocuzion5dcp2bindhspiccy"</span>;</span><br><span class="line">$flag = strcmp($key, $_GET[<span class="string">'key'</span>]);</span><br><span class="line"><span class="keyword">if</span> ($flag == <span class="number">0</span>) &#123;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Welcome!"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Bad key!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?key[]=1</code></p>
+<p>var_dump(strcmp( ‘’, array())) =&gt; NULL ⇒ NULL == 0 ⇒ Get Flag！</p>
+<h2 id="关于“-”的绕过："><a href="#关于“-”的绕过：" class="headerlink" title="关于“===”的绕过："></a>关于“===”的绕过：</h2><p>利用数组绕过</p>
+<p>一道简单的CTF题目：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'name'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_GET[<span class="string">'password'</span>])) &#123;</span><br><span class="line">	<span class="keyword">if</span> ($_GET[<span class="string">'name'</span>] == $_GET[<span class="string">'password'</span>])</span><br><span class="line">		<span class="keyword">print</span> <span class="string">'Your password can not be your name.'</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (sha1($_GET[<span class="string">'name'</span>]) === sha1($_GET[<span class="string">'password'</span>]))</span><br><span class="line">		<span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</span><br></pre></td></tr></table></figure></p>
+<p>payload:<br><code>?name[]=1&amp;password[]=2</code></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2017/02/28/关于php比较运算符/" class="article-date">
+  <time class="dt-published" datetime="2017-02-27T16:00:00.000Z" itemprop="datePublished">2017-02-28</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2017/03/14/php变量覆盖的学习/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          php变量覆盖的学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/06/metasploit初体验/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">metasploit 初体验</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

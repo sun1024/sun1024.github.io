@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>星地5G融合初探 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="迫于论文开题方向，最近主要在看3gpp、ITU等标准化组织关于星地融合（卫星和5g融合）的相关研究，跟进SaT5G（Satellite and Terrestrial Network for 5G）项目的研究进展。下面是基于标准文档和相关解读整理的卫星5g融合和5g回传的现状。  3GPP与卫星相关的研究目前找到的与卫星相关的标准文档主要有以下几篇：  3GPP TS 22.261 on sat">
+<meta name="keywords" content="卫星网络 5G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="星地5G融合初探">
+<meta property="og:url" content="http://b1ng0.top/2020/03/29/星地5G融合初探/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="迫于论文开题方向，最近主要在看3gpp、ITU等标准化组织关于星地融合（卫星和5g融合）的相关研究，跟进SaT5G（Satellite and Terrestrial Network for 5G）项目的研究进展。下面是基于标准文档和相关解读整理的卫星5g融合和5g回传的现状。  3GPP与卫星相关的研究目前找到的与卫星相关的标准文档主要有以下几篇：  3GPP TS 22.261 on sat">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.1.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.2.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.3.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.4.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.5.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.6.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.7.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.3.29.8.png">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.557Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="星地5G融合初探">
+<meta name="twitter:description" content="迫于论文开题方向，最近主要在看3gpp、ITU等标准化组织关于星地融合（卫星和5g融合）的相关研究，跟进SaT5G（Satellite and Terrestrial Network for 5G）项目的研究进展。下面是基于标准文档和相关解读整理的卫星5g融合和5g回传的现状。  3GPP与卫星相关的研究目前找到的与卫星相关的标准文档主要有以下几篇：  3GPP TS 22.261 on sat">
+<meta name="twitter:image" content="http://b1ng0.top/images/2020.3.29.1.png">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-星地5G融合初探" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      星地5G融合初探
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <blockquote>
+<p>迫于论文开题方向，最近主要在看3gpp、ITU等标准化组织关于星地融合（卫星和5g融合）的相关研究，跟进SaT5G（Satellite and Terrestrial Network for 5G）项目的研究进展。下面是基于标准文档和相关解读整理的卫星5g融合和5g回传的现状。</p>
+</blockquote>
+<h2 id="3GPP与卫星相关的研究"><a href="#3GPP与卫星相关的研究" class="headerlink" title="3GPP与卫星相关的研究"></a>3GPP与卫星相关的研究</h2><p>目前找到的与卫星相关的标准文档主要有以下几篇：</p>
+<ul>
+<li>3GPP TS 22.261 on satellite access</li>
+<li>3GPP TR 22.822 “Study on using Satellite Access in 5G” </li>
+<li>3GPP TR 38.811 “Study on NR to support non-terrestrial networks” </li>
+<li>3GPP TR 23.737 “Study on architecture aspects for using satellite access in 5G; (Release 16)” </li>
+<li>3GPP TR 38.821 “Study on solutions for NR to support non-terrestrial networks (NTN) (Release 16)”</li>
+</ul>
+<p>3GPP从R14开始着手开展星地融合的研究工作。在TS22.261中，对卫星在5G系统中的角色和优势进行了探讨，作为5G多种接入技术之一，卫星在一些要求广域覆盖的工业应用场景中具有显著优势。卫星网络可以在地面5G覆盖的薄弱地区提供低成本的覆盖方案，对于5G网络中的M2M/IoT，以及为高速移动载体上的乘客提供无所不及的网络服务，借助卫星优越的广播/多播能力，可以为网络边缘网元及用户终端提供广播/多播信息服务。</p>
+<p>在2017年底发布的技术报告22.822中，3GPP工作组SA1对与卫星相关的接入网协议及架构进行了评估，并计划进一步开展基于5G的接入研究。在这份报告中，定义了在5G中使用卫星接入的三大类用例，分别是连续服务、泛在服务和扩展服务。并讨论了新的及现有服务的需求，卫星终端特性的建立、配置与维护，以及在卫星网络与地面网络间的切换问题。</p>
+<p>在3GPP名为“面向‘非地面网络’中的5G新空口”研究项目中，定义了包括卫星网络在内的非地面网络（NTN:Non-terrestrial networks）的部署场景。按照3GPP的定义，5G网络中的NTN应用场景包括8个增强型移动宽带（eMBB）场景和2个大规模机器类通信（mMTC）场景。借助卫星的广域覆盖能力，可以使运营商在地面网络基础设施不发达地区提供5G商用服务，实现5G业务连续性，尤其是在应急通信、海事通信、航空通信及铁路沿线通信等场景中发挥作用。</p>
+<p>38.811规定的卫星网络架构可能包含的系统组成包括：</p>
+<ul>
+<li>NTN终端：3GPP 用户终端（UE）和非3GPP UE （卫星终端）</li>
+<li>用户链路(Service Link)：UE和卫星之间的链路</li>
+<li>空间平台(Space Platform)：搭载弯管或者具备星上处理能力的卫星</li>
+<li>星间链路(ISL: Inter-Satellite Links)：对于具备星上处理能力卫星间的链路</li>
+<li>信关站(Gateway)：连接卫星和地面核心网的网元</li>
+<li>馈电链路：卫星与地面关口站之间的链路</li>
+</ul>
+<p><img src="/images/2020.3.29.1.png" alt="img"></p>
+<p>在非地面网络与地面5G融合的网络架构上，3GPP提出了星地融合的4种网络架构初步模型。38.811还对卫星5G场景中的传输延时、多普勒频移进行了估计，并对在非地面网络中部署5G新空口需要做的适应性修改进行了讨论，包括由于卫星等空间飞行器的移动性带来的切换和寻呼问题、定时提前的调整、下行链路同步等问题，星地链路长延时对HARQ、MAC/RLC过程、物理层ACM及功率控制等过程的影响，卫星小区尺寸过大给PRACH和随机过程带来的影响以及对随机接入响应消息中定时提前的影响，多径时延扩展带来的问题，双工模式问题，对CP-OFDM技术在卫星上的适用性也进行了分析。</p>
+<p><img src="/images/2020.3.29.2.png" alt="img"></p>
+<h2 id="ITU的星地5G融合"><a href="#ITU的星地5G融合" class="headerlink" title="ITU的星地5G融合"></a>ITU的星地5G融合</h2><p>针对卫星与地面5G融合的问题，国际电信联盟（ITU，International Telecommunication Union）提出了星地5G融合的4种应用场景，包括中继到站、小区回传、动中通及混合多播场景，并提出支持这些场景必须考虑的关键因素，包括多播支持、智能路由支持、动态缓存管理及自适应流支持、延时、一致的服务质量、NFV（Network Function Virtualization，网络功能虚拟化）/SDN（Software Defined Network，软件定义网络）兼容、商业模式的灵活性等。</p>
+<p><img src="/images/2020.3.29.3.png" alt="img"></p>
+<p>(a)中继到站场景</p>
+<p><img src="/images/2020.3.29.4.png" alt="img"></p>
+<p>(b)小区回传场景</p>
+<p><img src="/images/2020.3.29.5.png" alt="img"></p>
+<p>(c)动中通场景</p>
+<p><img src="/images/2020.3.29.6.png" alt="img"></p>
+<p>(d)混合多播场景</p>
+<h2 id="5g回传"><a href="#5g回传" class="headerlink" title="5g回传"></a>5g回传</h2><p>5g整体可以划分为接入网、承载网、核心网，承载网就是专门负责承载数据传输的网络。整个通信网络的数据传输，都是由承载网负责的，不仅连接接入网和核心网，它也存在于接入网网元之间，以及核心网网元之间。</p>
+<p><img src="/images/2020.3.29.7.png" alt="img"></p>
+<p>5g基站与核心网之间的数据传输属于承载网络的范畴，而在5G网络中，接入网不再是由BBU、RRU、天线这些东西组成，而是被重构为CU（Centralized unit，集中单元）、DU（Distribute Unit，分布单元）和AAU（Active Antenna Unit，有源天线单元）这3个功能实体，依据3gpp标准，CU、DU、AAU可以采取分离或合设的方式，会出现多种网络部署形态：</p>
+<p><img src="/images/2020.3.29.8.png" alt="img"></p>
+<p>承载网随着RAN架构的重构，划分为前传网络、中传网络和回传网络三部分。前传、中传、回传是不同实体之间的连接：AAU和DU之间是前传网络、DU和CU之间是中传网络、CU以上是回传网络。</p>
+<p>传统的回传技术有两种:无线回传，光纤回传。这两种技术都广泛应用于当前的LTE网络中。两种回传方式每个运营商各有偏好，从全球统计数据来看，绝大部分网络都是选用无线回传，但在中国刚好相反，仅在少数应急场景才动用无线回传。</p>
+<p>但在5G时代，高密集组网的需求下，全光纤组网的成本让运营商难以承担。前段时间任正非就提出了5G和微波技术结合的方向，微波回传与光纤回传混合使用这也将是未来5G回传的主流趋势。</p>
+<p>传统的微波回传应用的是6-42GHz频段，平均容量在50Mbps至500Mbps之间，而对于5G时代，这一需求可高达10-20G，所以，传统微波回传是无法满足5G时代的基站回传容量需求的。于是业界将眼光投向了能提供超大带宽的E-Band微波。E频段指频率在80GHz附近的微波频段，实际分配频段为71-76GHz和81-86GHz的对称两段，可用总频宽达10GHz。较传统的3.5-112M信道带宽，E频段可以使用惊人的1000MHz至2000MHz带宽，再采用高阶调制方式、多频段聚合和MIMO等技术后，回传容量可高达20Gbps以上。面向未来，微波通信技术还将从E波段向W波段（92-115GHz）和D波段（130-175GHz）扩展，可实现100Gbps的高需求。</p>
+<p>关于无线回传，另一种方案是把无线接入网和回传集成，这也是3GPP R16的工作项目。利用Massive MIMO多波束的特性，将无线接入和回传集成，让每个微站通过无线“自回传”实现更加灵活、简单、低成本的基站部署。</p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2020/03/29/星地5G融合初探/" class="article-date">
+  <time class="dt-published" datetime="2020-03-29T10:09:00.000Z" itemprop="datePublished">2020-03-29</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卫星网络-5G/">卫星网络 5G</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2020/04/14/exata中的卫星仿真/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          EXata中的卫星仿真
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/13/bash tricks/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">bash tricks</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

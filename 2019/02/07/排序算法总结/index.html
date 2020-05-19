@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>排序算法总结 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="插入排序直接插入  插入排序(稳定)  时间复杂度O(n^2)  空间复杂度O(1) 代码实现：  1234567891011121314151617181920212223242526public class InsertionSort &amp;#123; 	public static void main(String[] args) &amp;#123;		//给出无序数组		int arr[] = &amp;#1">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法总结">
+<meta property="og:url" content="http://b1ng0.top/2019/02/07/排序算法总结/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="插入排序直接插入  插入排序(稳定)  时间复杂度O(n^2)  空间复杂度O(1) 代码实现：  1234567891011121314151617181920212223242526public class InsertionSort &amp;#123; 	public static void main(String[] args) &amp;#123;		//给出无序数组		int arr[] = &amp;#1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/sort/insertion_sort.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/shellSort.png">
+<meta property="og:image" content="http://b1ng0.top/images/sort/selection_sort.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/heapSort.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/bubble_sort.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/Quicksort-example.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/mergeSort.gif">
+<meta property="og:image" content="http://b1ng0.top/images/sort/排序总结.jpg">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法总结">
+<meta name="twitter:description" content="插入排序直接插入  插入排序(稳定)  时间复杂度O(n^2)  空间复杂度O(1) 代码实现：  1234567891011121314151617181920212223242526public class InsertionSort &amp;#123; 	public static void main(String[] args) &amp;#123;		//给出无序数组		int arr[] = &amp;#1">
+<meta name="twitter:image" content="http://b1ng0.top/images/sort/insertion_sort.gif">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-排序算法总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      排序算法总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h4 id="直接插入"><a href="#直接插入" class="headerlink" title="直接插入"></a>直接插入</h4><p><img src="/images/sort/insertion_sort.gif" alt="insertion_sort"></p>
+<ul>
+<li><p>插入排序(稳定)</p>
+</li>
+<li><p>时间复杂度O(n^2)</p>
+</li>
+<li>空间复杂度O(1)</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//插入排序</span></span><br><span class="line">		insertionSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;arr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i-<span class="number">1</span>; j&gt;=<span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[j+<span class="number">1</span>]&lt;arr[j]) &#123;</span><br><span class="line">					<span class="keyword">int</span> temp = arr[j+<span class="number">1</span>];</span><br><span class="line">					arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">					arr[j] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><ul>
+<li>希尔排序(不稳定)</li>
+<li>设置步长，分组插入排序</li>
+</ul>
+<p><img src="/images/sort/shellSort.png" alt="shellSort"></p>
+<ul>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShellSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//希尔排序</span></span><br><span class="line">		shellSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//设置步长</span></span><br><span class="line">		<span class="keyword">int</span> gap = arr.length/<span class="number">2</span>; </span><br><span class="line">		<span class="keyword">while</span>(gap&gt;<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=gap; j&lt;arr.length; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> i=j;</span><br><span class="line">				<span class="comment">//插入排序</span></span><br><span class="line">				<span class="keyword">while</span>(i&gt;=gap &amp;&amp; arr[i-gap]&gt;arr[i]) &#123;</span><br><span class="line">					<span class="keyword">int</span> temp = arr[i-gap];</span><br><span class="line">					arr[i-gap] = arr[i];</span><br><span class="line">					arr[i] = temp;</span><br><span class="line">					i -= gap;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			gap = gap/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h4 id="直接选择"><a href="#直接选择" class="headerlink" title="直接选择"></a>直接选择</h4><p><img src="/images/sort/selection_sort.gif" alt="selection_sort"></p>
+<ul>
+<li>选择排序(不稳定)</li>
+<li>不断地选择剩余元素中的最小者</li>
+<li>时间复杂度O(n^2)</li>
+<li>空间复杂度O(1)</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//选择排序</span></span><br><span class="line">		selectionSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> min_index = i;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;arr.length; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[j] &lt; arr[min_index]) &#123;</span><br><span class="line">					min_index = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> temp = arr[min_index];</span><br><span class="line">			arr[min_index] = arr[i];</span><br><span class="line">			arr[i] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p><img src="/images/sort/heapSort.gif" alt="heapSort"></p>
+<ul>
+<li>堆排序(不稳定)</li>
+<li>时间复杂度 O(nlogn)</li>
+<li>空间复杂度O(1)</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//堆排序</span></span><br><span class="line">		heapSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = arr.length -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len/<span class="number">2</span> - <span class="number">1</span>; i &gt;=<span class="number">0</span>; i --)&#123; <span class="comment">//堆构造</span></span><br><span class="line">            heapAdjust(arr,i,len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (len &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        	<span class="comment">//将堆顶元素与尾节点交换后，长度减1，尾元素最大</span></span><br><span class="line">            swap(arr,<span class="number">0</span>,len--);    </span><br><span class="line">            <span class="comment">//再次对堆进行调整</span></span><br><span class="line">            heapAdjust(arr,<span class="number">0</span>,len);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapAdjust</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> left,right,j ;</span><br><span class="line">    	<span class="keyword">while</span>((left = <span class="number">2</span>*i+<span class="number">1</span>) &lt;= len)&#123;    <span class="comment">//判断当前父节点有无左节点（即有无孩子节点，left为左节点）</span></span><br><span class="line">    		right = left + <span class="number">1</span>;  <span class="comment">//右节点</span></span><br><span class="line">    		j = left;   <span class="comment">//j"指针指向左节点"</span></span><br><span class="line">    		<span class="comment">//右节点大于左节点</span></span><br><span class="line">    		<span class="keyword">if</span>(j &lt; len &amp;&amp; arr[left] &lt; arr[right])    </span><br><span class="line">    			<span class="comment">//当前把"指针"指向右节点</span></span><br><span class="line">    			j ++;     </span><br><span class="line">    		<span class="comment">//将父节点与孩子节点交换（如果上面if为真，则arr[j]为右节点，如果为假arr[j]则为左节点）</span></span><br><span class="line">    		<span class="keyword">if</span>(arr[i] &lt; arr[j])    </span><br><span class="line">    			swap(arr,i,j);</span><br><span class="line">    		<span class="comment">//说明比孩子节点都大，直接跳出循环语句</span></span><br><span class="line">    		<span class="keyword">else</span>         </span><br><span class="line">    			<span class="keyword">break</span>;</span><br><span class="line">    		i = j;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">             </span><br><span class="line">    	<span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[len];</span><br><span class="line">        arr[len] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><img src="/images/sort/bubble_sort.gif" alt="bubble_sort"></p>
+<ul>
+<li>冒泡排序(稳定)</li>
+<li>时间复杂度O(n^2)</li>
+<li>空间复杂度O(1)</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestBubbleSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//冒泡排序</span></span><br><span class="line">		bubbleSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;arr.length-i; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[j-<span class="number">1</span>]&gt;arr[j]) &#123;</span><br><span class="line">					<span class="keyword">int</span> temp = arr[j-<span class="number">1</span>];</span><br><span class="line">					arr[j-<span class="number">1</span>] = arr[j];</span><br><span class="line">					arr[j] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p><img src="/images/sort/Quicksort-example.gif" alt="Quicksort-example"></p>
+<ul>
+<li>快排 = 冒泡 + 分治 + 递归</li>
+<li>时间复杂度 O(nlogn)</li>
+<li>空间复杂度O(logn)</li>
+</ul>
+<ul>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestQuickSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//指定左指针i和右指针j</span></span><br><span class="line">		<span class="keyword">int</span> i = low;</span><br><span class="line">		<span class="keyword">int</span> j = high;</span><br><span class="line">		<span class="comment">//将第一个数作为基准值，挖坑</span></span><br><span class="line">		<span class="keyword">int</span> x = arr[low];</span><br><span class="line">		<span class="comment">//使用循环实现分区操作</span></span><br><span class="line">		<span class="keyword">while</span>(i&lt;j) &#123;</span><br><span class="line">			<span class="comment">//1. 从右向左移动j, 找到第一个小于基准值的值</span></span><br><span class="line">			<span class="keyword">while</span>(arr[j] &gt;= x &amp;&amp; i&lt;j) &#123;</span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//2. 将找到的数填入i的(坑)位置, i++</span></span><br><span class="line">			<span class="keyword">if</span>(i&lt;j) &#123;</span><br><span class="line">				arr[i] = arr[j];</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//3. 从左向右移动i, 找到第一个大于等于基准值的值</span></span><br><span class="line">			<span class="keyword">while</span>(arr[i] &lt;= x &amp;&amp; i&lt;j) &#123;</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//4. 将找到的数填入j的位置, j--</span></span><br><span class="line">			<span class="keyword">if</span>(i&lt;j) &#123;</span><br><span class="line">				arr[j] = arr[i];</span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//使用基准值填坑，此即基准值的最终位置</span></span><br><span class="line">		arr[i] = x; <span class="comment">// arr[j] = x;</span></span><br><span class="line">		<span class="comment">//返回基准值的位置索引</span></span><br><span class="line">		<span class="keyword">return</span> i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(low &lt; high) &#123;<span class="comment">//递归结束条件</span></span><br><span class="line">			<span class="comment">//分区操作，将一个数组分成两个分区，返回分区界限索引</span></span><br><span class="line">			<span class="keyword">int</span> index = partition(arr, low, high);</span><br><span class="line">			<span class="comment">//对左分区进行快排</span></span><br><span class="line">			quickSort(arr, low, index-<span class="number">1</span>);</span><br><span class="line">			<span class="comment">//对右分区进行快排</span></span><br><span class="line">			quickSort(arr, index+<span class="number">1</span>, high);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> high = arr.length - <span class="number">1</span>;</span><br><span class="line">		quickSort(arr, low, high);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//快速排序</span></span><br><span class="line">		quickSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p><img src="/images/sort/mergeSort.gif" alt="mergeSort"></p>
+<ul>
+<li>归并排序(稳定)</li>
+<li>递归 + 合并</li>
+<li>时间复杂度 O(nlogn)</li>
+<li>空间复杂度O(n) +O(logn)</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//给出无序数组</span></span><br><span class="line">		<span class="keyword">int</span> arr[] = &#123;<span class="number">72</span>,<span class="number">6</span>,<span class="number">57</span>,<span class="number">88</span>,<span class="number">60</span>,<span class="number">42</span>,<span class="number">83</span>,<span class="number">73</span>,<span class="number">48</span>,<span class="number">85</span>&#125;;</span><br><span class="line">		<span class="comment">//输出无序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		<span class="comment">//归并排序</span></span><br><span class="line">		mergeSort(arr);</span><br><span class="line">		<span class="comment">//输出有序数组</span></span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> high = arr.length - <span class="number">1</span>;</span><br><span class="line">		mergeSort(arr, low, high);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">			<span class="comment">//对左边的数组进行递归排序</span></span><br><span class="line">			mergeSort(arr, low, mid);</span><br><span class="line">			<span class="comment">//对右边的数组进行递归排序</span></span><br><span class="line">			mergeSort(arr, mid+<span class="number">1</span>, high);</span><br><span class="line">			<span class="comment">//合并两个已排序的数组</span></span><br><span class="line">			mergeArr(arr, low, mid, high);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeArr</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high - low + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> i = low;<span class="comment">// 左指针</span></span><br><span class="line">        <span class="keyword">int</span> j = mid + <span class="number">1</span>;<span class="comment">// 右指针</span></span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &lt; arr[j]) &#123;</span><br><span class="line">                temp[k++] = arr[i++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp[k++] = arr[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">            temp[k++] = arr[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">            temp[k++] = arr[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖arr组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k2 = <span class="number">0</span>; k2 &lt; temp.length; k2++) &#123;</span><br><span class="line">            arr[k2 + low] = temp[k2];</span><br><span class="line">        &#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p><img src="/images/sort/排序总结.jpg" alt="排序总结"></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/02/07/排序算法总结/" class="article-date">
+  <time class="dt-published" datetime="2019-02-07T10:09:00.000Z" itemprop="datePublished">2019-02-07</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/02/21/密码学基础笔记(二)/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          密码学基础笔记(二)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/26/密码学基础笔记(一)/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">密码学基础笔记(一)</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

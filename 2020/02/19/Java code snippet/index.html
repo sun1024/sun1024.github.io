@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Java code snippet | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在家里就各种拖延症，不想看论文，不想挖洞，只能强迫自己刷刷题假装在学习的样子，在这里整理一下java常用的数据结构，记不住了就过来copy。。。  Array &amp;amp; ArrayList1234int[][] myArr = new int[5][10];ArrayList&amp;lt;String&amp;gt; myArr = new ArrayList&amp;lt;String&amp;gt;();myArr.a">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java code snippet">
+<meta property="og:url" content="http://b1ng0.top/2020/02/19/Java code snippet/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="在家里就各种拖延症，不想看论文，不想挖洞，只能强迫自己刷刷题假装在学习的样子，在这里整理一下java常用的数据结构，记不住了就过来copy。。。  Array &amp;amp; ArrayList1234int[][] myArr = new int[5][10];ArrayList&amp;lt;String&amp;gt; myArr = new ArrayList&amp;lt;String&amp;gt;();myArr.a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java code snippet">
+<meta name="twitter:description" content="在家里就各种拖延症，不想看论文，不想挖洞，只能强迫自己刷刷题假装在学习的样子，在这里整理一下java常用的数据结构，记不住了就过来copy。。。  Array &amp;amp; ArrayList1234int[][] myArr = new int[5][10];ArrayList&amp;lt;String&amp;gt; myArr = new ArrayList&amp;lt;String&amp;gt;();myArr.a">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-Java code snippet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java code snippet
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <blockquote>
+<p>在家里就各种拖延症，不想看论文，不想挖洞，只能强迫自己刷刷题假装在学习的样子，在这里整理一下java常用的数据结构，记不住了就过来copy。。。</p>
+</blockquote>
+<h2 id="Array-amp-ArrayList"><a href="#Array-amp-ArrayList" class="headerlink" title="Array &amp; ArrayList"></a>Array &amp; ArrayList</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] myArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>][<span class="number">10</span>];</span><br><span class="line">ArrayList&lt;String&gt; myArr = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">myArr.add(<span class="string">"dynamically resizing"</span>);</span><br><span class="line">System.out.println(myArr.get(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;String&gt; myVect = <span class="keyword">new</span> Vector&lt;String&gt;();</span><br><span class="line">myVect.add(<span class="string">"synchronized"</span>);</span><br><span class="line">System.out.println(myVect.get(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;String&gt; myList = <span class="keyword">new</span> LinkedList&lt;String&gt;();</span><br><span class="line">myList.add(<span class="string">"build-in list"</span>);</span><br><span class="line">Iterator&lt;String&gt; iter = myList.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext())</span><br><span class="line">System.out.println(iter.next());</span><br></pre></td></tr></table></figure>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String,String&gt; map = <span class="keyword">new</span> HashMap&lt;String,String&gt;();</span><br><span class="line">map.put(<span class="string">"key"</span>,<span class="string">"value"</span>);</span><br><span class="line">System.out.println(map.get(<span class="string">"key"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Object&gt; stack = <span class="keyword">new</span> Stack&lt;Object&gt;();</span><br><span class="line"><span class="function">Object <span class="title">push</span><span class="params">(Object element)</span></span></span><br><span class="line"><span class="function">Object <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">Object <span class="title">peek</span><span class="params">()</span></span></span><br><span class="line"><span class="function">Object <span class="title">isEmpty</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a>Queues</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Object&gt; queue = <span class="keyword">new</span> LinkedList&lt;Object&gt;();</span><br><span class="line"><span class="function">Object <span class="title">offer</span><span class="params">()</span></span></span><br><span class="line"><span class="function">Object <span class="title">poll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Dictionaries"><a href="#Dictionaries" class="headerlink" title="Dictionaries"></a>Dictionaries</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;Object, Object&gt; dic = <span class="keyword">new</span> Hashtable&lt;Object, Object&gt;();</span><br><span class="line"><span class="function">Object <span class="title">put</span><span class="params">(Object key, Object value)</span></span></span><br><span class="line"><span class="function">Object <span class="title">get</span><span class="params">(Object key)</span></span></span><br><span class="line"><span class="function">Enumeration <span class="title">elements</span><span class="params">()</span></span></span><br><span class="line"><span class="function">Enumeration <span class="title">keys</span><span class="params">()</span></span></span><br><span class="line"><span class="function">Object <span class="title">remove</span><span class="params">(Object key)</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object key)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder string = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="function">StringBuilder <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function">StringBuilder <span class="title">deleteCharAt</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">charAt</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">String <span class="title">concat</span><span class="params">(String s)</span></span></span><br><span class="line"><span class="function">String <span class="title">substring</span><span class="params">(<span class="keyword">int</span> beginIndex)</span></span></span><br><span class="line"><span class="function">String <span class="title">substring</span><span class="params">(<span class="keyword">int</span> beginIndex, <span class="keyword">int</span> endIndex)</span></span></span><br><span class="line"><span class="function">String <span class="title">toLowerCase</span><span class="params">()</span></span></span><br><span class="line"><span class="function">String <span class="title">toUpperCase</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(CharSequence s)</span></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> String <span class="title">copyValueOf</span><span class="params">(<span class="keyword">char</span>[] data)</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span>[] <span class="title">toCharArray</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contenEquals</span><span class="params">(StringBuffer sb)</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String prefix)</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">endsWith</span><span class="params">(String suffix)</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(String regex)</span></span></span><br><span class="line"><span class="function">String <span class="title">intern</span><span class="params">()</span></span></span><br><span class="line"><span class="function">String <span class="title">trim</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">xxx <span class="title">abs</span><span class="params">(xxx x)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ceil</span><span class="params">(<span class="keyword">double</span> d)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ceil</span><span class="params">(<span class="keyword">float</span> f)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">floor</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">floor</span><span class="params">(<span class="keyword">float</span> f)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">int</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">round</span><span class="params">(<span class="keyword">float</span> f)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">exp</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">log</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">double</span> exponent)</span></span></span><br><span class="line"><span class="function">Double E, PI</span></span><br></pre></td></tr></table></figure>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2020/02/19/Java code snippet/" class="article-date">
+  <time class="dt-published" datetime="2020-02-18T16:00:00.000Z" itemprop="datePublished">2020-02-19</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2020/02/29/低轨卫星星座系统调研/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          低轨卫星星座系统调研
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/12/oai搭建enb/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OAI搭建eNB</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

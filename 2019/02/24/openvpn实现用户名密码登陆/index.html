@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>openvpn实现用户名密码登陆 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="openvpn实现用户名密码登陆0x00 openvpn安装网上教程一堆，这里采用懒人傻瓜式安装方式，感谢大佬的脚本：https://github.com/Nyr/openvpn-install.  bash openvpn-install.sh  然后一路回车不到一分钟即可搭建好一个openVPN服务器。。。 0x01 服务端配置在server.conf中添加如下内容  vim /etc/ope">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openvpn实现用户名密码登陆">
+<meta property="og:url" content="http://b1ng0.top/2019/02/24/openvpn实现用户名密码登陆/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="openvpn实现用户名密码登陆0x00 openvpn安装网上教程一堆，这里采用懒人傻瓜式安装方式，感谢大佬的脚本：https://github.com/Nyr/openvpn-install.  bash openvpn-install.sh  然后一路回车不到一分钟即可搭建好一个openVPN服务器。。。 0x01 服务端配置在server.conf中添加如下内容  vim /etc/ope">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openvpn实现用户名密码登陆">
+<meta name="twitter:description" content="openvpn实现用户名密码登陆0x00 openvpn安装网上教程一堆，这里采用懒人傻瓜式安装方式，感谢大佬的脚本：https://github.com/Nyr/openvpn-install.  bash openvpn-install.sh  然后一路回车不到一分钟即可搭建好一个openVPN服务器。。。 0x01 服务端配置在server.conf中添加如下内容  vim /etc/ope">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-openvpn实现用户名密码登陆" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      openvpn实现用户名密码登陆
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h2 id="openvpn实现用户名密码登陆"><a href="#openvpn实现用户名密码登陆" class="headerlink" title="openvpn实现用户名密码登陆"></a>openvpn实现用户名密码登陆</h2><h3 id="0x00-openvpn安装"><a href="#0x00-openvpn安装" class="headerlink" title="0x00 openvpn安装"></a>0x00 openvpn安装</h3><p>网上教程一堆，这里采用懒人傻瓜式安装方式，感谢大佬的脚本：<a href="https://github.com/Nyr/openvpn-install" target="_blank" rel="noopener">https://github.com/Nyr/openvpn-install</a>.</p>
+<blockquote>
+<p>bash openvpn-install.sh</p>
+</blockquote>
+<p>然后一路回车不到一分钟即可搭建好一个openVPN服务器。。。</p>
+<h3 id="0x01-服务端配置"><a href="#0x01-服务端配置" class="headerlink" title="0x01 服务端配置"></a>0x01 服务端配置</h3><p>在server.conf中添加如下内容</p>
+<blockquote>
+<p>vim /etc/openvpn/server.conf</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env</span><br><span class="line">username-as-common-name</span><br><span class="line">script-security 3 execve</span><br></pre></td></tr></table></figure>
+<p>在/etc/openvpn目录下添加文件checkpsw.sh:</p>
+<blockquote>
+<p>vim /etc/openvpn/checkpsw.sh</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##########################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> This script will authenticate OpenVPN users against</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> a plain text file. The passfile should simply contain</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> one row per user with the username first followed by</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> one or more space(s) or tab(s) and <span class="keyword">then</span> the password.</span></span><br><span class="line"></span><br><span class="line">PASSFILE="/etc/openvpn/psw-file"</span><br><span class="line">LOG_FILE="/etc/openvpn/openvpn-password.log"</span><br><span class="line">TIME_STAMP=`date "+%Y-%m-%d %T"`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##########################################################</span></span></span><br><span class="line"></span><br><span class="line">if [ ! -r "$&#123;PASSFILE&#125;" ]; then</span><br><span class="line">  echo "$&#123;TIME_STAMP&#125;: Could not open password file \"$&#123;PASSFILE&#125;\" for reading." &gt;&gt; $&#123;LOG_FILE&#125;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">CORRECT_PASSWORD=`awk '!/^;/&amp;&amp;!/^#/&amp;&amp;$1=="'$&#123;username&#125;'"&#123;print $2;exit&#125;' $&#123;PASSFILE&#125;`</span><br><span class="line"></span><br><span class="line">if [ "$&#123;CORRECT_PASSWORD&#125;" = "" ]; then</span><br><span class="line">  echo "$&#123;TIME_STAMP&#125;: User does not exist: username=\"$&#123;username&#125;\", password=\"$&#123;password&#125;\"." &gt;&gt; $&#123;LOG_FILE&#125;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ "$&#123;password&#125;" = "$&#123;CORRECT_PASSWORD&#125;" ]; then</span><br><span class="line">  echo "$&#123;TIME_STAMP&#125;: Successful authentication: username=\"$&#123;username&#125;\"." &gt;&gt;$&#123;LOG_FILE&#125;</span><br><span class="line">  exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo "$&#123;TIME_STAMP&#125;: Incorrect password: username=\"$&#123;username&#125;\", password=\"$&#123;password&#125;\"." &gt;&gt; $&#123;LOG_FILE&#125;</span><br><span class="line">exit 1</span><br></pre></td></tr></table></figure>
+<p>给予执行权限：</p>
+<blockquote>
+<p>chmod 755 /etc/openvpn/checkpsw.sh</p>
+</blockquote>
+<p>在/etc/openvpn目录下添加用户名密码文件psw-file:</p>
+<blockquote>
+<p>vim /etc/openvpn/psw-file</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user1 pass1 # 用户名 密码以空格隔开</span><br><span class="line">user2 pass2</span><br></pre></td></tr></table></figure>
+<p>安全起见设成只读：</p>
+<blockquote>
+<p>chmod 400 /etc/openvpn/psw-file   </p>
+</blockquote>
+<p>重启服务：</p>
+<blockquote>
+<p>service openvpn restart</p>
+</blockquote>
+<h3 id="0x02-客户端配置"><a href="#0x02-客户端配置" class="headerlink" title="0x02 客户端配置"></a>0x02 客户端配置</h3><p>在服务器安装openvpn时生成的client.ovpn末尾加入一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass</span><br></pre></td></tr></table></figure>
+<p>重新导入openvpn GUI即可使用用户名密码登陆.</p>
+<h3 id="0x03-坑点"><a href="#0x03-坑点" class="headerlink" title="0x03 坑点"></a>0x03 坑点</h3><p>使用openvpn-install.sh安装时，选择TCP(默认)方式无法使用用户名密码登陆，选择UDP则没有问题。</p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/02/24/openvpn实现用户名密码登陆/" class="article-date">
+  <time class="dt-published" datetime="2019-02-24T14:10:00.000Z" itemprop="datePublished">2019-02-24</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/03/08/回调参数收集/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          回调参数收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/24/ubuntu16.04单网卡配置多ip/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ubuntu16.04单网卡配置多ip</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

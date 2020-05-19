@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>关于公钥与明文长度 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近一直在使用密码算法写认证协议相关的东西，发现明文空间过长会导致加解密不成功的情况。 栗子： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#includ">
+<meta name="keywords" content="notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于公钥与明文长度">
+<meta property="og:url" content="http://b1ng0.top/2019/05/13/关于公钥与明文长度/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="最近一直在使用密码算法写认证协议相关的东西，发现明文空间过长会导致加解密不成功的情况。 栗子： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#includ">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/pk.png">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于公钥与明文长度">
+<meta name="twitter:description" content="最近一直在使用密码算法写认证协议相关的东西，发现明文空间过长会导致加解密不成功的情况。 栗子： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#includ">
+<meta name="twitter:image" content="http://b1ng0.top/images/pk.png">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-关于公钥与明文长度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      关于公钥与明文长度
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <p>最近一直在使用密码算法写认证协议相关的东西，发现明文空间过长会导致加解密不成功的情况。</p>
+<p>栗子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;openssl/rsa.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;openssl/pem.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;openssl/err.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OPENSSLKEY <span class="meta-string">"test.key"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PUBLICKEY <span class="meta-string">"test_pub.key"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFSIZE 1024</span></span><br><span class="line"><span class="comment">/*openssl genrsa -out test.key 1024*/</span></span><br><span class="line"><span class="comment">/*openssl rsa -in test.key -pubout -out test_pub.key*/</span></span><br><span class="line"><span class="comment">/*gcc -Wall -O2 -o pk pk.c -lcrypto -lssl*/</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">my_encrypt</span><span class="params">(<span class="keyword">char</span> *str,<span class="keyword">char</span> *path_key)</span></span>;<span class="comment">//加密</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">my_decrypt</span><span class="params">(<span class="keyword">char</span> *str,<span class="keyword">char</span> *path_key)</span></span>;<span class="comment">//解密</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *source=<span class="string">"23333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333"</span>;</span><br><span class="line">    <span class="keyword">char</span> *ptr_en,*ptr_de;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"source is    :%s\n"</span>,source);</span><br><span class="line">    ptr_en=my_encrypt(source,PUBLICKEY);</span><br><span class="line">    <span class="comment">//printf("after encrypt:%s\n",ptr_en);</span></span><br><span class="line">    ptr_de=my_decrypt(ptr_en,OPENSSLKEY);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"after decrypt:%s\n"</span>,ptr_de);</span><br><span class="line">    <span class="keyword">if</span>(ptr_en!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">free</span>(ptr_en);</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span>(ptr_de!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">free</span>(ptr_de);</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">my_encrypt</span><span class="params">(<span class="keyword">char</span> *str,<span class="keyword">char</span> *path_key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p_en;</span><br><span class="line">    RSA *p_rsa;</span><br><span class="line">    FILE *file;</span><br><span class="line">    <span class="keyword">int</span> flen,rsa_len;</span><br><span class="line">    <span class="keyword">if</span>((file=fopen(path_key,<span class="string">"r"</span>))==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        perror(<span class="string">"open key file error"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;    </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span>((p_rsa=PEM_read_RSA_PUBKEY(file,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>))==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        ERR_print_errors_fp(<span class="built_in">stdout</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;   </span><br><span class="line">    flen=<span class="built_in">strlen</span>(str);</span><br><span class="line">    rsa_len=RSA_size(p_rsa);</span><br><span class="line">    p_en=(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="built_in">malloc</span>(rsa_len+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memset</span>(p_en,<span class="number">0</span>,rsa_len+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(RSA_public_encrypt(rsa_len,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)str,(<span class="keyword">unsigned</span> <span class="keyword">char</span>*)p_en,p_rsa,RSA_NO_PADDING)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    RSA_free(p_rsa);</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> p_en;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">my_decrypt</span><span class="params">(<span class="keyword">char</span> *str,<span class="keyword">char</span> *path_key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p_de;</span><br><span class="line">    RSA *p_rsa;</span><br><span class="line">    FILE *file;</span><br><span class="line">    <span class="keyword">int</span> rsa_len;</span><br><span class="line">    <span class="keyword">if</span>((file=fopen(path_key,<span class="string">"r"</span>))==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        perror(<span class="string">"open key file error"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((p_rsa=PEM_read_RSAPrivateKey(file,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>))==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        ERR_print_errors_fp(<span class="built_in">stdout</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    rsa_len=RSA_size(p_rsa);</span><br><span class="line">    p_de=(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="built_in">malloc</span>(rsa_len+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memset</span>(p_de,<span class="number">0</span>,rsa_len+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(RSA_private_decrypt(rsa_len,(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)str,(<span class="keyword">unsigned</span> <span class="keyword">char</span>*)p_de,p_rsa,RSA_NO_PADDING)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    RSA_free(p_rsa);</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> p_de;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pk.png" alt="1557752156757"></p>
+<p>关于密钥与明文长度，从网上查阅的说法如下：</p>
+<blockquote>
+<p>一次能加密的明文长度与密钥长度成正比：</p>
+<p>len_in_byte(raw_data) = len_in_bit(key)/8 -11，如 1024bit 的密钥，一次能加密的内容长度为 1024/8 -11 = 117 byte。</p>
+<p>所以<strong>非对称加密一般都用于加密对称加密算法的密钥，而不是直接加密内容。</strong></p>
+<p>实际上，RSA 算法本身要求加密内容也就是明文长度 m 必须满足 0&lt;m&lt;n，也就是说内容这个大整数不能超过 n，否则就出错。</p>
+<p>那么如果 m=0 是什么结果？</p>
+<p>普遍 RSA 加密器会直接返回全 0 结果，如果 m&gt;n，运算就会出错。</p>
+<p>因此，RSA 实际可加密的明文长度最大也是 1024bits，但问题就来了：</p>
+<p>如果小于这个长度怎么办？</p>
+<p>就需要进行 padding，因为如果没有 padding 用户无法确分解密后内容的真实长度，字符串之类的内容问题还不大，以 0 作为结束符，便于区分。</p>
+<p>但对二进制数据就很难理解，因为不确定后面的 0 是内容还是内容结束符。</p>
+<p>只要用到 padding，那么就会占用实际的明文长度，我们一般使用的 padding 标准有 NoPPadding、OAEPPadding、PKCS1Padding 等。</p>
+<p>其中 PKCS#1 建议的 padding 就占用了 11 个字节，于是才有 117 字节的说法。</p>
+<p>如果大于这个长度怎么办？</p>
+<p>很多算法的 padding 往往是在后边的，但 PKCS 的 padding 则是在前面的，此为有意设计，有意的把第一个字节置 0 以确保 m 的值小于 n。</p>
+<p>这样，128字节（1024bits）- 11 字节正好是117字节，但对于 RSA 加密来讲，padding 也是参与加密的。</p>
+<p>所以，依然按照 <strong>RSA 1024 实际的明文只有 117 字节</strong>。</p>
+<p>关于 PKCS#1 padding 规范可参考：RFC2313 chapter 8.1。</p>
+<p>我们在把明文送给 RSA 加密器前，要确认这个值是不是大于 n，也就是如果接近 n 位长，那么需要先 padding 再分段加密。</p>
+<p>除非我们是“定长定量自己可控可理解”的加密则不需要 padding。</p>
+</blockquote>
+<p>这就不难理解为什么公钥不适合用来做大规模数据传输的加密了，当然如果一定要用公钥来做，也可以通过分段加密或者数字信封的方式解决。</p>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/jpfss/p/8528406.html" target="_blank" rel="noopener">https://www.cnblogs.com/jpfss/p/8528406.html</a></p>
+<p><a href="https://www.cnblogs.com/aLittleBitCool/archive/2011/09/22/2185418.html" target="_blank" rel="noopener">https://www.cnblogs.com/aLittleBitCool/archive/2011/09/22/2185418.html</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/05/13/关于公钥与明文长度/" class="article-date">
+  <time class="dt-published" datetime="2019-05-13T14:13:00.000Z" itemprop="datePublished">2019-05-13</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/">notes</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2019/05/19/RESTful API/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RESTful API
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/10/flask中的json格式问题/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flask中的json格式问题</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

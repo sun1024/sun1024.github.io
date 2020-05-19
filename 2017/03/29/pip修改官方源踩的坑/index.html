@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>pip修改官方源踩的坑 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="linux篇： 编辑配置文件（如果没有, 新建一份）：vi ~/.pip/pip.conf 在配置文件内加上（这里使用豆瓣源）: 123[global]index-url = http://pypi.douban.com/simpletrusted-host = pypi.douban.com  然后就可以愉快地：pip install xxxxx   windows篇（比较奇葩）： 新建文件（p">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pip修改官方源踩的坑">
+<meta property="og:url" content="http://b1ng0.top/2017/03/29/pip修改官方源踩的坑/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="linux篇： 编辑配置文件（如果没有, 新建一份）：vi ~/.pip/pip.conf 在配置文件内加上（这里使用豆瓣源）: 123[global]index-url = http://pypi.douban.com/simpletrusted-host = pypi.douban.com  然后就可以愉快地：pip install xxxxx   windows篇（比较奇葩）： 新建文件（p">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pip修改官方源踩的坑">
+<meta name="twitter:description" content="linux篇： 编辑配置文件（如果没有, 新建一份）：vi ~/.pip/pip.conf 在配置文件内加上（这里使用豆瓣源）: 123[global]index-url = http://pypi.douban.com/simpletrusted-host = pypi.douban.com  然后就可以愉快地：pip install xxxxx   windows篇（比较奇葩）： 新建文件（p">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-pip修改官方源踩的坑" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      pip修改官方源踩的坑
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h2 id="linux篇："><a href="#linux篇：" class="headerlink" title="linux篇："></a>linux篇：</h2><ul>
+<li>编辑配置文件（如果没有, 新建一份）：<br><code>vi ~/.pip/pip.conf</code></li>
+<li><p>在配置文件内加上（这里使用豆瓣源）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = http://pypi.douban.com/simple</span><br><span class="line">trusted-host = pypi.douban.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就可以愉快地：<br><code>pip install xxxxx</code></p>
+</li>
+</ul>
+<h2 id="windows篇（比较奇葩）："><a href="#windows篇（比较奇葩）：" class="headerlink" title="windows篇（比较奇葩）："></a>windows篇（比较奇葩）：</h2><ul>
+<li>新建文件（pip文件夹与pip.ini都要自己新建）：<br><code>C:\Users\用户名\pip\pip.ini</code><br>注意：不是C:\Users\用户名\AppData\Local\pip下的 pip.ini</li>
+<li><p>在配置文件内加上（这里使用豆瓣源）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = http://pypi.douban.com/simple</span><br><span class="line">trusted-host = pypi.douban.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就可以愉快地：<br><code>pip install xxxxx</code></p>
+</li>
+</ul>
+<h2 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h2><p><a href="https://www.v2ex.com/t/291817" target="_blank" rel="noopener">https://www.v2ex.com/t/291817</a><br><a href="https://ficapy.github.io/2013/12/27/pip_use_china_mirror/" target="_blank" rel="noopener">https://ficapy.github.io/2013/12/27/pip_use_china_mirror/</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2017/03/29/pip修改官方源踩的坑/" class="article-date">
+  <time class="dt-published" datetime="2017-03-28T16:00:00.000Z" itemprop="datePublished">2017-03-29</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2017/04/17/firefox更换中文语言包/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          firefox更换中文语言包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/sqlmap扩展tamper及其简单编写/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sqlmap扩展tamper及其简单编写</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>sqlmap扩展tamper及其简单编写 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="常见tamper(搜集自网络)：1234567891011121314151617181920212223242526272829303132333435363738394041apostrophemask.py 用UTF-8全角字符替换单引号字符apostrophenullencode.py 用非法双字节unicode字符替换单引号字符appendnullbyte.py 在payload末尾添加">
+<meta name="keywords" content="web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlmap扩展tamper及其简单编写">
+<meta property="og:url" content="http://b1ng0.top/2017/03/22/sqlmap扩展tamper及其简单编写/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="常见tamper(搜集自网络)：1234567891011121314151617181920212223242526272829303132333435363738394041apostrophemask.py 用UTF-8全角字符替换单引号字符apostrophenullencode.py 用非法双字节unicode字符替换单引号字符appendnullbyte.py 在payload末尾添加">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T12:00:32.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sqlmap扩展tamper及其简单编写">
+<meta name="twitter:description" content="常见tamper(搜集自网络)：1234567891011121314151617181920212223242526272829303132333435363738394041apostrophemask.py 用UTF-8全角字符替换单引号字符apostrophenullencode.py 用非法双字节unicode字符替换单引号字符appendnullbyte.py 在payload末尾添加">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-sqlmap扩展tamper及其简单编写" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      sqlmap扩展tamper及其简单编写
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h2 id="常见tamper-搜集自网络-："><a href="#常见tamper-搜集自网络-：" class="headerlink" title="常见tamper(搜集自网络)："></a>常见tamper(搜集自网络)：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">apostrophemask.py 用UTF-8全角字符替换单引号字符</span><br><span class="line">apostrophenullencode.py 用非法双字节unicode字符替换单引号字符</span><br><span class="line">appendnullbyte.py 在payload末尾添加空字符编码</span><br><span class="line">base64encode.py 对给定的payload全部字符使用Base64编码</span><br><span class="line">between.py 分别用“NOT BETWEEN 0 AND #”替换大于号“&gt;”，“BETWEEN # AND #”替换等于号“=”</span><br><span class="line">bluecoat.py 在SQL语句之后用有效的随机空白符替换空格符，随后用“LIKE”替换等于号“=”</span><br><span class="line">chardoubleencode.py 对给定的payload全部字符使用双重URL编码（不处理已经编码的字符）</span><br><span class="line">charencode.py 对给定的payload全部字符使用URL编码（不处理已经编码的字符）</span><br><span class="line">charunicodeencode.py 对给定的payload的非编码字符使用Unicode URL编码（不处理已经编码的字符）</span><br><span class="line">concat2concatws.py 用“CONCAT_WS(MID(CHAR(0), 0, 0), A, B)”替换像“CONCAT(A, B)”的实例</span><br><span class="line">equaltolike.py  用“LIKE”运算符替换全部等于号“=”</span><br><span class="line">greatest.py  用“GREATEST”函数替换大于号“&gt;”</span><br><span class="line">halfversionedmorekeywords.py 在每个关键字之前添加MySQL注释</span><br><span class="line">ifnull2ifisnull.py 用“IF(ISNULL(A), B, A)”替换像“IFNULL(A, B)”的实例</span><br><span class="line">lowercase.py 用小写值替换每个关键字字符</span><br><span class="line">modsecurityversioned.py 用注释包围完整的查询</span><br><span class="line">modsecurityzeroversioned.py 用当中带有数字零的注释包围完整的查询</span><br><span class="line">multiplespaces.py 在SQL关键字周围添加多个空格</span><br><span class="line">nonrecursivereplacement.py 用representations替换预定义SQL关键字，适用于过滤器</span><br><span class="line">overlongutf8.py 转换给定的payload当中的所有字符</span><br><span class="line">percentage.py 在每个字符之前添加一个百分号</span><br><span class="line">randomcase.py 随机转换每个关键字字符的大小写</span><br><span class="line">randomcomments.py 向SQL关键字中插入随机注释</span><br><span class="line">securesphere.py 添加经过特殊构造的字符串</span><br><span class="line">sp_password.py 向payload末尾添加“sp_password” for automatic obfuscation from DBMS logs</span><br><span class="line">space2comment.py 用“/**/”替换空格符</span><br><span class="line">space2dash.py 用破折号注释符“--”其次是一个随机字符串和一个换行符替换空格符</span><br><span class="line">space2hash.py 用磅注释符“#”其次是一个随机字符串和一个换行符替换空格符</span><br><span class="line">space2morehash.py 用磅注释符“#”其次是一个随机字符串和一个换行符替换空格符</span><br><span class="line">space2mssqlblank.py 用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line">space2mssqlhash.py 用磅注释符“#”其次是一个换行符替换空格符</span><br><span class="line">space2mysqlblank.py 用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line">space2mysqldash.py 用破折号注释符“--”其次是一个换行符替换空格符</span><br><span class="line">space2plus.py 用加号“+”替换空格符</span><br><span class="line">space2randomblank.py 用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line">unionalltounion.py 用“UNION SELECT”替换“UNION ALL SELECT”</span><br><span class="line">unmagicquotes.py 用一个多字节组合%bf%27和末尾通用注释一起替换空格符</span><br><span class="line">varnish.py 添加一个HTTP头“X-originating-IP”来绕过WAF</span><br><span class="line">versionedkeywords.py 用MySQL注释包围每个非函数关键字</span><br><span class="line">versionedmorekeywords.py 用MySQL注释包围每个关键字</span><br><span class="line">xforwardedfor.py 添加一个伪造的HTTP头“X-Forwarded-For”来绕过WAF</span><br></pre></td></tr></table></figure>
+<h2 id="tamper的简单编写："><a href="#tamper的简单编写：" class="headerlink" title="tamper的简单编写："></a>tamper的简单编写：</h2><p>栗子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sqlmap/tamper/yourtamper.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义脚本的优先级，用于有多个tamper脚本的情况</span></span><br><span class="line">__priority__ = PRIORITY.LOWEST </span><br><span class="line"></span><br><span class="line"><span class="comment">#声明该脚本适用/不适用的范围，可以为空</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dependencies</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">pass</span> </span><br><span class="line">	</span><br><span class="line"><span class="comment">#主要函数，接受的参数为payload和**kwargs返回值为替换后的payload</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tamper</span><span class="params">(payload, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> payload.replace(<span class="string">"."</span>, <span class="string">"\\."</span>)</span><br></pre></td></tr></table></figure></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2017/03/22/sqlmap扩展tamper及其简单编写/" class="article-date">
+  <time class="dt-published" datetime="2017-03-21T16:00:00.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2017/03/29/pip修改官方源踩的坑/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pip修改官方源踩的坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/14/php变量覆盖的学习/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php变量覆盖的学习</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
