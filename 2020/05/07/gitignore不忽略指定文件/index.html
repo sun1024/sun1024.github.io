@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>gitignore不忽略指定文件 | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="突然产生这么个需求，尝试直接用！取反，结果并行不通. 整体上需要先忽略父级目录下所有东西，再保留指定文件(当然文件在根目录的话，不写进来不就是保留了嘛。。。)： 123# 保留dir1下的test.txtdir1/*!dir1/test.txt">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitignore不忽略指定文件">
+<meta property="og:url" content="http://b1ng0.top/2020/05/07/gitignore不忽略指定文件/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="突然产生这么个需求，尝试直接用！取反，结果并行不通. 整体上需要先忽略父级目录下所有东西，再保留指定文件(当然文件在根目录的话，不写进来不就是保留了嘛。。。)： 123# 保留dir1下的test.txtdir1/*!dir1/test.txt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-19T13:41:52.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitignore不忽略指定文件">
+<meta name="twitter:description" content="突然产生这么个需求，尝试直接用！取反，结果并行不通. 整体上需要先忽略父级目录下所有东西，再保留指定文件(当然文件在根目录的话，不写进来不就是保留了嘛。。。)： 123# 保留dir1下的test.txtdir1/*!dir1/test.txt">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-gitignore不忽略指定文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      gitignore不忽略指定文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <p>突然产生这么个需求，尝试直接用<em>！</em>取反，结果并行不通.</p>
+<p>整体上需要先忽略父级目录下所有东西，再保留指定文件(当然文件在根目录的话，不写进来不就是保留了嘛。。。)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保留dir1下的test.txt</span></span><br><span class="line">dir1/*</span><br><span class="line">!dir1/test.txt</span><br></pre></td></tr></table></figure>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2020/05/07/gitignore不忽略指定文件/" class="article-date">
+  <time class="dt-published" datetime="2020-05-07T10:09:00.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2020/04/14/exata中的卫星仿真/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">EXata中的卫星仿真</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
