@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>vps搭建CobaltStrike | b1ng0&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x01 前言手贱重装了下服务器，各种线上环境都没了，在这里记录一下cs的搭建，免得每次都像个憨憨到处找。。。 0x02 服务端搭建123456789101112131415161718192021// 1. CobaltStrike破解版下载// 来自ssooking师傅的破解：https://www.cnblogs.com/ssooking/p/12535998.html$ git clone">
+<meta name="keywords" content="CobaltStrike">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vps搭建CobaltStrike">
+<meta property="og:url" content="http://b1ng0.top/2020/05/25/vps搭建CobaltStrike/index.html">
+<meta property="og:site_name" content="b1ng0&#39;s blog">
+<meta property="og:description" content="0x01 前言手贱重装了下服务器，各种线上环境都没了，在这里记录一下cs的搭建，免得每次都像个憨憨到处找。。。 0x02 服务端搭建123456789101112131415161718192021// 1. CobaltStrike破解版下载// 来自ssooking师傅的破解：https://www.cnblogs.com/ssooking/p/12535998.html$ git clone">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://b1ng0.top/images/image-20200525112443061.png">
+<meta property="og:image" content="http://b1ng0.top/images/image-20200525112950735.png">
+<meta property="og:updated_time" content="2020-05-25T07:42:18.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vps搭建CobaltStrike">
+<meta name="twitter:description" content="0x01 前言手贱重装了下服务器，各种线上环境都没了，在这里记录一下cs的搭建，免得每次都像个憨憨到处找。。。 0x02 服务端搭建123456789101112131415161718192021// 1. CobaltStrike破解版下载// 来自ssooking师傅的破解：https://www.cnblogs.com/ssooking/p/12535998.html$ git clone">
+<meta name="twitter:image" content="http://b1ng0.top/images/image-20200525112443061.png">
+  
+    
+      
+        <link rel="alternate" type="application/atom+xml" title="b1ng0&#39;s blog" href="/atom.xml">
+      
+    
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-vps搭建CobaltStrike" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">b1ng0</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vps搭建CobaltStrike
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>手贱重装了下服务器，各种线上环境都没了，在这里记录一下cs的搭建，免得每次都像个憨憨到处找。。。</p>
+<h2 id="0x02-服务端搭建"><a href="#0x02-服务端搭建" class="headerlink" title="0x02 服务端搭建"></a>0x02 服务端搭建</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 1. CobaltStrike破解版下载</span><br><span class="line">// 来自ssooking师傅的破解：https://www.cnblogs.com/ssooking/p/12535998.html</span><br><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/ssooking/cobaltstrike-cracked.git</span><br><span class="line"></span><br><span class="line">// 2. vps上安装java环境 ubuntu环境</span><br><span class="line">// JDK官网下载还要注册 亲测使用openJDK也完全可以</span><br><span class="line">$ apt install openjdk-8-jre-headless</span><br><span class="line">// 测试</span><br><span class="line">$ java -version</span><br><span class="line">openjdk version <span class="string">"1.8.0_252"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_252-8u252-b09-1~18.04-b09)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)</span><br><span class="line"></span><br><span class="line">// 3. 解压cobaltstrike4.0-cracked 运行teamserver即可</span><br><span class="line">$ ./teamserver 公网ip password</span><br><span class="line">[*] Will use existing X509 certificate and keystore (<span class="keyword">for</span> SSL)</span><br><span class="line">[+] Team server is up on *****</span><br><span class="line">[*] SHA256 <span class="built_in">hash</span> of SSL cert is: ************************************************</span><br><span class="line"></span><br><span class="line">// 个人习惯nohup长期运行</span><br><span class="line">$ nohup ./teamserver 公网ip password &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="0x03-客户端连接"><a href="#0x03-客户端连接" class="headerlink" title="0x03 客户端连接"></a>0x03 客户端连接</h2><p>客户端也是用上面的cobaltstrike4.0-cracked文件夹，安装好java环境后双击start.bat即可：</p>
+<p><img src="/images/image-20200525112443061.png" alt></p>
+<p>按服务端配置填写connect:</p>
+<p><img src="/images/image-20200525112950735.png" alt></p>
+<h2 id="0x04-CS简单加固"><a href="#0x04-CS简单加固" class="headerlink" title="0x04 CS简单加固"></a>0x04 CS简单加固</h2><ul>
+<li><p>修改默认端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 默认端口50050 在teamserver中改掉即可</span><br><span class="line">$ vim teamserver</span><br><span class="line">// 最后一行 50050 改成放行的端口</span><br><span class="line"># start the team server.</span><br><span class="line">java -XX:ParallelGCThreads=4 -Dcobaltstrike.server_port=50050 -Djavax.net.ssl.keyStore=./cobaltstrike.store -Djavax.net.ssl.keyStorePassword=123456 -server -XX:+AggressiveHeap -XX:+UseParallelGC -classpath ./cobaltstrike.jar server.TeamServer $*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改证书信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 可以重新生成一次 但是太麻烦 不如直接改掉CobaltStrike特征 又不是拿来干坏事(笑</span><br><span class="line">$ vim teamserver</span><br><span class="line">// keytool部分 在改端口的前两行</span><br><span class="line">keytool -keystore ./cobaltstrike.store -storepass 123456 -keypass 123456 -genkey -keyalg RSA -alias cobaltstrike -dname &quot;CN=Major Cobalt Strike, OU=AdvancedPenTesting, O=cobaltstrike, L=Somewhere, S=Cyberspace, C=Earth&quot;</span><br><span class="line">//瞎改下</span><br><span class="line">keytool -keystore ./cobaltstrike.store -storepass 123456 -keypass 123456 -genkey -keyalg RSA -alias cobaltstrike -dname &quot;CN=abc, OU=abc, O=abc, L=abc, S=abc, C=abc&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/ssooking/p/12535998.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssooking/p/12535998.html</a></p>
+<p><a href="https://www.3hack.com/note/96.html" target="_blank" rel="noopener">https://www.3hack.com/note/96.html</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2020/05/25/vps搭建CobaltStrike/" class="article-date">
+  <time class="dt-published" datetime="2020-05-25T10:09:00.000Z" itemprop="datePublished">2020-05-25</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CobaltStrike/">CobaltStrike</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2020/05/07/gitignore不忽略指定文件/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">gitignore不忽略指定文件</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+       
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
