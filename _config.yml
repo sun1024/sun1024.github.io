@@ -71,4 +71,4 @@ deploy:
   type: git
   repo:
       github: git@github.com:sun1024/sun1024.github.io.git,master
-      coding: https://e.coding.net/b1ng0/b1ng0.git,master
+      coding: git@e.coding.net:b1ng0/b1ng0.git,master
