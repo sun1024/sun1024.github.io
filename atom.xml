@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://b1ng0.top/"/>
-  <updated>2020-06-29T02:33:17.613Z</updated>
+  <updated>2020-06-29T10:45:31.533Z</updated>
   <id>http://b1ng0.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://b1ng0.top/2020/06/20/vivo%E6%8F%90%E5%89%8D%E6%89%B9%E5%AE%89%E5%85%A8%E5%B2%97%E8%AE%B0%E5%BD%95/"/>
     <id>http://b1ng0.top/2020/06/20/vivo提前批安全岗记录/</id>
     <published>2020-06-19T16:00:00.000Z</published>
-    <updated>2020-06-29T02:33:17.613Z</updated>
+    <updated>2020-06-29T10:45:31.533Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>虽然拒了，但总归还是要记一下的。</p><h2 id="0x02-笔试"><a href="#0x02-笔试" class="headerlink" title="0x02 笔试"></a>0x02 笔试</h2><p>6.07，三道编程题，都是些高频题，过了1.9道，第三道处理输入输出半天没弄好ORZ</p><p>第一题–<a href="https://leetcode-cn.com/problems/can-place-flowers/" target="_blank" rel="noopener">种花问题</a></p><p>第二题–<a href="https://leetcode-cn.com/problems/super-egg-drop/" target="_blank" rel="noopener">扔鸡蛋</a></p><p>第三题–<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">合并K个排序链表</a></p><h2 id="0x03-一面"><a href="#0x03-一面" class="headerlink" title="0x03 一面"></a>0x03 一面</h2><p>6.09，总共聊了28min，感觉是个Leader在面，但是自我介绍之后就像HR一样聊人生了，主动往技术细节上引都不接茬，差点以为凉了。</p><p>主要问题：</p><p>自我介绍<br>授权测试项目的内容<br>是否做过黑产、灰产<br>最有成就感的事<br>学习安全的过程<br>对安全的认知<br>大学到研究生都是通信，师兄师姐有没有做安全的<br>缺点和优点<br>将来的打算<br>怎么量化你的目标<br>觉得vivo的安全要做些什么<br>有没有想去的公司<br>为什么觉得甲方安全比乙方好</p><p>反问：</p><p>给我一点建议<br>vivo的安全具体是做那些内容<br>什么时候出结果</p><h2 id="0x04-二面"><a href="#0x04-二面" class="headerlink" title="0x04 二面"></a>0x04 二面</h2><p>6.10，7min速战速决，也没给反问时间，面完更疑惑了。</p><p>主要问题：</p><p>自我介绍<br>是否保研<br>六级过没<br>成绩是否是写的50%<br>两个项目哪个是自己主导的<br>意向城市<br>未来三到五年规划</p><p>最后来了句你技术面评价比较高（？？？<br>等通知，然后直接拜拜没有反问</p><h2 id="0x05-结果"><a href="#0x05-结果" class="headerlink" title="0x05 结果"></a>0x05 结果</h2><p>6.17：收到录用通知</p><p>没有太过纠结，基于一些原因觉得不太合适就直接拒了，虽然我后面可能不一定能拿到这样的价了，但是就像太祖说过的：风物长宜放眼量。</p><p>————– update————– </p><p>刚拒完vivo，就发现自己被头条拒了，简历筛选都没过，上帝欲使人疯狂，必先使其膨胀（笑哭。。。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>虽然拒了，但总归还是要记一下的。</p><h2 id="0x02-笔试"><a href="#0x02-笔试" class="headerlink" title="0x02 笔试"></a>0x02 笔试</h2><p>6.07，三道编程题，都是些高频题，过了1.9道，第三道处理输入输出半天没弄好ORZ</p><p>第一题–<a href="https://leetcode-cn.com/problems/can-place-flowers/" target="_blank" rel="noopener">种花问题</a></p><p>第二题–<a href="https://leetcode-cn.com/problems/super-egg-drop/" target="_blank" rel="noopener">扔鸡蛋</a></p><p>第三题–<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">合并K个排序链表</a></p><h2 id="0x03-一面"><a href="#0x03-一面" class="headerlink" title="0x03 一面"></a>0x03 一面</h2><p>6.09，总共聊了28min，感觉是个Leader在面，但是自我介绍之后就像HR一样聊人生了，主动往技术细节上引都不接茬，差点以为凉了。</p><p>主要问题：</p><p>自我介绍<br>授权测试项目的内容<br>是否做过黑产、灰产<br>最有成就感的事<br>学习安全的过程<br>对安全的认知<br>大学到研究生都是通信，师兄师姐有没有做安全的<br>缺点和优点<br>将来的打算<br>怎么量化你的目标<br>觉得vivo的安全要做些什么<br>有没有想去的公司<br>为什么觉得甲方安全比乙方好</p><p>反问：</p><p>给我一点建议<br>vivo的安全具体是做那些内容<br>什么时候出结果</p><h2 id="0x04-二面"><a href="#0x04-二面" class="headerlink" title="0x04 二面"></a>0x04 二面</h2><p>6.10，7min速战速决，也没给反问时间，面完更疑惑了。</p><p>主要问题：</p><p>自我介绍<br>是否保研<br>六级过没<br>成绩是否是写的50%<br>两个项目哪个是自己主导的<br>意向城市<br>未来三到五年规划</p><p>最后来了句你技术面评价比较高（？？？<br>等通知，然后直接拜拜没有反问</p><h2 id="0x05-结果"><a href="#0x05-结果" class="headerlink" title="0x05 结果"></a>0x05 结果</h2><p>6.17：收到录用通知</p><p>没有太过纠结，基于一些原因觉得不太合适就直接拒了，还是很感激vivo这次机会的！</p><p>————– 6.22 update————– </p><p>刚拒完vivo，就发现自己被头条拒了，简历筛选都没过，上帝欲使人疯狂，必先使其膨胀（笑哭。。。</p><p>————– 6.29 update————– </p><p>厚着脸皮重新投到部门HR，没想到头条又给了次机会，转到安全研发面试，感觉直接一面挂就不写面经了，整体面试体验极佳，说不清楚的也会进行引导，没想到面试也能学到一些姿势，奈何自己太菜了。。。</p>]]></content>
     
     <summary type="html">
     
