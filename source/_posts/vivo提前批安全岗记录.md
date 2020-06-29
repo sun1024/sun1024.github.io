@@ -11,13 +11,13 @@ tags: 秋招
 
 ## 0x02 笔试 
 
-6.07，三道编程题，都是些高频题，AC了1.9道，第三道处理输入输出半天没弄好ORZ
+6.07，三道编程题，都是些高频题，过了1.9道，第三道处理输入输出半天没弄好ORZ
 
 第一题--[种花问题](https://leetcode-cn.com/problems/can-place-flowers/)
 
 第二题--[扔鸡蛋](https://leetcode-cn.com/problems/super-egg-drop/)
 
-第二题--[合并K个排序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
+第三题--[合并K个排序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 
 ## 0x03 一面
 
